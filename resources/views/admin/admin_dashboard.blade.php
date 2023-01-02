@@ -23,7 +23,10 @@
 	<link rel="stylesheet" href="{{asset('admin/assets/css/dark-theme.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/assets/css/semi-dark.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/assets/css/header-colors.css')}}" />
-	<title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+	{{-- Toastr --}}
+	<link rel="stylesheet" type="text/css" href="{{asset('toastr/toastr.css')}}" >
+
+	<title>Admin - Dashboard</title>
 </head>
 
 <body>
@@ -162,6 +165,30 @@
 	<script src="{{asset('admin/assets/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/jquery-knob/excanvas.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/jquery-knob/jquery.knob.js')}}"></script>
+	{{-- Toastr --}}
+	<script type="text/javascript" src="{{asset('toastr/toastr.min.js')}}"></script>
+	<script>
+		@if(Session::has('message'))
+		var type = "{{ Session::get('alert-type','info') }}"
+		switch(type){
+		   case 'info':
+		   toastr.info(" {{ Session::get('message') }} ");
+		   break;
+	   
+		   case 'success':
+		   toastr.success(" {{ Session::get('message') }} ");
+		   break;
+	   
+		   case 'warning':
+		   toastr.warning(" {{ Session::get('message') }} ");
+		   break;
+	   
+		   case 'error':
+		   toastr.error(" {{ Session::get('message') }} ");
+		   break; 
+		}
+		@endif 
+	</script>
 	  <script>
 		  $(function() {
 			  $(".knob").knob();
