@@ -37,9 +37,16 @@ class AdminController extends Controller
 
     public function AdminProfile()
     {
-        $id = Auth::user()->id;
-        $adminData = User::find($id);
-        return view('admin.profile.profile_edit',compact('adminData'));
+        
+        $role = Auth::user()->role;
+        if ($role == 'admin') {
+            $id = Auth::user()->id;
+            $adminData = User::find($id);
+            return view('admin.profile.profile_edit',compact('adminData'));
+        }
+        else{
+            abort(404);
+        }
     }
 
     public function AdminProfileStore(Request $request)
