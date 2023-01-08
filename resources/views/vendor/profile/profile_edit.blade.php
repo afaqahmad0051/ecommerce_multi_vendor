@@ -67,7 +67,7 @@
                                         <div class="row mb-3">
                                             <label class="col-sm-3 form-label">Joining: <span class="text-danger">*</span></label>
                                             <div class="col-sm-9">
-                                                <select name="vendor_join" class="single-select">
+                                                <select name="starting_year" class="single-select">
                                                     <option disabled selected>Select</option>
                                                     <option value="2023" {{ $vendorData->vendor_join == 2023?'selected':'' }} >2023</option>
                                                     <option value="2024" {{ $vendorData->vendor_join == 2024?'selected':'' }}>2024</option>

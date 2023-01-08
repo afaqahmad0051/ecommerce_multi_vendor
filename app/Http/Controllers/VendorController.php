@@ -37,9 +37,15 @@ class VendorController extends Controller
     
     public function VendorProfile()
     {
-        $id = Auth::user()->id;
-        $vendorData = User::find($id);
-        return view('vendor.profile.profile_edit',compact('vendorData'));
+        $role = Auth::user()->role;
+        if ($role == 'vendor') {
+            $id = Auth::user()->id;
+            $vendorData = User::find($id);
+            return view('vendor.profile.profile_edit',compact('vendorData'));
+        }
+        else{
+            abort(404);
+        }
     }
 
     public function VendorProfileStore(Request $request)
@@ -49,7 +55,7 @@ class VendorController extends Controller
         $data->name = $request->name;
         $data->phone = $request->phone;
         $data->address = $request->address;
-        $data->vendor_join = $request->vendor_join;
+        $data->starting_year = $request->starting_year;
         $data->vendor_short_info = $request->vendor_short_info;
         if ($request->file('photo')) {
             $file = $request->file('photo');
