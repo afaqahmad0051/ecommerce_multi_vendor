@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -60,34 +61,46 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('update/password','UpdatePassword')->name('admin.update.password');
     });
 
-    //Admin Brand Routes
-    Route::prefix('brand')->name('brand.')->controller(BrandController::class)->group(function () {
-        Route::get('list','index')->name('list');
-        Route::get('form','create')->name('create');
-        Route::post('store','store')->name('store');
-        Route::get('form/{id}','edit')->name('edit');
-        Route::post('update/{id}','update')->name('update');
-        Route::get('delete/{id}','destroy')->name('delete');
-    });
+    // Setting Presfix
+    Route::prefix('setting')->group(function () {
+        //Admin Year Routes
+        Route::prefix('year')->name('year.')->controller(YearController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+        });
 
-    //Admin Category Routes
-    Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
-        Route::get('list','index')->name('list');
-        Route::get('form','create')->name('create');
-        Route::post('store','store')->name('store');
-        Route::get('form/{id}','edit')->name('edit');
-        Route::post('update/{id}','update')->name('update');
-        Route::get('delete/{id}','destroy')->name('delete');
-    });
+        //Admin Brand Routes
+        Route::prefix('brand')->name('brand.')->controller(BrandController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
 
-    //Admin SubCategory Routes
-    Route::prefix('sub-category')->name('sub_category.')->controller(SubCategoryController::class)->group(function () {
-        Route::get('list','index')->name('list');
-        Route::get('form','create')->name('create');
-        Route::post('store','store')->name('store');
-        Route::get('form/{id}','edit')->name('edit');
-        Route::post('update/{id}','update')->name('update');
-        Route::get('delete/{id}','destroy')->name('delete');
+        //Admin Category Routes
+        Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
+
+        //Admin SubCategory Routes
+        Route::prefix('sub-category')->name('sub_category.')->controller(SubCategoryController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
     });
 
 });
@@ -95,6 +108,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
 //Vendor Dashboard
 Route::get('/vendor/login', [VendorController::class,'VendorLogin'])->name('vendor.login');
+Route::get('/vendor/register/apply', [VendorController::class,'VendorRegisterApply'])->name('vendor.register');
 Route::middleware(['auth','role:vendor'])->group(function(){
     Route::controller(VendorController::class)->group(function () {
         Route::get('/vendor/dashboard','VendorDashboard')->name('vendor.dashboard');

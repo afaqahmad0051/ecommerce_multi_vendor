@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Year;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -41,7 +42,8 @@ class VendorController extends Controller
         if ($role == 'vendor') {
             $id = Auth::user()->id;
             $vendorData = User::find($id);
-            return view('vendor.profile.profile_edit',compact('vendorData'));
+            $year = Year::latest()->get();
+            return view('vendor.profile.profile_edit',compact('vendorData','year'));
         }
         else{
             abort(404);
@@ -55,7 +57,7 @@ class VendorController extends Controller
         $data->name = $request->name;
         $data->phone = $request->phone;
         $data->address = $request->address;
-        $data->starting_year = $request->starting_year;
+        $data->year_id = $request->year_id;
         $data->vendor_short_info = $request->vendor_short_info;
         if ($request->file('photo')) {
             $file = $request->file('photo');
@@ -106,5 +108,10 @@ class VendorController extends Controller
             );
             return redirect()->back()->with($notification);
         }
+    }
+
+    public function VendorRegisterApply()
+    {
+        return view('auth.vendor_register');
     }
 }
