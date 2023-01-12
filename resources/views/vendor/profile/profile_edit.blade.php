@@ -22,58 +22,56 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('vendor.profile.store') }}" method="post" enctype="multipart/form-data">
+                            <form id="profile" action="{{ route('vendor.profile.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row mb-3">
                                             <label class="col-sm-3 form-label">Full Name: <span class="text-danger">*</span></label>  
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="name" value="{{ $vendorData->name }}"/>
+                                            <div class="col-sm-9 form-group">
+                                                <input type="text" class="form-control" required name="name" value="{{ $vendorData->name }}"/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-3 form-label">Username: <span class="text-danger">*</span></label>  
-                                            <div class="col-sm-9">
+                                            <div class="col-sm-9 form-group">
                                                 <input type="text" class="form-control" name="username" value="{{ $vendorData->username }}" disabled/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-3 form-label">Phone: <span class="text-danger">*</span></label>  
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="phone" value="{{ $vendorData->phone }}"/>
+                                            <div class="col-sm-9 form-group">
+                                                <input type="text" class="form-control" required name="phone" value="{{ $vendorData->phone }}"/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-3">Address: <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <textarea class="form-control" name="address" rows="2">{!! $vendorData->address !!}</textarea>
+                                            <div class="col-sm-9 form-group">
+                                                <textarea class="form-control" required name="address" rows="2">{!! $vendorData->address !!}</textarea>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <label class="col-sm-3">Short Info: <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <textarea class="form-control" name="vendor_short_info" rows="2">{!! $vendorData->vendor_short_info !!}</textarea>
+                                            <div class="col-sm-9 form-group">
+                                                <textarea class="form-control" required name="vendor_short_info" rows="2">{!! $vendorData->vendor_short_info !!}</textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row mb-3">
                                             <label class="col-sm-3 form-label">Email: <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
+                                            <div class="col-sm-9 form-group">
                                                 <input type="email" class="form-control" name="email" value="{{ $vendorData->email }}" disabled/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label class="col-sm-3 form-label">Joining: <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <select name="starting_year" class="single-select">
+                                            <label class="col-sm-3 form-label">Established in: <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9 form-group">
+                                                <select name="year_id" class="single-select" name="year_id" required>
                                                     <option disabled selected>Select</option>
-                                                    <option value="2023" {{ $vendorData->vendor_join == 2023?'selected':'' }} >2023</option>
-                                                    <option value="2024" {{ $vendorData->vendor_join == 2024?'selected':'' }}>2024</option>
-                                                    <option value="2025" {{ $vendorData->vendor_join == 2025?'selected':'' }}>2025</option>
-                                                    <option value="2026" {{ $vendorData->vendor_join == 2026?'selected':'' }}>2026</option>
-                                                    <option value="2027" {{ $vendorData->vendor_join == 2027?'selected':'' }}>2027</option>
+                                                    @foreach ($year as $item)
+                                                        <option value="{{ $item->id }}" {{ $vendorData->year_id == $item->id?'selected':'' }} >{{$item->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -81,7 +79,7 @@
                                             <label class="col-sm-4">Profile Picture: <span class="text-danger">*</span></label>
                                             <div class="col-sm-8">
                                                 <img class="rounded avatar-lg" id="showImg" src="{{(!empty($vendorData->photo))? url('upload/vendor_images/'.$vendorData->photo):url('upload/blank.jpg')}}" style="float: right; heigt:100px; width:100px;">
-                                                <input class="form-control" type="file" name="photo" id="image" readonly style="margin-top: 7rem">
+                                                <input class="form-control" required type="file" name="photo" id="image" readonly style="margin-top: 7rem">
                                             </div>
                                         </div>
                                     </div><hr>
