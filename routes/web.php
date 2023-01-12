@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -44,17 +47,47 @@ require __DIR__.'/auth.php';
 //Admin Dashboard
 Route::get('/admin/login', [AdminController::class,'AdminLogin'])->name('admin.login');
 Route::middleware(['auth','role:admin'])->group(function(){
-    Route::controller(AdminController::class)->group(function () {
-        Route::get('/admin/dashboard','AdminDashboard')->name('admin.dashboard');
-        Route::get('/admin/logout', 'AdminDestroy')->name('admin.logout');
+    Route::prefix('admin')->controller(AdminController::class)->group(function () {
+        Route::get('dashboard','AdminDashboard')->name('admin.dashboard');
+        Route::get('logout', 'AdminDestroy')->name('admin.logout');
         
         //Admin Profile
-        Route::get('/admin/profile', 'AdminProfile')->name('admin.profile');
-        Route::post('/admin/profile/store', 'AdminProfileStore')->name('admin.profile.store');
+        Route::get('profile', 'AdminProfile')->name('admin.profile');
+        Route::post('profile/store', 'AdminProfileStore')->name('admin.profile.store');
         
         //Admin Password
-        Route::get('/admin/change/password','ChangePassword')->name('admin.change.password');
-        Route::post('/admin/update/password','UpdatePassword')->name('admin.update.password');
+        Route::get('change/password','ChangePassword')->name('admin.change.password');
+        Route::post('update/password','UpdatePassword')->name('admin.update.password');
+    });
+
+    //Admin Brand Routes
+    Route::prefix('brand')->name('brand.')->controller(BrandController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('form','create')->name('create');
+        Route::post('store','store')->name('store');
+        Route::get('form/{id}','edit')->name('edit');
+        Route::post('update/{id}','update')->name('update');
+        Route::get('delete/{id}','destroy')->name('delete');
+    });
+
+    //Admin Category Routes
+    Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('form','create')->name('create');
+        Route::post('store','store')->name('store');
+        Route::get('form/{id}','edit')->name('edit');
+        Route::post('update/{id}','update')->name('update');
+        Route::get('delete/{id}','destroy')->name('delete');
+    });
+
+    //Admin SubCategory Routes
+    Route::prefix('sub-category')->name('sub_category.')->controller(SubCategoryController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('form','create')->name('create');
+        Route::post('store','store')->name('store');
+        Route::get('form/{id}','edit')->name('edit');
+        Route::post('update/{id}','update')->name('update');
+        Route::get('delete/{id}','destroy')->name('delete');
     });
 
 });

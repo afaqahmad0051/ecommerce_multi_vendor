@@ -1,3 +1,7 @@
+@php
+$prefix = Request::route()->getprefix();
+$route = Route::current()->getName();
+@endphp
 <div class="sidebar-header">
     <div>
         <img src="{{asset('admin/assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
@@ -10,38 +14,37 @@
 </div>
 <!--navigation-->
 <ul class="metismenu" id="menu">
-    <li>
+    <li {{ ($route == 'admin.dashboard')?'active':''}}>
         <a href="{{route('admin.dashboard')}}">
             <div class="parent-icon"><i class='bx bx-home-circle'></i>
             </div>
             <div class="menu-title">Dashboard</div>
         </a>        
     </li>
-    <li>
+    <li {{ ($prefix == '/brand')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
+            <div class="parent-icon"><i class="bx bx-cog"></i>
             </div>
-            <div class="menu-title">Application</div>
+            <div class="menu-title">Setting</div>
         </a>
         <ul>
-            <li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Email</a>
+            <li class="{{ ($route == 'brand.list')?'mm-active':'' }} || {{ ($route == 'brand.create')?'mm-active':'' }} || {{ ($route == 'brand.edit')?'mm-active':'' }}">
+                <a href="{{ route('brand.list') }}"><i class="bx bx-right-arrow-alt"></i>Brand</a>
             </li>
-            <li> <a href="app-chat-box.html"><i class="bx bx-right-arrow-alt"></i>Chat Box</a>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'category.list')?'mm-active':'' }} || {{ ($route == 'category.create')?'mm-active':'' }} || {{ ($route == 'category.edit')?'mm-active':'' }}">
+                <a href="{{ route('category.list') }}"><i class="bx bx-right-arrow-alt"></i>Category</a>
             </li>
-            <li> <a href="app-file-manager.html"><i class="bx bx-right-arrow-alt"></i>File Manager</a>
-            </li>
-            <li> <a href="app-contact-list.html"><i class="bx bx-right-arrow-alt"></i>Contatcs</a>
-            </li>
-            <li> <a href="app-to-do.html"><i class="bx bx-right-arrow-alt"></i>Todo List</a>
-            </li>
-            <li> <a href="app-invoice.html"><i class="bx bx-right-arrow-alt"></i>Invoice</a>
-            </li>
-            <li> <a href="app-fullcalender.html"><i class="bx bx-right-arrow-alt"></i>Calendar</a>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'category.list')?'mm-active':'' }} || {{ ($route == 'category.create')?'mm-active':'' }} || {{ ($route == 'category.edit')?'mm-active':'' }}">
+                <a href="{{ route('sub_category.list') }}"><i class="bx bx-right-arrow-alt"></i>Sub Category</a>
             </li>
         </ul>
     </li>
     <li class="menu-label">UI Elements</li>
-    <li>
+    <li class="active">
         <a href="widgets.html">
             <div class="parent-icon"><i class='bx bx-cookie'></i>
             </div>
