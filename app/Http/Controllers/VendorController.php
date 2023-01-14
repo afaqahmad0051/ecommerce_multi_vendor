@@ -112,6 +112,31 @@ class VendorController extends Controller
 
     public function VendorRegisterApply()
     {
-        return view('auth.vendor_register');
+        $year = Year::latest()->get();
+        return view('auth.vendor_register',compact('year'));
+    }
+
+    public function VendorRegister(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+            'role' => 'vendor',
+            'status' => 'inactive',
+        ]);
+        $notification = array(
+            'message' => 'Registration Request Sent',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('vendor.login')->with($notification);
     }
 }
