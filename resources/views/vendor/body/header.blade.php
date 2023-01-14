@@ -1,6 +1,10 @@
 @php
-    $id = auth()->user()->id;
-    $vendorData = App\Models\User::find($id);
+    $user = auth()->user();
+    if ($user->role == 'vendor') {
+        $id = $user->id;
+        $vendorData = App\Models\User::find($id);
+        $status = $user->status;
+    }
 @endphp
 <header>
     <div class="topbar d-flex align-items-center">
@@ -335,6 +339,7 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
+                    @if ($status == 'active')
                     <li><a class="dropdown-item" href="{{ route('vendor.profile') }}"><i class="bx bx-user"></i><span>Profile</span></a>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('vendor.change.password') }}"><i class="bx bx-lock"></i><span>Password</span></a>
@@ -342,6 +347,7 @@
                     <li>
                         <div class="dropdown-divider mb-0"></div>
                     </li>
+                    @endif
                     <li><a class="dropdown-item" href="{{ route('vendor.logout') }}"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
                     </li>
                 </ul>

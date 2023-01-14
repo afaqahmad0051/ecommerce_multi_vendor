@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VendorManagementController;
 use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -61,7 +62,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('update/password','UpdatePassword')->name('admin.update.password');
     });
 
-    // Setting Presfix
+    // Setting Prefix
     Route::prefix('setting')->group(function () {
         //Admin Year Routes
         Route::prefix('year')->name('year.')->controller(YearController::class)->group(function () {
@@ -103,12 +104,24 @@ Route::middleware(['auth','role:admin'])->group(function(){
         });
     });
 
+    // Admin Side Vendor Routes
+    Route::prefix('vendor')->name('vendor.')->controller(VendorManagementController::class)->group(function () {
+        Route::get('inactive/list','InActive')->name('inactive');
+        Route::get('active/list','Active')->name('active');
+        Route::get('details/{id}','Details')->name('details');
+        Route::post('approve/{id}','Approve')->name('approve');
+        Route::post('deactivate/{id}','Deactivate')->name('deactivate');
+        // Route::get('form','create')->name('create');
+        // Route::post('store','store')->name('store');
+    });
+
 });
 
 
 //Vendor Dashboard
 Route::get('/vendor/login', [VendorController::class,'VendorLogin'])->name('vendor.login');
-Route::get('/vendor/register/apply', [VendorController::class,'VendorRegisterApply'])->name('vendor.register');
+Route::get('/vendor/register/apply', [VendorController::class,'VendorRegisterApply'])->name('vendor.register.apply');
+Route::post('/vendor/register', [VendorController::class,'VendorRegister'])->name('vendor.register');
 Route::middleware(['auth','role:vendor'])->group(function(){
     Route::controller(VendorController::class)->group(function () {
         Route::get('/vendor/dashboard','VendorDashboard')->name('vendor.dashboard');

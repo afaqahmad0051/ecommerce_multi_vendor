@@ -48,6 +48,23 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
+    <li {{ ($prefix == '/vendor')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-cog"></i>
+            </div>
+            <div class="menu-title">Vendor Management</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'vendor.inactive')?'mm-active':'' }}">
+                <a href="{{ route('vendor.inactive') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Vendors</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'vendor.active')?'mm-active':'' }}">
+                <a href="{{ route('vendor.active') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendors</a>
+            </li>
+        </ul>
+    </li>
     <li class="menu-label">UI Elements</li>
     <li class="active">
         <a href="widgets.html">
