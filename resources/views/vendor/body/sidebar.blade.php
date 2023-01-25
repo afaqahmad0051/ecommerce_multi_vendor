@@ -28,12 +28,12 @@
     @if ($status == 'active')
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-category"></i>
+            <div class="parent-icon"><i class="bx bx-cart"></i>
             </div>
             <div class="menu-title">Inventory</div>
         </a>
         <ul>
-            <li> <a href="app-emailbox.html"><i class="bx bx-right-arrow-alt"></i>Product</a>
+            <li> <a href=""><i class="bx bx-right-arrow-alt"></i>Product</a>
             </li>
         </ul>
     </li>

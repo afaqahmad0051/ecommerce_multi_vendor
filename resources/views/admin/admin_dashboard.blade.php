@@ -12,6 +12,7 @@
 	<link href="{{asset('admin/assets/plugins/select2/css/select2-bootstrap4.css')}}" rel="stylesheet" />
 	<link href="{{asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
 	<link href="{{asset('admin/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
+	<link href="{{asset('admin/assets/plugins/input-tags/css/tagsinput.css')}}" rel="stylesheet" />
 	<link href="{{asset('admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
 	<link href="{{asset('admin/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
 	<!-- loader-->
@@ -30,7 +31,8 @@
 	<link href="{{asset('admin/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 	{{-- Toastr --}}
 	<link rel="stylesheet" type="text/css" href="{{asset('toastr/toastr.css')}}" >
-
+	{{-- Fa Fa Icons  --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<title>Admin - Dashboard</title>
 </head>
 
@@ -135,13 +137,20 @@
 		}
 		@endif 
 	</script>
-	  <script>
-		  $(function() {
-			  $(".knob").knob();
-		  });
-	  </script>
-	  <script src="{{asset('admin/assets/js/index.js')}}"></script>
-	  <script src="{{asset('admin/assets/js/validate.min.js')}}"></script>
+	<script>
+		$(function() {
+			$(".knob").knob();
+		});
+	</script>
+	<script src="{{asset('admin/assets/plugins/input-tags/js/tagsinput.js')}}"></script>
+	<script src="{{asset('admin/assets/js/index.js')}}"></script>
+	<script src="{{asset('admin/assets/js/validate.min.js')}}"></script>
+	<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+	<script>
+		tinymce.init({
+		selector: '#mytextarea'
+		});
+	</script>
 	<!--app JS-->
 	<script src="{{asset('admin/assets/js/app.js')}}"></script>
 </body>
