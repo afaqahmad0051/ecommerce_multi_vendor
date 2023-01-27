@@ -55,13 +55,13 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('category.edit',$item->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fa fa-pencil"></i></a>
-                                    <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger btn-sm" title="Delete" id="delete"><i class="fa fa-trash"></i></a>
+                                    <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger btn-sm" title="Delete" id="delete"><i class="fa fa-trash"></i></a>
                                     <a href="{{ route('category.edit',$item->id) }}" class="btn btn-success btn-sm" title="Details"><i class="fa fa-eye"></i></a>
                                     @if ($item->status == 1)
-                                        <a href="{{ route('category.delete',$item->id) }}" class="btn btn-warning btn-sm" title="Inactive"><i class="fa-solid fa-thumbs-down"></i></a>
+                                        <a href="{{ route('product.inactive',$item->id) }}" class="btn btn-warning btn-sm" title="Inactive"><i class="fa-solid fa-thumbs-down"></i></a>
                                     @else
-                                        <a href="{{ route('category.delete',$item->id) }}" class="btn btn-warning btn-sm" title="Active"><i class="fa-solid fa-thumbs-up"></a>
+                                        <a href="{{ route('product.active',$item->id) }}" class="btn btn-warning btn-sm" title="Active"><i class="fa-solid fa-thumbs-up"></i></a>
                                     @endif
                                 </td>
                             </tr>

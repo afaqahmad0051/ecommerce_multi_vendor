@@ -121,15 +121,20 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('list','index')->name('list');
         Route::get('form','create')->name('create');
         Route::post('store','store')->name('store');
-        // Route::get('form/{id}','edit')->name('edit');
-        // Route::post('update/{id}','update')->name('update');
-        // Route::get('delete/{id}','destroy')->name('delete');
+        Route::get('form/{id}','edit')->name('edit');
+        Route::post('update/{id}','update')->name('update');
+        Route::post('update/image/{id}','updateImage')->name('update.thumbnail');
+        Route::post('update/multi/image','updateMultiImage')->name('update.multiImage');
+        Route::get('delete/image/{id}','imagedestroy')->name('delete.multiImage');
+        Route::get('inactive/{id}','inactive')->name('inactive');
+        Route::get('active/{id}','active')->name('active');
+        Route::get('delete/{id}','destroy')->name('delete');
     });
 });
 
 
 //Vendor Dashboard
-Route::get('/vendor/login', [VendorController::class,'VendorLogin'])->name('vendor.login');
+Route::get('/vendor/login', [VendorController::class,'VendorLogin'])->name('vendor.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/vendor/register/apply', [VendorController::class,'VendorRegisterApply'])->name('vendor.register.apply');
 Route::post('/vendor/register', [VendorController::class,'VendorRegister'])->name('vendor.register');
 Route::middleware(['auth','role:vendor'])->group(function(){
