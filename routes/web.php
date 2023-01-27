@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 //Admin Dashboard
-Route::get('/admin/login', [AdminController::class,'AdminLogin'])->name('admin.login');
+Route::get('/admin/login', [AdminController::class,'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 Route::middleware(['auth','role:admin'])->group(function(){
     Route::prefix('admin')->controller(AdminController::class)->group(function () {
         Route::get('dashboard','AdminDashboard')->name('admin.dashboard');
