@@ -56,6 +56,16 @@ $route = Route::current()->getName();
             <div class="menu-title">Setting</div>
         </a>
         <ul>
+            <li class="{{ ($route == 'slider.list')?'mm-active':'' }} || {{ ($route == 'slider.create')?'mm-active':'' }} || {{ ($route == 'slider.edit')?'mm-active':'' }}">
+                <a href="{{ route('slider.list') }}"><i class="bx bx-right-arrow-alt"></i>Slider</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'banner.list')?'mm-active':'' }} || {{ ($route == 'banner.create')?'mm-active':'' }} || {{ ($route == 'banner.edit')?'mm-active':'' }}">
+                <a href="{{ route('banner.list') }}"><i class="bx bx-right-arrow-alt"></i>Banner</a>
+            </li>
+        </ul>
+        <ul>
             <li class="{{ ($route == 'year.list')?'mm-active':'' }} || {{ ($route == 'year.create')?'mm-active':'' }} || {{ ($route == 'year.edit')?'mm-active':'' }}">
                 <a href="{{ route('year.list') }}"><i class="bx bx-right-arrow-alt"></i>Year</a>
             </li>

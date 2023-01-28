@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorManagementController;
 use App\Http\Controllers\Backend\VendorProductController;
@@ -95,9 +97,29 @@ Route::middleware(['auth','role:admin'])->group(function(){
             Route::post('update/{id}','update')->name('update');
             Route::get('delete/{id}','destroy')->name('delete');
         });
-
+        
         //Admin SubCategory Routes
         Route::prefix('sub-category')->name('sub_category.')->controller(SubCategoryController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
+
+        //Admin Slider Routes
+        Route::prefix('slider')->name('slider.')->controller(SliderController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
+
+        //Admin Banner Routes
+        Route::prefix('banner')->name('banner.')->controller(BannerController::class)->group(function () {
             Route::get('list','index')->name('list');
             Route::get('form','create')->name('create');
             Route::post('store','store')->name('store');
