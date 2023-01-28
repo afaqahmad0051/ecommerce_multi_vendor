@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorManagementController;
+use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -150,5 +151,23 @@ Route::middleware(['auth','role:vendor'])->group(function(){
         // //Vendor Password
         Route::get('/vendor/change/password','ChangePassword')->name('vendor.change.password');
         Route::post('/vendor/update/password','UpdatePassword')->name('vendor.update.password');
+    });
+
+    //Vendor Product Routes
+    
+    Route::prefix('vendor')->name('vendor.')->group(function () {
+        Route::prefix('product')->name('product.')->controller(VendorProductController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::post('update/image/{id}','updateImage')->name('update.thumbnail');
+            Route::post('update/multi/image','updateMultiImage')->name('update.multiImage');
+            Route::get('delete/image/{id}','imagedestroy')->name('delete.multiImage');
+            Route::get('inactive/{id}','inactive')->name('inactive');
+            Route::get('active/{id}','active')->name('active');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
     });
 });

@@ -8,8 +8,11 @@
 	<!--favicon-->
 	<link rel="icon" href="{{asset('admin/assets/images/favicon-32x32.png')}}" type="image/png" />
 	<!--plugins-->
+	<link href="{{asset('admin/assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('admin/assets/plugins/select2/css/select2-bootstrap4.css')}}" rel="stylesheet" />
 	<link href="{{asset('admin/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
 	<link href="{{asset('admin/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
+	<link href="{{asset('admin/assets/plugins/input-tags/css/tagsinput.css')}}" rel="stylesheet" />
 	<link href="{{asset('admin/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
 	<link href="{{asset('admin/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
 	<!-- loader-->
@@ -19,15 +22,18 @@
 	<link href="{{asset('admin/assets/css/bootstrap.min.css')}}" rel="stylesheet">
 	<link href="{{asset('admin/assets/css/app.css')}}" rel="stylesheet">
 	<link href="{{asset('admin/assets/css/icons.css')}}" rel="stylesheet">
-	<link href="{{asset('admin/assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet" />
-	<link href="{{asset('admin/assets/plugins/select2/css/select2-bootstrap4.css')}}" rel="stylesheet" />
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="{{asset('admin/assets/css/dark-theme.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/assets/css/semi-dark.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/assets/css/header-colors.css')}}" />
+
+	{{-- DataTable  --}}
+	<link href="{{asset('admin/assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 	{{-- Toastr --}}
 	<link rel="stylesheet" type="text/css" href="{{asset('toastr/toastr.css')}}" >
-
+	{{-- Fa Fa Icons  --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
 	<title>Vendor - Dashboard</title>
 </head>
 
@@ -69,6 +75,7 @@
 	<script src="{{asset('admin/assets/plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/jquery-knob/excanvas.js')}}"></script>
 	<script src="{{asset('admin/assets/plugins/jquery-knob/jquery.knob.js')}}"></script>
+	{{-- Select2 --}}
 	<script src="{{asset('admin/assets/plugins/select2/js/select2.min.js')}}"></script>
 	<script>
 		$('.single-select').select2({
@@ -84,6 +91,29 @@
 			allowClear: Boolean($(this).data('allow-clear')),
 		});
 	</script>
+	{{-- DataTable --}}
+	<script src="{{asset('admin/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset('admin/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		  } );
+	</script>
+	<script>
+		$(document).ready(function() {
+			var table = $('#example2').DataTable( {
+				lengthChange: false,
+				buttons: [ 'copy', 'excel', 'pdf', 'print']
+			} );
+		 
+			table.buttons().container()
+				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+		} );
+	</script>
+
+	{{-- Sweet Alert --}}
+	<script src="{{ asset('admin/assets/js/sweetalert.js') }}"></script>
+	<script src="{{ asset('admin/assets/js/sweetalert.min.js') }}"></script>
 	{{-- Toastr --}}
 	<script type="text/javascript" src="{{asset('toastr/toastr.min.js')}}"></script>
 	<script>
@@ -108,12 +138,20 @@
 		}
 		@endif 
 	</script>
-	  <script>
-		  $(function() {
-			  $(".knob").knob();
-		  });
-	  </script>
-	  <script src="{{asset('admin/assets/js/index.js')}}"></script>
+	<script>
+		$(function() {
+			$(".knob").knob();
+		});
+	</script>
+	<script src="{{asset('admin/assets/plugins/input-tags/js/tagsinput.js')}}"></script>
+	<script src="{{asset('admin/assets/js/index.js')}}"></script>
+	<script src="{{asset('admin/assets/js/validate.min.js')}}"></script>
+	<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+	<script>
+		tinymce.init({
+		selector: '#mytextarea'
+		});
+	</script>
 	<!--app JS-->
 	<script src="{{asset('admin/assets/js/app.js')}}"></script>
 </body>

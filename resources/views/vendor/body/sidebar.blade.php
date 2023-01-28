@@ -33,7 +33,7 @@
             <div class="menu-title">Inventory</div>
         </a>
         <ul>
-            <li> <a href=""><i class="bx bx-right-arrow-alt"></i>Product</a>
+            <li> <a href="{{ route('vendor.product.list') }}"><i class="bx bx-right-arrow-alt"></i>Product</a>
             </li>
         </ul>
     </li>
