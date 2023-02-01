@@ -113,7 +113,7 @@
                                             @foreach($categories as $cat)
                                             <optgroup label="{{$cat->category_name}}">
                                                 @if(count($cat->sub_cat)>0)
-                                                @foreach($cat->sub_cat as $c)
+                                                @foreach($cat->sub_cat->sortBy('subcategory_name') as $c)
                                                 <option value="{{$c->id}}">&nbsp;&nbsp;{{ $c->subcategory_name }} </option>
                                                 @endforeach
                                                 @endif

@@ -36,8 +36,7 @@ class ProductController extends Controller
         
         $data['brands'] = Brand::where('status',1)->orderBy('brand_name','ASC')->get();
         $data['vendors'] = User::where('role','vendor')->where('status','active')->latest()->get();
-        $data['categories'] = Category::where('status',1)->latest()->get();
-        $data['subcategories'] = SubCategory::where('status',1)->latest()->get();
+        $data['categories'] = Category::where('status',1)->orderBy('category_name','ASC')->get();
         return view('admin.product.create_form',compact('data'));
     }
 
@@ -132,7 +131,7 @@ class ProductController extends Controller
         $data['product'] = Product::findOrFail($id);
         $data['brands'] = Brand::where('status',1)->orderBy('brand_name','ASC')->get();
         $data['vendors'] = User::where('role','vendor')->where('status','active')->latest()->get();
-        $data['categories'] = Category::where('status',1)->latest()->get();
+        $data['categories'] = Category::where('status',1)->orderBy('category_name','ASC')->get();
         $data['subcategories'] = SubCategory::where('status',1)->latest()->get();
         $data['images'] = ProductImage::where('product_id',$id)->get();
         return view('admin.product.edit_form',compact('data'));

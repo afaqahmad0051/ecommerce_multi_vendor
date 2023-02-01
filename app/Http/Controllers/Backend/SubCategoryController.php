@@ -28,7 +28,7 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $category = Category::where('status',1)->get();
+        $category = Category::where('status',1)->orderBy('category_name','asc')->get();
         return view('admin.setting.sub_category.create_form',compact('category'));
     }
 

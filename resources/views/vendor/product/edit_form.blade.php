@@ -10,7 +10,21 @@
             <h6 class="mb-0 text-uppercase">Product</h6>
         </div>
         <div class="col-sm-6">
-            <a href="{{ route('vendor.product.list') }}" class="btn btn-secondary btn-sm" style="float: right;">Back</a>
+            @php
+                $next = App\Models\Product::where('id', '>', $product->id)->min('id');
+                $previous = App\Models\Product::where('id', '<', $product->id)->max('id');
+            @endphp
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="btn-group" role="group" style="float: right;">
+                        <a href="{{ (isset($previous))?$previous:'javascript:;' }}" class="btn btn-secondary btn-sm"><i class="bx bx-caret-left-circle"></i></a>
+                        <a href="{{ (isset($next))?$next:'javascript:;' }}" class="btn btn-secondary btn-sm"><i class="bx bx-caret-right-circle"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ route('product.list') }}" class="btn btn-secondary btn-sm" style="float: right;">Back</a>
+                </div>
+            </div>
         </div>
     </div>
     <hr />

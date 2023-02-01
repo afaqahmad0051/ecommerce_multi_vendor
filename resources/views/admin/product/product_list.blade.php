@@ -1,9 +1,12 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+@php
+    $count = App\Models\Product::count();
+@endphp
 <div class="page-content">
     <div class="row">
         <div class="col-md-6">
-            <h6 class="mb-0 text-uppercase">Product</h6>
+            <h6 class="mb-0 text-uppercase">Product <span class="badge rounded-pill bg-info">{{ $count }}</span></h6>
         </div>
         <div class="col-md-6">
             <a href="{{ route('product.create') }}" class="btn btn-success btn-sm" style="float: right;">Create</a>
