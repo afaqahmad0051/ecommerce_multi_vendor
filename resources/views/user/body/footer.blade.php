@@ -16,7 +16,7 @@
                                 <button class="btn" type="submit">Subscribe</button>
                             </form>
                         </div>
-                        <img src="user/assets/imgs/banner/banner-9.png" alt="newsletter" />
+                        <img src="{{asset('user/assets/imgs/banner/banner-9.png')}}" alt="newsletter" />
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
                         data-wow-delay="0">
                         <div class="banner-icon">
-                            <img src="user/assets/imgs/theme/icons/icon-1.svg" alt="" />
+                            <img src="{{asset('user/assets/imgs/theme/icons/icon-1.svg')}}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Best prices & offers</h3>
@@ -41,7 +41,7 @@
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
                         data-wow-delay=".1s">
                         <div class="banner-icon">
-                            <img src="user/assets/imgs/theme/icons/icon-2.svg" alt="" />
+                            <img src="{{asset('user/assets/imgs/theme/icons/icon-2.svg')}}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Free delivery</h3>
@@ -53,7 +53,7 @@
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
                         data-wow-delay=".2s">
                         <div class="banner-icon">
-                            <img src="user/assets/imgs/theme/icons/icon-3.svg" alt="" />
+                            <img src="{{asset('user/assets/imgs/theme/icons/icon-3.svg')}}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Great daily deal</h3>
@@ -65,7 +65,7 @@
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
                         data-wow-delay=".3s">
                         <div class="banner-icon">
-                            <img src="user/assets/imgs/theme/icons/icon-4.svg" alt="" />
+                            <img src="{{asset('user/assets/imgs/theme/icons/icon-4.svg')}}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Wide assortment</h3>
@@ -77,7 +77,7 @@
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
                         data-wow-delay=".4s">
                         <div class="banner-icon">
-                            <img src="user/assets/imgs/theme/icons/icon-5.svg" alt="" />
+                            <img src="{{asset('user/assets/imgs/theme/icons/icon-5.svg')}}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Easy returns</h3>
@@ -89,7 +89,7 @@
                     <div class="banner-left-icon d-flex align-items-center wow animate__animated animate__fadeInUp"
                         data-wow-delay=".5s">
                         <div class="banner-icon">
-                            <img src="user/assets/imgs/theme/icons/icon-6.svg" alt="" />
+                            <img src="{{asset('user/assets/imgs/theme/icons/icon-6.svg')}}" alt="" />
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Safe delivery</h3>
@@ -187,18 +187,18 @@
             <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
 
                 <div class="hotline d-lg-inline-flex">
-                    <img src="user/assets/imgs/theme/icons/phone-call.svg" alt="hotline" />
+                    <img src="{{asset('user/assets/imgs/theme/icons/phone-call.svg')}}" alt="hotline" />
                     <p>1900 - 8888<span>24/7 Support Center</span></p>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
                 <div class="mobile-social-icon">
                     <h6>Follow Us</h6>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-facebook-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-twitter-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-instagram-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-pinterest-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-youtube-white.svg')}}" alt="" /></a>
                 </div>
                 <p class="font-sm">Up to 15% discount on your first subscribe</p>
             </div>

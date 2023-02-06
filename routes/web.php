@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorManagementController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\YearController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -27,9 +28,11 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 |
 */
 
-Route::get('/', function () {
-    return view('user.index');
-});
+// Route::get('/', function () {
+//     return view('user.index');
+// });
+
+Route::get('/', [IndexController::class, 'Home']);
 
 Route::middleware(['auth','role:user','verified'])->group(function(){
     Route::get('/dashboard', [UserController::class, 'Dashboard'])->name('dashboard');
@@ -192,4 +195,9 @@ Route::middleware(['auth','role:vendor'])->group(function(){
             Route::get('delete/{id}','destroy')->name('delete');
         });
     });
+});
+
+//Frontend routes without Auth Login
+Route::prefix('product')->name('product.')->controller(IndexController::class)->group(function () {
+    Route::get('details/{slug}/{id}','index')->name('details');
 });

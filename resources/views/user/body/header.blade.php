@@ -132,8 +132,7 @@ $categories = App\Models\Category::where('status',1)->orderBy('category_name','A
                                         </li>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.html"><img alt="Nest"
-                                                        src="{{asset('user/assets/imgs/shop/thumbnail-2.jpg')}}" /></a>
+                                                <a href="shop-product-right.html"><img alt="Nest" src="{{asset('user/assets/imgs/shop/thumbnail-2.jpg')}}" /></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
@@ -260,7 +259,7 @@ $categories = App\Models\Category::where('status',1)->orderBy('category_name','A
 
 
                 <div class="hotline d-none d-lg-flex">
-                    <img src="user/assets/imgs/theme/icons/icon-headphone.svg" alt="hotline" />
+                    <img src="{{asset('user/assets/imgs/theme/icons/icon-headphone.svg')}}" alt="hotline" />
                     <p>1900 - 888<span>24/7 Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
@@ -274,21 +273,20 @@ $categories = App\Models\Category::where('status',1)->orderBy('category_name','A
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
                             <a href="shop-wishlist.html">
-                                <img alt="Nest" src="user/assets/imgs/theme/icons/icon-heart.svg" />
+                                <img alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-heart.svg')}}" />
                                 <span class="pro-count white">4</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" href="#">
-                                <img alt="Nest" src="user/assets/imgs/theme/icons/icon-cart.svg" />
+                                <img alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-cart.svg')}}" />
                                 <span class="pro-count white">2</span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                 <ul>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest"
-                                                    src="user/assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                            <a href="shop-product-right.html"><img alt="Nest" src="{{asset('user/assets/imgs/shop/thumbnail-3.jpg')}}" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
@@ -300,8 +298,7 @@ $categories = App\Models\Category::where('status',1)->orderBy('category_name','A
                                     </li>
                                     <li>
                                         <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest"
-                                                    src="user/assets/imgs/shop/thumbnail-4.jpg" /></a>
+                                            <a href="shop-product-right.html"><img alt="Nest" src="{{asset('user/assets/imgs/shop/thumbnail-4.jpg')}}" /></a>
                                         </div>
                                         <div class="shopping-cart-title">
                                             <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
