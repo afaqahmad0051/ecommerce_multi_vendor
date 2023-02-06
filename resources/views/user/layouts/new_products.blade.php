@@ -29,7 +29,7 @@
                                         @php
                                             $img = App\Models\ProductImage::where('product_id',$item->id)->first();
                                         @endphp
-                                        <a href="shop-product-right.html">
+                                        <a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">
                                             <img class="default-img" src="{{ asset($item->product_thumbnail) }}" alt="" />
                                             <img class="hover-img" src="{{ asset($img->photo_name) }}" alt="" />
                                         </a>
@@ -40,8 +40,10 @@
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                     </div>
                                     @php
-                                        $amount = $item->selling_price - $item->discount_price;
-                                        $discount = $amount / $item->selling_price * 100;
+                                        if ($item->discount_price != null || $item->discount_price != 0 || $item->discount_price != '') {
+                                            $amount = $item->selling_price - $item->discount_price;
+                                            $discount = $amount / $item->selling_price * 100;
+                                        }
                                     @endphp
                                     <div class="product-badges product-badges-position product-badges-mrg">
                                         @if ($item->discount_price == null || $item->discount_price == 0 || $item->discount_price == '')
@@ -59,10 +61,9 @@
                                     <div class="product-category">
                                         @if ($item->subcategory_id != null || $item->subcategory_id != 0 || $item->subcategory_id != '' && $item->category_id != null || $item->category_id != 0 || $item->category_id != '')
                                         <a href="shop-grid-right.html">{{ $item['category']['category_name'] }}</a>
-                                            
                                         @endif
                                     </div>
-                                    <h2><a href="shop-product-right.html">{{ $item->product_name }}</a></h2>
+                                    <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
                                     <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>
