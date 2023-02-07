@@ -34,7 +34,7 @@
                 <div class="row product-grid-4">
                     @foreach ($pro_first as $item)
                         <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                            <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
+                            <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s" style="height: 420px;">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         @php
@@ -83,9 +83,9 @@
                                     </div>
                                     <div>
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">Admin</a></span>
+                                            <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                         @else
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $item['vendor']['name'] }}</a></span>
+                                            <span class="font-small text-muted">By <a href="{{ route('vendor.details',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">
@@ -129,7 +129,7 @@
                 <div class="row product-grid-4">
                     @foreach ($pro_second as $item)
                         <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                            <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
+                            <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s" style="height: 420px;">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         @php
@@ -178,9 +178,9 @@
                                     </div>
                                     <div>
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">Admin</a></span>
+                                            <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                         @else
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $item['vendor']['name'] }}</a></span>
+                                            <span class="font-small text-muted">By <a href="{{ route('vendor.details',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">
@@ -224,7 +224,7 @@
                 <div class="row product-grid-4">
                     @foreach ($pro_third as $item)
                         <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
-                            <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s">
+                            <div class="product-cart-wrap mb-30 wow animate__animated animate__fadeIn" data-wow-delay=".1s" style="height: 420px;">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         @php
@@ -273,9 +273,9 @@
                                     </div>
                                     <div>
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">Admin</a></span>
+                                            <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                         @else
-                                            <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $item['vendor']['name'] }}</a></span>
+                                            <span class="font-small text-muted">By <a href="{{ route('vendor.details',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">

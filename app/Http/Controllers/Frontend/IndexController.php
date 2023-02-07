@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\SubCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -43,6 +45,37 @@ class IndexController extends Controller
         $data['recently_added'] = Product::where('status',1)->latest()->limit(3)->get();
         $data['special_deals'] = Product::where('status',1)->where('special_deals',1)->latest()->limit(3)->get();
         return view('user.index',compact('data'));
+    }
+
+    public function VendorDetails($id)
+    {
+        $data['vendor'] = User::where('id',$id)->where('role','vendor')->where('status','active')->first();
+        $data['vProduct'] = Product::where('vendor_id',$id)->where('status',1)->get();
+        return view('user.vendor.vendor_details',compact('data'));
+    }
+
+    public function List()
+    {
+        $data['vendors'] = User::where('status','active')->where('role','vendor')->latest()->get();
+        return view('user.vendor.vendor_list',compact('data'));
+    }
+
+    public function category(Request $request, $slug, $id)
+    {
+        $data['product'] = Product::where('status',1)->where('category_id',$id)->latest()->get();
+        $data['categories'] = Category::orderBy('category_name','asc')->get();
+        $data['bread_cat'] = Category::where('id',$id)->first();
+        $data['new_product'] = Product::where('status',1)->where('category_id',$id)->latest()->limit(3)->get();
+        return view('user.product.product_category',compact('data'));
+    }
+
+    public function subcategory(Request $request, $slug, $id)
+    {
+        $data['product'] = Product::where('status',1)->where('subcategory_id',$id)->latest()->get();
+        $data['categories'] = Category::orderBy('category_name','asc')->get();
+        $data['bread_subcat'] = SubCategory::where('id',$id)->first();
+        $data['new_product'] = Product::where('status',1)->where('subcategory_id',$id)->latest()->limit(3)->get();
+        return view('user.product.product_subcategory',compact('data'));
     }
 
     /**

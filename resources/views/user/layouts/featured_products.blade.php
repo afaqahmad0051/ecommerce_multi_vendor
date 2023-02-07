@@ -17,8 +17,7 @@
             </div>
             <div class="col-lg-9 col-md-12 wow animate__animated animate__fadeIn" data-wow-delay=".4s">
                 <div class="tab-content" id="myTabContent-1">
-                    <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel"
-                        aria-labelledby="tab-one-1">
+                    <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel" aria-labelledby="tab-one-1">
                         <div class="carausel-4-columns-cover arrow-center position-relative">
                             <div class="slider-arrow slider-arrow-2 carausel-4-columns-arrow" id="carausel-4-columns-arrows"></div>
                             <div class="carausel-4-columns carausel-arrow-center" id="carausel-4-columns">

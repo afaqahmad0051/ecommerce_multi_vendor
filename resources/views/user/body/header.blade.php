@@ -1,5 +1,6 @@
 @php
 $categories = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->limit(5)->get();
+$categories_2 = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->skip(5)->limit(5)->get();
 @endphp
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">
@@ -212,14 +213,14 @@ $categories = App\Models\Category::where('status',1)->orderBy('category_name','A
                                 <ul>
                                     @foreach ($categories as $item)
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="{{asset($item->category_image)}}" alt="" />{{$item->category_name}}</a>
+                                            <a href="{{ route('product.category',[$item->category_slug, $item->id]) }}"> <img src="{{asset($item->category_image)}}" alt="" />{{$item->category_name}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
                                 <ul class="end">
-                                    @foreach ($categories as $item)
+                                    @foreach ($categories_2 as $item)
                                         <li>
-                                            <a href="shop-grid-right.html"> <img src="{{asset($item->category_image)}}" alt="" />{{$item->category_name}}</a>
+                                            <a href="{{ route('product.category',[$item->category_slug, $item->id]) }}"> <img src="{{asset($item->category_image)}}" alt="" />{{$item->category_name}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -239,11 +240,11 @@ $categories = App\Models\Category::where('status',1)->orderBy('category_name','A
                                         $count = App\Models\SubCategory::where('status',1)->where('category_id',$cat->id)->count();
                                     @endphp
                                     <li>
-                                        <a href="javascript:;">{{$cat->category_name}}<i class="{{ ($count != 0)?'fi-rs-angle-down':'' }}"></i></a>
+                                        <a href="{{ route('product.category',[$cat->category_slug, $cat->id]) }}">{{$cat->category_name}}<i class="{{ ($count != 0)?'fi-rs-angle-down':'' }}"></i></a>
                                         @if ($count != 0)
                                             <ul class="sub-menu">
                                                 @foreach ($sub_categories as $sub)
-                                                    <li><a href="javascript:;">{{ $sub->subcategory_name }}</a></li>
+                                                    <li><a href="{{ route('product.subcategory',[$sub->subcategory_slug, $sub->id]) }}">{{ $sub->subcategory_name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         @endif

@@ -15,9 +15,9 @@
                 @foreach ($categories as $item)
                     <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                         <figure class="img-hover-scale overflow-hidden">
-                            <a href="javascript:;"><img src="{{ asset($item->category_image) }}" alt="" /></a>
+                            <a href="{{ route('product.category',[$item->category_slug, $item->id]) }}"><img src="{{ asset($item->category_image) }}" alt="" /></a>
                         </figure>
-                        <h6><a href="javascript:;">{{$item->category_name}}</a></h6>
+                        <h6><a href="{{ route('product.category',[$item->category_slug, $item->id]) }}">{{$item->category_name}}</a></h6>
                         @php
                             $products = App\Models\Product::where('status',1)->where('category_id',$item->id)->count();
                         @endphp

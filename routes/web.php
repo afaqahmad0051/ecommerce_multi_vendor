@@ -198,6 +198,15 @@ Route::middleware(['auth','role:vendor'])->group(function(){
 });
 
 //Frontend routes without Auth Login
+//Product Details
 Route::prefix('product')->name('product.')->controller(IndexController::class)->group(function () {
     Route::get('details/{slug}/{id}','index')->name('details');
+    Route::get('category/{slug}/{id}','category')->name('category');
+    Route::get('subcategory/{slug}/{id}','subcategory')->name('subcategory');
+});
+
+//Vendor Details
+Route::prefix('vendor')->name('vendor.')->controller(IndexController::class)->group(function () {
+    Route::get('details/{id}','VendorDetails')->name('details');
+    Route::get('list','List')->name('all');
 });
