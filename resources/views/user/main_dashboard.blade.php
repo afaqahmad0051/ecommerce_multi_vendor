@@ -6,6 +6,7 @@
     <title>Nest - Multipurpose eCommerce HTML Template</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:title" content="" />
     <meta property="og:type" content="" />
@@ -257,6 +258,67 @@
 		}
 		@endif 
 	</script>
+    <script>
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        // Product Modal View
+        function productView(id) {
+            // console.log(id);
+            $.ajax({
+                type:'GET',
+                url:'/product/quick/view/'+id,
+                dataType:'json',
+                success:function(data){
+                    console.log(data);
+                    $('#pname').text(data.product.product_name);
+                    $('#pcode').text(data.product.product_code);
+                    $('#pcategory').text(data.product.category.category_name);
+                    $('#pbrand').text(data.product.brand.brand_name);
+                    $('#pimage').attr('src','/'+data.product.product_thumbnail);
+                    if (data.product.discount_price == null) {
+                        $('#pprice').text('');
+                        $('#oldprice').text('');
+                        $('#pprice').text('£'+ data.product.selling_price);
+                    }
+                    else{
+                        $('#pprice').text('£'+ data.product.discount_price);
+                        $('#oldprice').text('£'+ data.product.selling_price);
+                    }
+                    //Product Stock
+                    if (data.product.product_qty>0) {
+                        $('#stock_in').text('');
+                        $('#stock_out').text('');
+                        $('#stock_in').text('Available');
+                    }
+                    else{
+                        $('#stock_in').text('');
+                        $('#stock_out').text('');
+                        $('#stock_out').text('Out of stock');
+                    }
+                    //Product Size
+                    $('select[name="size"]').empty();
+                    $.each(data.size,function(key,value) {
+                        $('select[name="size"]').append('<option value="'+value+' ">'+value+'</option>')
+                        if (data.size == '') {
+                            $('#sizeArea').hide();
+                        }
+                    })
+
+                    //Product Color
+                    $('select[name="color"]').empty();
+                    $.each(data.color,function(key,value) {
+                        $('select[name="color"]').append('<option value="'+value+' ">'+value+'</option>')
+                        if (data.color == '') {
+                            $('#colorArea').hide();
+                        }
+                    })
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>

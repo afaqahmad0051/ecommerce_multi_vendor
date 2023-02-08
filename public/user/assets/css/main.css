@@ -5083,7 +5083,23 @@ table .product-thumbnail img {
   border-radius: 5px;
 }
 
+.user-offer {
+  max-width: 200px;
+  padding: 9px 20px;
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+  border-color: #3BB77E;
+}
+
 .detail-qty > a {
+  font-size: 16px;
+  position: absolute;
+  right: 8px;
+  color: #3BB77E;
+}
+
+.user-offer > a {
   font-size: 16px;
   position: absolute;
   right: 8px;
@@ -5099,6 +5115,18 @@ table .product-thumbnail img {
 }
 
 .detail-qty > a.qty-down {
+  bottom: -4px;
+}
+
+.user-offer > a:hover {
+  color: #29A56C;
+}
+
+.user-offer > a.qty-up {
+  top: 0;
+}
+
+.user-offer > a.qty-down {
   bottom: -4px;
 }
 

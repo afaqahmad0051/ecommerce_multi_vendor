@@ -203,6 +203,7 @@ Route::prefix('product')->name('product.')->controller(IndexController::class)->
     Route::get('details/{slug}/{id}','index')->name('details');
     Route::get('category/{slug}/{id}','category')->name('category');
     Route::get('subcategory/{slug}/{id}','subcategory')->name('subcategory');
+    Route::get('quick/view/{id}','quickview');
 });
 
 //Vendor Details

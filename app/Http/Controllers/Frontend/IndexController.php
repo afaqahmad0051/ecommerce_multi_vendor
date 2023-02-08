@@ -78,6 +78,20 @@ class IndexController extends Controller
         return view('user.product.product_subcategory',compact('data'));
     }
 
+    public function quickview($id)
+    {
+        $data['product'] = Product::with('brand','category')->where('id',$id)->first();
+        $product_color = $data['product']->product_color;
+        $data['color'] = explode(',',$product_color);
+
+        $product_size = $data['product']->product_size;
+        $data['size'] = explode(',',$product_size);
+        return response()->json([
+            'product' => $data['product'],
+            'color' => $data['color'],
+            'size' => $data['size'],
+        ]);   
+    }
     /**
      * Show the form for creating a new resource.
      *
