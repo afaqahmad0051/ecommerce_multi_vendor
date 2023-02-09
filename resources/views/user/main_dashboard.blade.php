@@ -186,11 +186,11 @@
                 </div>
                 <div class="mobile-social-icon mb-50">
                     <h6 class="mb-15">Follow Us</h6>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
-                    <a href="#"><img src="user/assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-facebook-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-twitter-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-instagram-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-pinterest-white.svg')}}" alt="" /></a>
+                    <a href="#"><img src="{{asset('user/assets/imgs/theme/icons/icon-youtube-white.svg')}}" alt="" /></a>
                 </div>
                 <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
             </div>
@@ -206,7 +206,7 @@
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="text-center">
-                    <img src="user/assets/imgs/theme/loading.gif" alt="" />
+                    <img src="{{asset('user/assets/imgs/theme/loading.gif')}}" alt="" />
                 </div>
             </div>
         </div>
@@ -235,6 +235,8 @@
     <script src="{{asset('user/assets/js/main.js?v=5.3')}}"></script>
     <script src="{{asset('user/assets/js/shop.js?v=5.3')}}"></script>
     {{-- Toastr --}}
+    
+    <script src="{{asset('user/assets/js/toast.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('toastr/toastr.min.js')}}"></script>
 	<script>
 		@if(Session::has('message'))
@@ -278,14 +280,19 @@
                     $('#pcategory').text(data.product.category.category_name);
                     $('#pbrand').text(data.product.brand.brand_name);
                     $('#pimage').attr('src','/'+data.product.product_thumbnail);
+                    $('#product_id').val(id);
+                    $('#qty').val(1);
+
                     if (data.product.discount_price == null) {
                         $('#pprice').text('');
                         $('#oldprice').text('');
-                        $('#pprice').text('£'+ data.product.selling_price);
+                        $('#pprice').text('£ '+data.product.selling_price);
+                        $('#user_bargain').show();
                     }
                     else{
-                        $('#pprice').text('£'+ data.product.discount_price);
-                        $('#oldprice').text('£'+ data.product.selling_price);
+                        $('#pprice').text('£'+data.product.discount_price);
+                        $('#oldprice').text('£'+data.product.selling_price);
+                        $('#user_bargain').hide();
                     }
                     //Product Stock
                     if (data.product.product_qty>0) {
@@ -315,6 +322,52 @@
                             $('#colorArea').hide();
                         }
                     })
+                }
+            })
+        }
+        //Add to Cart
+        function addToCart() {
+            var id = $('#product_id').val();
+            var product_name = $('#pname').text();
+            var color = $('#color option:selected').text();
+            var size = $('#size option:selected').text();
+            var quantity = $('#qty').val();
+            var user_offer = $('#user_offer').val();
+            $.ajax({
+                type:'POST',
+                dataType:'json',
+                data:{
+                    //New Variable:Variable Name Declared above
+                    color:color,
+                    size:size,
+                    quantity:quantity,
+                    product_name:product_name,
+                    user_offer:user_offer,
+                },
+                url:'cart/data/'+id,
+                success:function(data){
+                    $('#closeModal').click();
+                    console.log(data);
+
+                    const Toast = Swal.mixin({
+                    toast:true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                        type: 'success',
+                        title: data.success,
+                        })
+                    }
+                    else{
+                        Toast.fire({
+                        type: 'error',
+                        title: data.error,
+                        })
+                    }
                 }
             })
         }

@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorManagementController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\YearController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -204,6 +205,10 @@ Route::prefix('product')->name('product.')->controller(IndexController::class)->
     Route::get('category/{slug}/{id}','category')->name('category');
     Route::get('subcategory/{slug}/{id}','subcategory')->name('subcategory');
     Route::get('quick/view/{id}','quickview');
+});
+//Product Details
+Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
+    Route::post('data/{id}','cartdata');
 });
 
 //Vendor Details
