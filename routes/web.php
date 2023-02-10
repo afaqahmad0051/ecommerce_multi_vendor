@@ -206,9 +206,13 @@ Route::prefix('product')->name('product.')->controller(IndexController::class)->
     Route::get('subcategory/{slug}/{id}','subcategory')->name('subcategory');
     Route::get('quick/view/{id}','quickview');
 });
+
 //Product Details
 Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
     Route::post('data/{id}','cartdata');
+    Route::post('details/{id}','cartdetail');
+    Route::get('mini','minicart');
+    Route::get('mini/remove/{rowId}','removeminicart');
 });
 
 //Vendor Details

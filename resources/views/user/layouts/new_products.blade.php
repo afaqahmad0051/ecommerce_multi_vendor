@@ -58,9 +58,12 @@
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
+                                    @php
+                                        $cat = App\Models\Category::where('id',$item->category_id)->first();
+                                    @endphp
                                     <div class="product-category">
                                         @if ($item->subcategory_id != null || $item->subcategory_id != 0 || $item->subcategory_id != '' && $item->category_id != null || $item->category_id != 0 || $item->category_id != '')
-                                        <a href="shop-grid-right.html">{{ $item['category']['category_name'] }}</a>
+                                        <a href="{{ route('product.category',[$cat->category_slug, $cat->id]) }}">{{ $item['category']['category_name'] }}</a>
                                         @endif
                                     </div>
                                     <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
@@ -145,13 +148,16 @@
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
+                                        @php
+                                            $cat = App\Models\Category::where('id',$item->category_id)->first();
+                                        @endphp
                                         <div class="product-category">
                                             @if ($item->subcategory_id != null || $item->subcategory_id != 0 || $item->subcategory_id != '' && $item->category_id != null || $item->category_id != 0 || $item->category_id != '')
-                                            <a href="shop-grid-right.html">{{ $item['category']['category_name'] }}</a>
+                                            <a href="{{ route('product.category',[$cat->category_slug, $cat->id]) }}">{{ $item['category']['category_name'] }}</a>
                                                 
                                             @endif
                                         </div>
-                                        <h2><a href="shop-product-right.html">{{ $item->product_name }}</a></h2>
+                                        <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
                                         <div class="product-rate-cover">
                                             <div class="product-rate d-inline-block">
                                                 <div class="product-rating" style="width: 90%"></div>

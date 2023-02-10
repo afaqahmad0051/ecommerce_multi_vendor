@@ -20,8 +20,7 @@ class CartController extends Controller
                 'id' => $id,
                 'name' => $request->product_name,
                 'qty' => $request->quantity,
-                'user_offer' => $request->user_offer,
-                'price' => $data['product']->selling_price,
+                'price' => isset($request->user_offer)?$request->user_offer:$data['product']->selling_price,
                 'weight' => 1,
                 'options' => [
                     'image' => $data['product']->product_thumbnail,
@@ -47,14 +46,28 @@ class CartController extends Controller
             return response()->json(['success'=>'Add to cart successfully']);
         }
     }
+
+    public function minicart(){
+        $carts = Cart::content();
+        $cart_qty = Cart::count();
+        $cart_total = Cart::total();
+
+        return response()->json([
+            'cart' => $carts,
+            'cartQty' => $cart_qty,
+            'cartTotal' => $cart_total
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function removeminicart($rowId)
     {
-        //
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Product removed from cart']);
     }
 
     /**
@@ -62,9 +75,40 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function cartdetail(Request $request, $id)
     {
-        //
+        $data['product'] = Product::where('id',$id)->first();
+        if($data['product']->discount_price == null)
+        {
+            Cart::add([
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => isset($request->user_offer)?$request->user_offer:$data['product']->selling_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $data['product']->product_thumbnail,
+                    'color' => $request->color,
+                    'size' => $request->size,                    
+                ],
+            ]);
+            return response()->json(['success'=>'Add to cart successfully']);
+        }
+        else{
+            Cart::add([
+                'id' => $id,
+                'name' => $request->product_name,
+                'qty' => $request->quantity,
+                'price' => $data['product']->discount_price,
+                'weight' => 1,
+                'options' => [
+                    'image' => $data['product']->product_thumbnail,
+                    'color' => $request->color,
+                    'size' => $request->size,                    
+                ],
+            ]);
+            return response()->json(['success'=>'Add to cart successfully']);
+        }
     }
 
     /**

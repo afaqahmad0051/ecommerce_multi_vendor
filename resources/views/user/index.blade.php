@@ -69,9 +69,12 @@
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
+                                    @php
+                                        $cat = App\Models\Category::where('id',$item->category_id)->first();
+                                    @endphp
                                     <div class="product-category">
                                         @if ($item->subcategory_id != null || $item->subcategory_id != 0 || $item->subcategory_id != '' && $item->category_id != null || $item->category_id != 0 || $item->category_id != '')
-                                        <a href="javascript:;">{{ $item['category']['category_name'] }}</a>
+                                        <a href="{{ route('product.category',[$cat->category_slug, $cat->id]) }}">{{ $item['category']['category_name'] }}</a>
                                         @endif
                                     </div>
                                     <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
