@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,14 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
     Route::post('/user/profile/store', [UserController::class, 'ProfileStore'])->name('user.profile.store');
     Route::get('/user/logout', [UserController::class, 'Logout'])->name('user.logout');
     Route::post('/user/change/password', [UserController::class, 'ChangePassword'])->name('user.password.update');
+
+    Route::prefix('wishlist')->name('wishlist.')->controller(WishlistController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('products','wishlist');
+        Route::get('remove/{id}','destroy');
+        // Route::get('form/{id}','edit')->name('edit');
+        // Route::post('update/{id}','update')->name('update');
+    });
     
 });
 
@@ -214,6 +223,9 @@ Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(f
     Route::get('mini','minicart');
     Route::get('mini/remove/{rowId}','removeminicart');
 });
+
+//Add to wishlist
+Route::post('/add-to-wishlist/{product_id}', [WishlistController::class,'store']);
 
 //Vendor Details
 Route::prefix('vendor')->name('vendor.')->controller(IndexController::class)->group(function () {

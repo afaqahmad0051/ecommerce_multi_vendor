@@ -103,12 +103,12 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                             </div>
 
                             <div class="header-action-icon-2">
-                                <a href="shop-wishlist.html">
+                                <a href="{{ route('wishlist.list') }}">
                                     <img class="svgInject" alt="Nest"
                                         src="{{asset('user/assets/imgs/theme/icons/icon-heart.svg')}}" />
-                                    <span class="pro-count blue">6</span>
+                                    <span class="pro-count blue" id="wishQty"></span>
                                 </a>
-                                <a href="shop-wishlist.html"><span class="lable">Wishlist</span></a>
+                                <a href="{{ route('wishlist.list') }}"><span class="lable">Wishlist</span></a>
                             </div>
 
                             <div class="header-action-icon-2">

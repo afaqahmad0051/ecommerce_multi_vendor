@@ -344,7 +344,7 @@
                     product_name:product_name,
                     user_offer:user_offer,
                 },
-                url:'cart/data/'+id,
+                url:'/cart/data/'+id,
                 success:function(data){
                     console.log(data);
                     miniCart();
@@ -485,7 +485,122 @@
                 }
             })
         }
+    </script>
+    <script>
+        //Add to wishlist
+        function addToWishList(product_id) {
+            $.ajax({
+                type:'POST',
+                dataType:'json',
+                url:'/add-to-wishlist/'+product_id,
 
+                success:function(data){
+                    wishlist();
+                    const Toast = Swal.mixin({
+                    toast:true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                        })
+                    }
+                    else{
+                        Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                        })
+                    }
+                }
+            });
+        }
+
+        //Wishlist Display
+        function wishlist() {
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url:'/wishlist/products',
+                success:function(response){
+                    $('#wishQty').text(response.count);
+                    $('#wishcount').text(response.count);
+                    var rows = "";
+                    $.each(response.wishlist, function(key, value) {
+                        rows += `<tr class="pt-30">
+                            <td class="image product-thumbnail pt-40"><img src="/${value.product.product_thumbnail}" alt="#" /></td>
+                            <td class="product-des product-name">
+                                <h6><a class="product-name mb-10" href="javascript:;">${value.product.product_name}</a></h6>
+                                <div class="product-rate-cover">
+                                    <div class="product-rate d-inline-block">
+                                        <div class="product-rating" style="width: 90%"></div>
+                                    </div>
+                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                </div>
+                            </td>
+                            <td class="price" data-title="Price">
+                                ${value.product.discount_price == null
+                                ?
+                                `<h3 class="text-brand">£${value.product.selling_price}</h3>`
+                                :
+                                `<h3 class="text-brand">£${value.product.discount_price}</h3>`
+                                }
+                            </td>
+                            <td class="text-center detail-info" data-title="Stock">
+                                ${value.product.product_qty > 0
+                                ?
+                                `<span class="stock-status in-stock mb-0"> In Stock </span>`
+                                :
+                                `<span class="stock-status out-stock mb-0"> Stock Out </span>`
+                                }
+                            </td>
+                            <td class="action text-center" data-title="Remove">
+                                <a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fi-rs-trash"></i></a>
+                            </td>
+                        </tr>`
+                    });
+                    $('#wishlist').html(rows);
+                }
+            })
+        }
+        wishlist();
+
+        //Wishlist Remove
+        function wishlistRemove(id){
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url:'/wishlist/remove/'+id,
+
+                success:function(data){
+                    wishlist();
+                    const Toast = Swal.mixin({
+                    toast:true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                        })
+                    }
+                    else{
+                        Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                        })
+                    }
+                }
+            });
+        }
     </script>
 </body>
 
