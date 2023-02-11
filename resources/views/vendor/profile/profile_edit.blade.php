@@ -1,4 +1,7 @@
 @extends('vendor.vendor_dashboard')
+@section('title')
+Profile
+@endsection
 @section('vendor')
 <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
 <div class="page-content"> 

@@ -1,4 +1,7 @@
 @extends('vendor.vendor_dashboard')
+@section('title')
+Vendor - Dashboard
+@endsection
 @section('vendor')
 @php
     $user = auth()->user();

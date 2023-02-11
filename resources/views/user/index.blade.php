@@ -1,4 +1,7 @@
 @extends('user.main_dashboard')
+@section('title')
+    Home - Nest Multivendor Ecommerce
+@endsection
 @section('main')
 @php
     $cat_first = isset($data['cat_first'])?$data['cat_first']:'';
@@ -47,7 +50,7 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Add To Wishlist" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $item->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                     </div>
                                     @php
@@ -88,7 +91,7 @@
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
                                             <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                         @else
-                                            <span class="font-small text-muted">By <a href="{{ route('vendor.details',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
+                                            <span class="font-small text-muted">By <a href="{{ route('supplier.shop',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">
@@ -145,7 +148,7 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Add To Wishlist" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $item->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                     </div>
                                     @php
@@ -186,7 +189,7 @@
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
                                             <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                         @else
-                                            <span class="font-small text-muted">By <a href="{{ route('vendor.details',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
+                                            <span class="font-small text-muted">By <a href="{{ route('supplier.shop',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">
@@ -243,7 +246,7 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a aria-label="Add To Wishlist" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                        <a aria-label="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
                                         <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $item->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                     </div>
                                     @php
@@ -284,7 +287,7 @@
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
                                             <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                         @else
-                                            <span class="font-small text-muted">By <a href="{{ route('vendor.details',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
+                                            <span class="font-small text-muted">By <a href="{{ route('supplier.shop',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
                                         @endif
                                     </div>
                                     <div class="product-card-bottom">

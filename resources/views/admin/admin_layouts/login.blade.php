@@ -20,7 +20,7 @@
 	<link href="{{asset('admin/assets/css/icons.css')}}" rel="stylesheet">
 	{{-- Toastr --}}
 	<link rel="stylesheet" type="text/css" href="{{asset('toastr/toastr.css')}}" >
-    <title>Admin - Login</title>
+    <title>Nest - Admin Login</title>
 </head>
 
 <body class="bg-login">

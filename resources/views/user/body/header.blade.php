@@ -12,7 +12,6 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-
                             <li><a href="page-account.html">My Cart</a></li>
                             <li><a href="shop-wishlist.html">Checkout</a></li>
                             <li><a href="shop-order.html">Order Tracking</a></li>
@@ -33,20 +32,6 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>
-                            <li>
-                                <a class="language-dropdown-active" href="#">English <i class="fi-rs-angle-small-down"></i></a>
-                                <ul class="language-dropdown">
-                                    <li>
-                                        <a href="#"><img src="{{asset('user/assets/imgs/theme/flag-fr.png')}}" alt="" />Français</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{asset('user/assets/imgs/theme/flag-dt.png')}}" alt="" />Deutsch</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="{{asset('user/assets/imgs/theme/flag-ru.png')}}" alt="" />Pусский</a>
-                                    </li>
-                                </ul>
-                            </li>
                             <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
                         </ul>
                     </div>
@@ -81,7 +66,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
-                            <div class="search-location">
+                            {{-- <div class="search-location">
                                 <form action="#">
                                     <select class="select-active">
                                         <option>Your Location</option>
@@ -100,13 +85,20 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                                         <option>New York</option>
                                     </select>
                                 </form>
+                            </div> --}}
+
+                            <div class="header-action-icon-2">
+                                <a href="{{ route('compare.list') }}">
+                                    <img class="svgInject" alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-compare.svg')}}" />
+                                    <span class="pro-count blue" id="compareQty">0</span>
+                                </a>
+                                <a href="{{ route('compare.list') }}"><span class="lable">Compare</span></a>
                             </div>
 
                             <div class="header-action-icon-2">
                                 <a href="{{ route('wishlist.list') }}">
-                                    <img class="svgInject" alt="Nest"
-                                        src="{{asset('user/assets/imgs/theme/icons/icon-heart.svg')}}" />
-                                    <span class="pro-count blue" id="wishQty"></span>
+                                    <img class="svgInject" alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-heart.svg')}}" />
+                                    <span class="pro-count blue" id="wishQty">0</span>
                                 </a>
                                 <a href="{{ route('wishlist.list') }}"><span class="lable">Wishlist</span></a>
                             </div>
@@ -114,7 +106,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="shop-cart.html">
                                     <img alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-cart.svg')}}" />
-                                    <span class="pro-count blue" id="cartQty"></span>
+                                    <span class="pro-count blue" id="cartQty">0</span>
                                 </a>
                                 <a href="shop-cart.html"><span class="lable">Cart</span></a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
@@ -147,10 +139,10 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                                                 <a href="{{ route('login') }}"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('login') }}"><i class="fi fi-rs-label mr-10"></i>My Voucher</a>
+                                                <a href="{{ route('compare.list') }}"><i class="fi fi-rs-label mr-10"></i>Compare List</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('login') }}"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a>
+                                                <a href="{{ route('wishlist.list') }}"><i class="fi fi-rs-heart mr-10"></i>My Wishlist</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('login') }}"><i class="fi fi-rs-settings-sliders mr-10"></i>Setting</a>
@@ -250,46 +242,21 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                 <div class="header-action-right d-block d-lg-none">
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
-                            <a href="shop-wishlist.html">
+                            <a href="{{ route('wishlist.list') }}">
                                 <img alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-heart.svg')}}" />
-                                <span class="pro-count white">4</span>
+                                <span class="pro-count white"id="mbwishQty">0</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" href="#">
                                 <img alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-cart.svg')}}" />
-                                <span class="pro-count white">2</span>
+                                <span class="pro-count white" id="mbcartQty">0</span>
                             </a>
                             <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                <ul>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest" src="{{asset('user/assets/imgs/shop/thumbnail-3.jpg')}}" /></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
-                                            <h3><span>1 × </span>$800.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Nest" src="{{asset('user/assets/imgs/shop/thumbnail-4.jpg')}}" /></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
-                                            <h3><span>1 × </span>$3500.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <div id="mbminiCart"></div>
                                 <div class="shopping-cart-footer">
                                     <div class="shopping-cart-total">
-                                        <h4>Total <span>$383.00</span></h4>
+                                        <h4>Total <span id="mbcartsubTotal"></span></h4>
                                     </div>
                                     <div class="shopping-cart-button">
                                         <a href="shop-cart.html">View cart</a>

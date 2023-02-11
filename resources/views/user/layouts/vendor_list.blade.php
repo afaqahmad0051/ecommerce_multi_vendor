@@ -4,7 +4,7 @@
 <div class="container">
     <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
         <h3 class="">All Our Vendor List </h3>
-        <a class="show-all" href="{{ route('vendor.all') }}">
+        <a class="show-all" href="{{ route('supplier.all') }}">
             All Vendors
             <i class="fi-rs-angle-right"></i>
         </a>
@@ -15,7 +15,7 @@
                 <div class="vendor-wrap mb-40">
                     <div class="vendor-img-action-wrap">
                         <div class="vendor-img">
-                            <a href="{{ route('vendor.details',$vendor->id) }}">
+                            <a href="{{ route('supplier.shop',$vendor->id) }}">
                                 <img class="default-img" src="{{(!empty($vendor->photo))? url('upload/vendor_images/'.$vendor->photo):url('upload/blank.jpg')}}" alt="" style="width: 120px; height:120px;" />
                             </a>
                         </div>
@@ -31,7 +31,7 @@
                                         <span class="text-muted">Since {{ isset($vendor->year_id)?$vendor->year->name:'' }}</span>
                                     </div>
                                 @endif
-                                <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}">{{ $vendor->name }}</a></h4>
+                                <h4 class="mb-5"><a href="{{ route('supplier.shop',$vendor->id) }}">{{ $vendor->name }}</a></h4>
                                 <div class="product-rate-cover">
                                     @php
                                         $product_count = App\Models\Product::where('vendor_id',$vendor->id)->count();
@@ -46,7 +46,7 @@
                                 <li><img src="{{asset('user/assets/imgs/theme/icons/icon-contact.svg')}}" alt="" /><strong>Call Us:</strong><span>{{ $vendor->phone }}</span></li>
                             </ul>
                         </div>
-                        <a href="{{ route('vendor.details',$vendor->id) }}" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
+                        <a href="{{ route('supplier.shop',$vendor->id) }}" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,7 @@
 @extends('dashboard')
+@section('title')
+    My Account
+@endsection
 @section('user')
 <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
 <main class="main pages">

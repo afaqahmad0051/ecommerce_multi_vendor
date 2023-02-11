@@ -1,4 +1,7 @@
 @extends('admin.admin_dashboard')
+@section('name')
+    Brand
+@endsection
 @section('admin')
 <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
 <div class="page-content">

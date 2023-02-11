@@ -1,4 +1,7 @@
 @extends('admin.admin_dashboard')
+@section('title')
+Product
+@endsection
 @section('admin')
 @php
     $product = $data['product'];

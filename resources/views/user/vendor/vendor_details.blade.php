@@ -1,9 +1,12 @@
 @extends('user.main_dashboard')
-@section('main')
 @php
     $vendor = isset($data['vendor'])?$data['vendor']:'';
     $vProduct = isset($data['vProduct'])?$data['vProduct']:'';
 @endphp
+@section('title')
+{{ $vendor->name }}
+@endsection
+@section('main')
 <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
@@ -80,8 +83,8 @@
                                 </div>
                                 <div class="product-action-1">
                                     <a aria-label="Add To Wishlist" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
-                                    <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                    <a aria-label="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
+                                    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $item->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                                 </div>
                                 @php
                                     if ($item->discount_price != null || $item->discount_price != 0 || $item->discount_price != '') {
@@ -121,7 +124,7 @@
                                     @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
                                         <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                     @else
-                                        <span class="font-small text-muted">By <a href="{{ route('vendor.details',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
+                                        <span class="font-small text-muted">By <a href="{{ route('supplier.shop',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
                                     @endif
                                 </div>
                                 <div class="product-card-bottom">
@@ -136,7 +139,7 @@
                                         </div>
                                     @endif
                                     <div class="add-cart">
-                                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class="add" href="{{ route('product.details',[$item->product_slug, $item->id]) }}"><i class="fi-rs-shopping-cart mr-5"></i> Details </a>
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +180,7 @@
                             <span class="text-muted">Since {{ isset($vendor->year_id)?$vendor->year->name:'' }}</span>
                         </div>
                     @endif
-                    <h4 class="mb-5"><a href="{{ route('vendor.details',$vendor->id) }}" class="text-heading">{{ $vendor->name }}</a></h4>
+                    <h4 class="mb-5"><a href="{{ route('supplier.shop',$vendor->id) }}" class="text-heading">{{ $vendor->name }}</a></h4>
                     <div class="product-rate-cover mb-15">
                         <div class="product-rate d-inline-block">
                             <div class="product-rating" style="width: 90%"></div>

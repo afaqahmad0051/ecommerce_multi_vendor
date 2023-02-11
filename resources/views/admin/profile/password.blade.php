@@ -1,4 +1,7 @@
 @extends('admin.admin_dashboard')
+@section('title')
+Password
+@endsection
 @section('admin')
 <div class="page-content"> 
     <!--breadcrumb-->

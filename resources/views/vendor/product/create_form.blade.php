@@ -1,4 +1,7 @@
 @extends('vendor.vendor_dashboard')
+@section('title')
+Product
+@endsection
 @section('vendor')
 @php
     $role = Auth::user()->role;

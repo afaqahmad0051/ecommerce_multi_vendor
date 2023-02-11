@@ -1,4 +1,7 @@
 @extends('vendor.vendor_dashboard')
+@section('title')
+Product
+@endsection
 @section('vendor')
 @php
     $product = $data['product'];

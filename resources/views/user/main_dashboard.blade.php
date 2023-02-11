@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Nest - Multipurpose eCommerce HTML Template</title>
+    <title>@yield('title')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -56,119 +56,25 @@
                     <nav>
                         <ul class="mobile-menu font-heading">
                             <li class="menu-item-has-children">
-                                <a href="index.html">Home</a>
-
+                                <a href="{{ url('/') }}">Home</a>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="shop-grid-right.html">shop</a>
-                                <ul class="dropdown">
-                                    <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
-                                    <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
-                                    <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
-                                    <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
-                                    <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Single Product</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
-                                            <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
-                                            <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                            <li><a href="shop-product-vendor.html">Product – Vendor Infor</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                    <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                    <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                    <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                    <li><a href="shop-compare.html">Shop – Compare</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Shop Invoice</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-invoice-1.html">Shop Invoice 1</a></li>
-                                            <li><a href="shop-invoice-2.html">Shop Invoice 2</a></li>
-                                            <li><a href="shop-invoice-3.html">Shop Invoice 3</a></li>
-                                            <li><a href="shop-invoice-4.html">Shop Invoice 4</a></li>
-                                            <li><a href="shop-invoice-5.html">Shop Invoice 5</a></li>
-                                            <li><a href="shop-invoice-6.html">Shop Invoice 6</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="menu-item-has-children">
-                                <a href="#">Mega menu</a>
-                                <ul class="dropdown">
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Women's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Dresses</a></li>
-                                            <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
-                                            <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="shop-product-right.html">Women's Sets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Men's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Jackets</a></li>
-                                            <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
-                                            <li><a href="shop-product-right.html">Genuine Leather</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Technology</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop-product-right.html">Gaming Laptops</a></li>
-                                            <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
-                                            <li><a href="shop-product-right.html">Tablets</a></li>
-                                            <li><a href="shop-product-right.html">Laptop Accessories</a></li>
-                                            <li><a href="shop-product-right.html">Tablet Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="blog-category-fullwidth.html">Blog</a>
-                                <ul class="dropdown">
-                                    <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
-                                    <li><a href="blog-category-list.html">Blog Category List</a></li>
-                                    <li><a href="blog-category-big.html">Blog Category Big</a></li>
-                                    <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
-                                    <li class="menu-item-has-children">
-                                        <a href="#">Single Product Layout</a>
-                                        <ul class="dropdown">
-                                            <li><a href="blog-post-left.html">Left Sidebar</a></li>
-                                            <li><a href="blog-post-right.html">Right Sidebar</a></li>
-                                            <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="page-about.html">About Us</a></li>
-                                    <li><a href="page-contact.html">Contact</a></li>
-                                    <li><a href="page-account.html">My Account</a></li>
-                                    <li><a href="page-login.html">Login</a></li>
-                                    <li><a href="page-register.html">Register</a></li>
-                                    <li><a href="page-forgot-password.html">Forgot password</a></li>
-                                    <li><a href="page-reset-password.html">Reset password</a></li>
-                                    <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
-                                    <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="page-terms.html">Terms of Service</a></li>
-                                    <li><a href="page-404.html">404 Page</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Language</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">German</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                </ul>
-                            </li>
+                            @php
+                                $categories = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->get();
+                            @endphp
+                            @foreach ($categories as $cat)
+                                @php
+                                    $sub_categories = App\Models\SubCategory::where('status',1)->where('category_id',$cat->id)->orderBy('subcategory_name','ASC')->get();
+                                    $count = App\Models\SubCategory::where('status',1)->where('category_id',$cat->id)->count();
+                                @endphp
+                                <li class="menu-item-has-children">
+                                    <a href="{{ route('product.category',[$cat->category_slug, $cat->id]) }}">{{$cat->category_name}}</a>
+                                    <ul class="dropdown">
+                                        @foreach ($sub_categories as $sub)
+                                            <li><a href="{{ route('product.subcategory',[$sub->subcategory_slug, $sub->id]) }}">{{ $sub->subcategory_name }}</a></li>                                        
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
                         </ul>
                     </nav>
                     <!-- mobile menu end -->
@@ -432,7 +338,9 @@
                 success:function(response){
                     console.log(response);
                     $('#cartQty').text(response.cartQty);
+                    $('#mbcartQty').text(response.cartQty);
                     $('span[id="cartsubTotal"]').text('£'+response.cartTotal);
+                    $('span[id="mbcartsubTotal"]').text('£'+response.cartTotal);
                     var miniCart = ""
                     $.each(response.cart, function(key,value) {
                         miniCart += `<ul>
@@ -451,6 +359,7 @@
                         </ul><br>`
                     });
                     $('#miniCart').html(miniCart);
+                    $('#mbminiCart').html(miniCart);
                 }
             })
         }
@@ -528,6 +437,7 @@
                 url:'/wishlist/products',
                 success:function(response){
                     $('#wishQty').text(response.count);
+                    $('#mbwishQty').text(response.count);
                     $('#wishcount').text(response.count);
                     var rows = "";
                     $.each(response.wishlist, function(key, value) {
@@ -578,6 +488,136 @@
 
                 success:function(data){
                     wishlist();
+                    const Toast = Swal.mixin({
+                    toast:true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                        })
+                    }
+                    else{
+                        Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                        })
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        //Add to compare
+        function addToCompare(product_id) {
+            $.ajax({
+                type:'POST',
+                dataType:'json',
+                url:'/add-to-compare/'+product_id,
+
+                success:function(data){
+                    compare();
+                    const Toast = Swal.mixin({
+                    toast:true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success,
+                        })
+                    }
+                    else{
+                        Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error,
+                        })
+                    }
+                }
+            });
+        }
+        
+        //Wishlist Display
+        function compare() {
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url:'/compare/products',
+                success:function(response){
+                    $('#compareQty').text(response.count);
+                    $('#comparecount').text(response.count);
+                    var rows = "";
+                    $.each(response.compare, function(key, value) {
+                        rows += `<tr class="pr_image">
+                        <td class="text-muted font-sm fw-600 font-heading mw-200">Preview</td>
+                        <td class="row_img"><img src="/${value.product.product_thumbnail}" alt="compare-img" style="width:300px; height:300px;"/></td>
+                        </tr>
+                        <tr class="pr_title">
+                            <td class="text-muted font-sm fw-600 font-heading">Name</td>
+                            <td class="product_name">
+                                <h6><a href="javascript:;" class="text-heading">${value.product.product_name}</a></h6>
+                            </td>
+                        </tr>
+                        <tr class="pr_price">
+                            <td class="text-muted font-sm fw-600 font-heading">Price</td>
+                            <td class="product_price">
+                                ${value.product.discount_price == null
+                                ?
+                                `<h4 class="price text-brand">£${value.product.selling_price}</h4>`
+                                :
+                                `<h4 class="price text-brand">£${value.product.discount_price}</h4>`
+                                }
+                            </td>
+                        </tr>
+                        <tr class="description">
+                            <td class="text-muted font-sm fw-600 font-heading">Description</td>
+                            <td class="row_text font-xs">
+                                <p class="font-sm text-muted">${value.product.short_desc != null?value.product.short_desc:''}</p>
+                            </td>
+                        </tr>
+                        <tr class="pr_stock">
+                            <td class="text-muted font-sm fw-600 font-heading">Stock status</td>
+                            <td class="row_stock">
+                                ${value.product.product_qty > 0
+                                ?
+                                `<span class="stock-status in-stock mb-0"> In Stock </span>`
+                                :
+                                `<span class="stock-status out-stock mb-0"> Stock Out </span>`
+                                }
+                            </td>
+                        </tr>
+                        <tr class="pr_remove text-muted">
+                            <td class="text-muted font-md fw-600"></td>
+                            <td class="row_remove">
+                                <a class="text-muted" id="${value.id}" onclick="compareRemove(this.id)"><i class="fi-rs-trash mr-5"></i><span>Remove</span> </a>
+                            </td>
+                        </tr>`
+                    });
+                    $('#compare').html(rows);
+                }
+            })
+        }
+        compare();
+
+        
+        //Wishlist Remove
+        function compareRemove(id){
+            $.ajax({
+                type:'GET',
+                dataType:'json',
+                url:'/compare/remove/'+id,
+
+                success:function(data){
+                    compare();
                     const Toast = Swal.mixin({
                     toast:true,
                     position: 'top-end',

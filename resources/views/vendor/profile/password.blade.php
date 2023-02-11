@@ -1,4 +1,7 @@
 @extends('vendor.vendor_dashboard')
+@section('title')
+Password
+@endsection
 @section('vendor')
 <div class="page-content"> 
     <!--breadcrumb-->

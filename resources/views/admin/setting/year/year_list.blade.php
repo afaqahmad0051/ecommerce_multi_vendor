@@ -1,4 +1,7 @@
 @extends('admin.admin_dashboard')
+@section('title')
+    Year
+@endsection
 @section('admin')
 <div class="page-content">
     <div class="row">
