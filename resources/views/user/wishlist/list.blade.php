@@ -1,4 +1,7 @@
 @extends('user.main_dashboard')
+@section('title')
+Wishlist
+@endsection
 @section('main')
 <div class="page-header breadcrumb-wrap">
     <div class="container">

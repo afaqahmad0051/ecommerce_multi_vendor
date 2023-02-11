@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -46,10 +47,13 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
         Route::get('list','index')->name('list');
         Route::get('products','wishlist');
         Route::get('remove/{id}','destroy');
-        // Route::get('form/{id}','edit')->name('edit');
-        // Route::post('update/{id}','update')->name('update');
     });
-    
+
+    Route::prefix('compare')->name('compare.')->controller(CompareController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('products','compare');
+        Route::get('remove/{id}','destroy');
+    });
 });
 
 // Route::get('/dashboard', function () {
@@ -227,8 +231,11 @@ Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(f
 //Add to wishlist
 Route::post('/add-to-wishlist/{product_id}', [WishlistController::class,'store']);
 
+//Add to compare
+Route::post('/add-to-compare/{product_id}', [CompareController::class,'store']);
+
 //Vendor Details
-Route::prefix('vendor')->name('vendor.')->controller(IndexController::class)->group(function () {
-    Route::get('details/{id}','VendorDetails')->name('details');
+Route::prefix('vendor')->name('supplier.')->controller(IndexController::class)->group(function () {
+    Route::get('shop/details/{id}','VendorDetails')->name('shop');
     Route::get('list','List')->name('all');
 });
