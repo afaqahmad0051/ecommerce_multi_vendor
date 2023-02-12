@@ -20,16 +20,20 @@
                             <h3 class="title-detail"><a href="" id="pname" class="text-heading"></a></h3>
                             <div class="attr-detail attr-size mb-30" id="sizeArea">
                                 <strong class="mr-10" style="width: 60px;">Size: </strong>
-                                <select class="form-control unicase-form-control" id="size" name="size" style="width: 10rem;">
-                                    
-                                </select>
+                                <div class="custom_select">
+                                    <select class="form-control select-active" id="size" name="size" style="width: 10rem;">
+                                        
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="attr-detail attr-size mb-30" id="colorArea">
                                 <strong class="mr-10" style="width: 60px;">Color: </strong>
-                                <select class="form-control unicase-form-control" id="color" name="color" style="width: 10rem;">
-                                    
-                                </select>
+                                <div class="custom_select">
+                                    <select class="form-control select-active" id="color" name="color" style="width: 10rem;">
+                                        
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="clearfix product-price-cover">

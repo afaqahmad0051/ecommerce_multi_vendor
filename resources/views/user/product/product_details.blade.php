@@ -96,21 +96,25 @@
                                 <div class="attr-detail attr-size mb-30">
                                     @if (!empty($product->product_size))
                                     <strong class="mr-10" style="width: 50px;">Size: </strong>
-                                    <select class="form-control unicase-form-control" id="dsize" style="width: 10rem;">
-                                        <option selected disabled>--Choose Size--</option>
-                                        @foreach ($size as $item)
-                                            <option value="{{ $item }}">{{ ucwords($item) }}</option>
-                                        @endforeach
-                                    </select>
-                                    @endif
-                                    @if (!empty($product->product_color))
-                                        <strong class="ml-15" style="width: 50px;">Color: </strong>
-                                        <select class="form-control unicase-form-control" id="dcolor" style="width: 10rem;">
-                                            <option selected disabled>--Choose Color--</option>
-                                            @foreach ($color as $item)
+                                    <div class="custom_select">
+                                        <select class="form-control select-active" id="dsize" style="width: 10rem;">
+                                            <option selected disabled>--Choose Size--</option>
+                                            @foreach ($size as $item)
                                                 <option value="{{ $item }}">{{ ucwords($item) }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                    @endif
+                                    @if (!empty($product->product_color))
+                                        <strong class="mr-10" style="width: 50px;">Color: </strong>
+                                        <div class="custom_select">
+                                            <select class="form-control select-active" id="dcolor" style="width: 10rem;">
+                                                <option selected disabled>--Choose Color--</option>
+                                                @foreach ($color as $item)
+                                                    <option value="{{ $item }}">{{ ucwords($item) }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     @endif
                                 </div>
                             @endif
@@ -468,8 +472,8 @@
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
-                                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $item->id }}" onclick="productView(this.id)"><i class="fi-rs-search"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn small hover-up" tabindex="0" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="fi-rs-heart"></i></a>
                                                 <a aria-label="Compare" class="action-btn small hover-up" id="{{ $item->id }}" onclick="addToCompare(this.id)" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                             </div>
                                             @php

@@ -128,11 +128,42 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('user.cart.list');
+    }
+    public function GetCartData()
+    {
+        $carts = Cart::content();
+        $cart_qty = Cart::count();
+        $cart_total = Cart::total();
+
+        return response()->json([
+            'cart' => $carts,
+            'cartQty' => $cart_qty,
+            'cartTotal' => $cart_total
+        ]);
     }
 
+    public function cartRemove($rowId)
+    {
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Product removed from cart']);
+    }
+
+    public function cartDecrement($rowId)
+    {
+        $row = Cart::get($rowId);
+        Cart::update($rowId, $row->qty - 1);
+        return response()->json(['success' => 'Successfully']);
+    }
+
+    public function cartIncrement($rowId)
+    {
+        $row = Cart::get($rowId);
+        Cart::update($rowId, $row->qty + 1);
+        return response()->json(['success' => 'Successfully']);
+    }
     /**
      * Show the form for editing the specified resource.
      *
