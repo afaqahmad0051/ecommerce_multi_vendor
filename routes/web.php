@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -163,6 +164,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('deactivate/{id}','Deactivate')->name('deactivate');
         // Route::get('form','create')->name('create');
         // Route::post('store','store')->name('store');
+    });
+    
+    //Admin Coupon Routes
+    Route::prefix('coupon')->name('coupon.')->controller(CouponController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('form','create')->name('create');
+        Route::post('store','store')->name('store');
+        Route::get('form/{id}','edit')->name('edit');
+        Route::post('update/{id}','update')->name('update');
+        Route::get('delete/{id}','destroy')->name('delete');
     });
 
     //Admin Product Routes

@@ -49,6 +49,35 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
+    <li {{ ($prefix == '/vendor')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-briefcase"></i>
+            </div>
+            <div class="menu-title">Vendor Management</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'vendor.inactive')?'mm-active':'' }}">
+                <a href="{{ route('vendor.inactive') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Vendors</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'vendor.active')?'mm-active':'' }}">
+                <a href="{{ route('vendor.active') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendors</a>
+            </li>
+        </ul>
+    </li>
+    <li {{ ($prefix == '/coupon')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-purchase-tag-alt"></i>
+            </div>
+            <div class="menu-title">Discount Setup</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'coupon.list')?'mm-active':'' }} || {{ ($route == 'coupon.create')?'mm-active':'' }} || {{ ($route == 'coupon.edit')?'mm-active':'' }}">
+                <a href="{{ route('coupon.list') }}"><i class="bx bx-right-arrow-alt"></i>Coupon System</a>
+            </li>
+        </ul>
+    </li>
     <li {{ ($prefix == '/setting')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-cog"></i>
