@@ -32,20 +32,25 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
-    <li {{ ($prefix == '/vendor')?'mm-active':'' }}>
+    <li {{ ($prefix == '/shipping')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-briefcase"></i>
+            <div class="parent-icon"><i class="bx bx-map"></i>
             </div>
-            <div class="menu-title">Vendor Management</div>
+            <div class="menu-title">Shippment</div>
         </a>
         <ul>
-            <li class="{{ ($route == 'vendor.inactive')?'mm-active':'' }}">
-                <a href="{{ route('vendor.inactive') }}"><i class="bx bx-right-arrow-alt"></i>Inactive Vendors</a>
+            <li class="{{ ($route == 'country.list')?'mm-active':'' }} || {{ ($route == 'country.create')?'mm-active':'' }} || {{ ($route == 'country.edit')?'mm-active':'' }}">
+                <a href="{{ route('country.list') }}"><i class="bx bx-right-arrow-alt"></i>Country</a>
             </li>
         </ul>
         <ul>
-            <li class="{{ ($route == 'vendor.active')?'mm-active':'' }}">
-                <a href="{{ route('vendor.active') }}"><i class="bx bx-right-arrow-alt"></i>Active Vendors</a>
+            <li class="{{ ($route == 'city.list')?'mm-active':'' }} || {{ ($route == 'city.create')?'mm-active':'' }} || {{ ($route == 'city.edit')?'mm-active':'' }}">
+                <a href="{{ route('city.list') }}"><i class="bx bx-right-arrow-alt"></i>City</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'area.list')?'mm-active':'' }} || {{ ($route == 'area.create')?'mm-active':'' }} || {{ ($route == 'area.edit')?'mm-active':'' }}">
+                <a href="{{ route('area.list') }}"><i class="bx bx-right-arrow-alt"></i>Area</a>
             </li>
         </ul>
     </li>

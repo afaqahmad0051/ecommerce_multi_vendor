@@ -1,16 +1,16 @@
 @extends('admin.admin_dashboard')
 @section('title')
-    Coupon
+    Country
 @endsection
 @section('admin')
 <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
 <div class="page-content">
     <div class="row">
         <div class="col-md-6">
-            <h6 class="mb-0 text-uppercase">Coupon</h6>
+            <h6 class="mb-0 text-uppercase">Country</h6>
         </div>
         <div class="col-md-6">
-            <a href="{{ route('coupon.list') }}" class="btn btn-secondary btn-sm" style="float: right;">Back</a>
+            <a href="{{ route('country.list') }}" class="btn btn-secondary btn-sm" style="float: right;">Back</a>
         </div>
     </div>
     <hr/>
@@ -20,26 +20,14 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <form id="coupon" action="{{ route('coupon.store') }}" method="post">
+                            <form id="country" action="{{ route('country.store') }}" method="post">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row mb-3">
-                                            <label class="col-sm-4 form-label">Coupon Code: <span class="text-danger">*</span></label>  
+                                            <label class="col-sm-4 form-label">country Name: <span class="text-danger">*</span></label>  
                                             <div class="col-sm-8 form-group">
-                                                <input type="text" class="form-control" name="coupon_name"/>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label class="col-sm-4 form-label">Coupon Discount(%): <span class="text-danger">*</span></label>  
-                                            <div class="col-sm-8 form-group">
-                                                <input type="text" class="form-control" name="coupon_discount"/>
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <label class="col-sm-4 form-label">Coupon Validity: <span class="text-danger">*</span></label>  
-                                            <div class="col-sm-8 form-group">
-                                                <input type="date" class="form-control" name="coupon_validity" id="coupon_validity"/>
+                                                <input type="text" class="form-control" name="country_name"/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -52,7 +40,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                    </div><hr>                                
+                                    </div><hr>
                                     <div class="col-md-6">
                                     </div>
                                     <div class="col-md-6">
@@ -69,15 +57,9 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function (){
-        $('#coupon').validate({
+        $('#country').validate({
             rules: {
-                coupon_name: {
-                    required : true,
-                }, 
-                coupon_discount: {
-                    required : true,
-                },
-                coupon_validity: {
+                country_name: {
                     required : true,
                 },
             },
@@ -94,15 +76,5 @@
             },
         });
     });  
-</script>
-<script>
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '-' + mm + '-' + dd;
-    console.log(today);
-    $('#coupon_validity').attr('min',today);
 </script>
 @endsection

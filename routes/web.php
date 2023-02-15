@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AreaController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
@@ -166,14 +169,38 @@ Route::middleware(['auth','role:admin'])->group(function(){
         // Route::post('store','store')->name('store');
     });
     
-    //Admin Coupon Routes
-    Route::prefix('coupon')->name('coupon.')->controller(CouponController::class)->group(function () {
-        Route::get('list','index')->name('list');
-        Route::get('form','create')->name('create');
-        Route::post('store','store')->name('store');
-        Route::get('form/{id}','edit')->name('edit');
-        Route::post('update/{id}','update')->name('update');
-        Route::get('delete/{id}','destroy')->name('delete');
+    
+    // Shippment Prefix
+    Route::prefix('shipping')->group(function () {
+        //Admin Country Routes
+        Route::prefix('country')->name('country.')->controller(CountryController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
+
+        //Admin City Routes
+        Route::prefix('city')->name('city.')->controller(CityController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
+
+        //Admin Area Routes
+        Route::prefix('area')->name('area.')->controller(AreaController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
     });
 
     //Admin Product Routes
@@ -188,6 +215,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('delete/image/{id}','imagedestroy')->name('delete.multiImage');
         Route::get('inactive/{id}','inactive')->name('inactive');
         Route::get('active/{id}','active')->name('active');
+        Route::get('delete/{id}','destroy')->name('delete');
+    });
+    
+    //Admin Coupon Routes
+    Route::prefix('coupon')->name('coupon.')->controller(CouponController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('form','create')->name('create');
+        Route::post('store','store')->name('store');
+        Route::get('form/{id}','edit')->name('edit');
+        Route::post('update/{id}','update')->name('update');
         Route::get('delete/{id}','destroy')->name('delete');
     });
 });
