@@ -92,6 +92,46 @@ class IndexController extends Controller
             'size' => $data['size'],
         ]);   
     }
+
+    public function userbargain(Request $request, $id)
+    {
+        $user_bargain = $request->user_offer;
+
+        $data['product'] = Product::where('id',$id)->first();
+        $product_price = $data['product']->selling_price;
+
+        $final_per = ($product_price * 18)/100;
+        $final_price = $product_price - $final_per;
+
+        if ($user_bargain >= $final_price && $user_bargain <= $product_price) {
+            return response()->json(['amount'=>$user_bargain,'success'=>'Successfully bargained']);
+        }
+        elseif($user_bargain < $final_price && !empty($user_bargain)){
+            return response()->json(['amount'=>$final_price,'error'=>'Minimum amount is '.$final_price]);
+        }elseif($user_bargain > $product_price){
+            return response()->json(['amount'=>$product_price,'error'=>'Product amount exceeded']);
+        }
+    }
+
+    public function Detailuserbargain(Request $request, $id)
+    {
+        $user_bargain = $request->user_offer;
+
+        $data['product'] = Product::where('id',$id)->first();
+        $product_price = $data['product']->selling_price;
+
+        $final_per = ($product_price * 18)/100;
+        $final_price = $product_price - $final_per;
+
+        if ($user_bargain >= $final_price && $user_bargain <= $product_price) {
+            return response()->json(['amount'=>$user_bargain,'success'=>'Successfully bargained']);
+        }
+        elseif($user_bargain < $final_price && !empty($user_bargain)){
+            return response()->json(['amount'=>$final_price,'error'=>'Minimum amount is '.$final_price]);
+        }elseif($user_bargain > $product_price){
+            return response()->json(['amount'=>$product_price,'error'=>'Product amount exceeded']);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

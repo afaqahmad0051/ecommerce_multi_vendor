@@ -46,7 +46,7 @@
                             </div>
                             <div class="detail-extralink mb-30" id="user_bargain">
                                 <div class="user-offer border radius">
-                                    <input type="text" name="user_offer" class="qty-val" id="user_offer" placeholder="Enter your offer">
+                                    <input type="text" name="user_offer" class="qty-val user_offer" id="user_offer" placeholder="Enter your offer">
                                 </div>
                             </div>
                             <div class="detail-extralink mb-30">

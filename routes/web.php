@@ -274,6 +274,8 @@ Route::prefix('product')->name('product.')->controller(IndexController::class)->
     Route::get('category/{slug}/{id}','category')->name('category');
     Route::get('subcategory/{slug}/{id}','subcategory')->name('subcategory');
     Route::get('quick/view/{id}','quickview');
+    Route::get('bargain/{id}','userbargain');
+    Route::get('detail/bargain/{id}','Detailuserbargain');
 });
 
 //Product Details

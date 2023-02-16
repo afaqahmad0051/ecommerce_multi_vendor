@@ -181,6 +181,7 @@
                 dataType:'json',
                 success:function(data){
                     console.log(data);
+                    $('#user_offer').val('');
                     $('#pname').text(data.product.product_name);
                     $('#pcode').text(data.product.product_code);
                     $('#pcategory').text(data.product.category.category_name);
@@ -794,6 +795,106 @@
                 }
             })
         }
+
+        //User Bargaining
+        $(document).ready(function(e) {
+            $('#user_offer').keyup(function() {
+                var timeout;
+                var delay = 1000;
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    UserBargain();
+                }, delay);
+            });
+            function UserBargain() {
+                var id = $('#product_id').val();
+                var user_offer = $('#user_offer').val();
+                $.ajax({
+                    type:'GET',
+                    dataType:'json',
+                    data:{
+                        //New Variable:Variable Name Declared above
+                        user_offer:user_offer,
+                    },
+                    url:'/product/bargain/'+id,
+                    success:function(data){
+                        console.log(data);
+    
+                        const Toast = Swal.mixin({
+                        toast:true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                            })
+                        }
+                        else{
+                            Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                            })
+                        }
+                    }
+                })
+            }
+        });
+
+        //Detail Page User Bargaining
+        $(document).ready(function(e) {
+            $('#duser_offer').keyup(function() {
+                var timeout;
+                var delay = 1000;
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                    dUserBargain();
+                }, delay);
+            });
+            
+            //Detail Page Add to Cart
+            function dUserBargain() {
+                var id = $('#dproduct_id').val();
+                var user_offer = $('#duser_offer').val();
+                $.ajax({
+                    type:'GET',
+                    dataType:'json',
+                    data:{
+                        //New Variable:Variable Name Declared above
+                        user_offer:user_offer,
+                    },
+                    url:'/product/detail/bargain/'+id,
+                    success:function(data){
+                        console.log(data);
+    
+                        const Toast = Swal.mixin({
+                        toast:true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000
+                        })
+                        if ($.isEmptyObject(data.error)) {
+                            Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                            })
+                        }
+                        else{
+                            Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                            })
+                        }
+                    }
+                })
+            }
+        });
     </script>
 </body>
 
