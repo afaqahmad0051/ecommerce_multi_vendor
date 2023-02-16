@@ -117,26 +117,6 @@ Route::middleware(['auth','role:admin'])->group(function(){
             Route::get('delete/{id}','destroy')->name('delete');
         });
 
-        //Admin Category Routes
-        Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
-            Route::get('list','index')->name('list');
-            Route::get('form','create')->name('create');
-            Route::post('store','store')->name('store');
-            Route::get('form/{id}','edit')->name('edit');
-            Route::post('update/{id}','update')->name('update');
-            Route::get('delete/{id}','destroy')->name('delete');
-        });
-        
-        //Admin SubCategory Routes
-        Route::prefix('sub-category')->name('sub_category.')->controller(SubCategoryController::class)->group(function () {
-            Route::get('list','index')->name('list');
-            Route::get('form','create')->name('create');
-            Route::post('store','store')->name('store');
-            Route::get('form/{id}','edit')->name('edit');
-            Route::post('update/{id}','update')->name('update');
-            Route::get('delete/{id}','destroy')->name('delete');
-        });
-
         //Admin Slider Routes
         Route::prefix('slider')->name('slider.')->controller(SliderController::class)->group(function () {
             Route::get('list','index')->name('list');
@@ -203,6 +183,27 @@ Route::middleware(['auth','role:admin'])->group(function(){
         });
     });
 
+    Route::prefix('product')->group(function () {
+        //Admin Category Routes
+        Route::prefix('category')->name('category.')->controller(CategoryController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
+        
+        //Admin SubCategory Routes
+        Route::prefix('sub-category')->name('sub_category.')->controller(SubCategoryController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+            Route::get('delete/{id}','destroy')->name('delete');
+        });
+    });
     //Admin Product Routes
     Route::prefix('product')->name('product.')->controller(ProductController::class)->group(function () {
         Route::get('list','index')->name('list');

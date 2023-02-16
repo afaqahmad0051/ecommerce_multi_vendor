@@ -25,6 +25,23 @@ $route = Route::current()->getName();
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-cart"></i>
             </div>
+            <div class="menu-title">Product Group</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'category.list')?'mm-active':'' }} || {{ ($route == 'category.create')?'mm-active':'' }} || {{ ($route == 'category.edit')?'mm-active':'' }}">
+                <a href="{{ route('category.list') }}"><i class="bx bx-right-arrow-alt"></i>Category</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'sub_category.list')?'mm-active':'' }} || {{ ($route == 'sub_category.create')?'mm-active':'' }} || {{ ($route == 'sub_category.edit')?'mm-active':'' }}">
+                <a href="{{ route('sub_category.list') }}"><i class="bx bx-right-arrow-alt"></i>Sub Category</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-cart"></i>
+            </div>
             <div class="menu-title">Inventory</div>
         </a>
         <ul>
@@ -107,16 +124,6 @@ $route = Route::current()->getName();
         <ul>
             <li class="{{ ($route == 'brand.list')?'mm-active':'' }} || {{ ($route == 'brand.create')?'mm-active':'' }} || {{ ($route == 'brand.edit')?'mm-active':'' }}">
                 <a href="{{ route('brand.list') }}"><i class="bx bx-right-arrow-alt"></i>Brand</a>
-            </li>
-        </ul>
-        <ul>
-            <li class="{{ ($route == 'category.list')?'mm-active':'' }} || {{ ($route == 'category.create')?'mm-active':'' }} || {{ ($route == 'category.edit')?'mm-active':'' }}">
-                <a href="{{ route('category.list') }}"><i class="bx bx-right-arrow-alt"></i>Category</a>
-            </li>
-        </ul>
-        <ul>
-            <li class="{{ ($route == 'sub_category.list')?'mm-active':'' }} || {{ ($route == 'sub_category.create')?'mm-active':'' }} || {{ ($route == 'sub_category.edit')?'mm-active':'' }}">
-                <a href="{{ route('sub_category.list') }}"><i class="bx bx-right-arrow-alt"></i>Sub Category</a>
             </li>
         </ul>
     </li> 
