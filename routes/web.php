@@ -58,13 +58,19 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
         Route::get('products','compare');
         Route::get('remove/{id}','destroy');
     });
-
+    
     Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
         Route::get('list','show')->name('page');
         Route::get('main','GetCartData');
         Route::get('main/remove/{rowId}','cartRemove');
         Route::get('decrement/{rowId}','cartDecrement');
         Route::get('increment/{rowId}','cartIncrement');
+    });
+
+    Route::prefix('coupon')->name('coupon.')->controller(CartController::class)->group(function () {
+        Route::post('apply','coupon');
+        Route::get('calculation','CouponCalculation');
+        Route::get('remove','destroy');
     });
 });
 
