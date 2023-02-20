@@ -17,7 +17,9 @@ use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -58,19 +60,19 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
         Route::get('products','compare');
         Route::get('remove/{id}','destroy');
     });
-    
-    Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
-        Route::get('list','show')->name('page');
-        Route::get('main','GetCartData');
-        Route::get('main/remove/{rowId}','cartRemove');
-        Route::get('decrement/{rowId}','cartDecrement');
-        Route::get('increment/{rowId}','cartIncrement');
+
+    Route::prefix('checkout')->name('checkout.')->controller(CheckoutController::class)->group(function () {
+        Route::post('store','store')->name('store');
+        // Route::get('products','compare');
+        // Route::get('remove/{id}','destroy');
     });
 
-    Route::prefix('coupon')->name('coupon.')->controller(CartController::class)->group(function () {
-        Route::post('apply','coupon');
-        Route::get('calculation','CouponCalculation');
-        Route::get('remove','destroy');
+    Route::prefix('stripe')->name('stripe.')->controller(StripeController::class)->group(function () {
+        Route::post('order','stripeorder')->name('order');
+    });
+
+    Route::prefix('cash')->name('cash.')->controller(StripeController::class)->group(function () {
+        Route::post('order','cashorder')->name('order');
     });
 });
 
@@ -234,6 +236,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('update/{id}','update')->name('update');
         Route::get('delete/{id}','destroy')->name('delete');
     });
+
 });
 
 
@@ -298,6 +301,25 @@ Route::post('/add-to-wishlist/{product_id}', [WishlistController::class,'store']
 
 //Add to compare
 Route::post('/add-to-compare/{product_id}', [CompareController::class,'store']);
+
+
+Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
+    Route::get('list','show')->name('page');
+    Route::get('main','GetCartData');
+    Route::get('main/remove/{rowId}','cartRemove');
+    Route::get('decrement/{rowId}','cartDecrement');
+    Route::get('increment/{rowId}','cartIncrement');
+});
+
+
+Route::prefix('coupon')->name('coupon.')->controller(CartController::class)->group(function () {
+    Route::post('apply','coupon');
+    Route::get('calculation','CouponCalculation');
+    Route::get('remove','destroy');
+});
+
+//Add to checkout
+Route::get('/checkout', [CartController::class,'checkout'])->name('checkout');
 
 //Vendor Details
 Route::prefix('vendor')->name('supplier.')->controller(IndexController::class)->group(function () {

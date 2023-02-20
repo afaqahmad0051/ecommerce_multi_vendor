@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Coupan;
 use App\Models\Product;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -15,6 +17,9 @@ class CartController extends Controller
 
     public function cartdata(Request $request, $id)
     {
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
         $data['product'] = Product::where('id',$id)->first();
         if($data['product']->discount_price == null)
         {
@@ -27,7 +32,8 @@ class CartController extends Controller
                 'options' => [
                     'image' => $data['product']->product_thumbnail,
                     'color' => $request->color,
-                    'size' => $request->size,                    
+                    'size' => $request->size,
+                    'vendor_id' => $request->vendor_id,
                 ],
             ]);
             return response()->json(['success'=>'Add to cart successfully']);
@@ -42,7 +48,8 @@ class CartController extends Controller
                 'options' => [
                     'image' => $data['product']->product_thumbnail,
                     'color' => $request->color,
-                    'size' => $request->size,                    
+                    'size' => $request->size,
+                    'vendor_id' => $request->vendor_id,
                 ],
             ]);
             return response()->json(['success'=>'Add to cart successfully']);
@@ -79,6 +86,9 @@ class CartController extends Controller
      */
     public function cartdetail(Request $request, $id)
     {
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
         $data['product'] = Product::where('id',$id)->first();
         if($data['product']->discount_price == null)
         {
@@ -91,7 +101,8 @@ class CartController extends Controller
                 'options' => [
                     'image' => $data['product']->product_thumbnail,
                     'color' => $request->color,
-                    'size' => $request->size,                    
+                    'size' => $request->size,
+                    'vendor_id' => $request->vendor_id,
                 ],
             ]);
             return response()->json(['success'=>'Add to cart successfully']);
@@ -106,7 +117,8 @@ class CartController extends Controller
                 'options' => [
                     'image' => $data['product']->product_thumbnail,
                     'color' => $request->color,
-                    'size' => $request->size,                    
+                    'size' => $request->size,
+                    'vendor_id' => $request->vendor_id,
                 ],
             ]);
             return response()->json(['success'=>'Add to cart successfully']);
@@ -150,6 +162,16 @@ class CartController extends Controller
     public function cartRemove($rowId)
     {
         Cart::remove($rowId);
+        if (Session::has('coupon')) {
+            $coupon_name = Session::get('coupon')['coupon_name'];
+            $coupon = Coupan::where('coupon_name',$coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
+            Session::put('coupon',[
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => round((Cart::total() * $coupon->coupon_discount)/100),
+                'total_amount' => round(Cart::total() - (Cart::total() * $coupon->coupon_discount)/100),
+            ]);
+        }
         return response()->json(['success' => 'Product removed from cart']);
     }
 
@@ -220,6 +242,32 @@ class CartController extends Controller
             return response()->json([
                 'total' => Cart::total(),
             ]);
+        }
+    }
+
+    public function checkout()
+    {
+        if (Auth::check()) {
+            if (Cart::total() > 0) {
+                $data['carts'] = Cart::content();
+                $data['cart_qty'] = Cart::count();
+                $data['cart_total'] = Cart::total();
+
+                $data['countries'] = Country::with('city')->where('status',1)->get();
+                return view('user.checkout.list',compact('data'));
+            }else{
+                $notification = array(
+                    'message' => 'Shop atleast one product to checkout',
+                    'alert-type' => 'error'        
+                );
+                return redirect()->to('/')->with($notification);
+            }
+        }else{
+            $notification = array(
+                'message' => 'Login required to checkout',
+                'alert-type' => 'error'        
+            );
+            return redirect()->route('login')->with($notification);
         }
     }
     /**

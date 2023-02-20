@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="{{asset('user/assets/css/main.css?v=5.3')}}" />
     {{-- Toastr --}}
 	<link rel="stylesheet" type="text/css" href="{{asset('toastr/toastr.css')}}" >
-
+    {{-- Stripe Payment  --}}
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body>
@@ -189,6 +190,7 @@
                     $('#pimage').attr('src','/'+data.product.product_thumbnail);
                     $('#product_id').val(id);
                     $('#qty').val(1);
+                    $('#pvendor_id').text(data.product.vendor_id);
 
                     if (data.product.discount_price == null) {
                         $('#pprice').text('');
@@ -235,6 +237,7 @@
         //Add to Cart
         function addToCart() {
             var id = $('#product_id').val();
+            var vendor_id = $('#pvendor_id').text();
             var product_name = $('#pname').text();
             var color = $('#color option:selected').text();
             var size = $('#size option:selected').text();
@@ -250,6 +253,7 @@
                     quantity:quantity,
                     product_name:product_name,
                     user_offer:user_offer,
+                    vendor_id:vendor_id,
                 },
                 url:'/cart/data/'+id,
                 success:function(data){
@@ -284,6 +288,7 @@
         //Detail Page Add to Cart
         function addToCartDetail() {
             var id = $('#dproduct_id').val();
+            var vendor_id = $('#dvendor_id').val();
             var product_name = $('#dpname').text();
             var color = $('#dcolor option:selected').text();
             var size = $('#dsize option:selected').text();
@@ -299,6 +304,7 @@
                     quantity:quantity,
                     product_name:product_name,
                     user_offer:user_offer,
+                    vendor_id:vendor_id,
                 },
                 url:'/cart/details/'+id,
                 success:function(data){

@@ -118,8 +118,8 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                                             <h4>Total <span id="cartsubTotal"></span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="shop-cart.html" class="outline">View cart</a>
-                                            <a href="shop-checkout.html">Checkout</a>
+                                            <a href="{{ route('cart.page') }}" class="outline">View cart</a>
+                                            <a href="{{ route('checkout') }}">Checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -129,11 +129,11 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                                     <img class="svgInject" alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-user.svg')}}" />
                                 </a>
                                 @auth
-                                    <a href="page-account.html"><span class="lable ml-0">Account</span></a>
+                                    <a href="javascript:;"><span class="lable ml-0">Account</span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
                                         <ul>
                                             <li>
-                                                <a href="{{ route('login') }}"><i class="fi fi-rs-user mr-10"></i>My Account</a>
+                                                <a href="{{ route('dashboard') }}"><i class="fi fi-rs-user mr-10"></i>My Account</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('login') }}"><i class="fi fi-rs-location-alt mr-10"></i>Order Tracking</a>
