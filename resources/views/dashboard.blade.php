@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('user/assets/css/main.css?v=5.3')}}" />
     {{-- Toastr --}}
 	<link rel="stylesheet" type="text/css" href="{{asset('toastr/toastr.css')}}" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -77,7 +78,11 @@
                         <a href="page-contact.html"><i class="fi-rs-marker"></i> Our location </a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="page-login.html"><i class="fi-rs-user"></i>Log In / Sign Up </a>
+                        @auth
+                            <a href="{{ route('user.logout') }}"><i class="fi fi-rs-sign-out mr-10"></i>Sign out</a>
+                        @else
+                            <a href="{{ route('login') }}"><span class="lable ml-0">Login</span></a>
+                        @endauth
                     </div>
                     <div class="single-mobile-header-info">
                         <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
@@ -91,7 +96,7 @@
                     <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
                     <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
                 </div>
-                <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
+                <div class="site-copyright"><strong class="text-brand">Nest </strong> &copy; {{ date('Y') }}, All rights reserved</div>
             </div>
         </div>
     </div>

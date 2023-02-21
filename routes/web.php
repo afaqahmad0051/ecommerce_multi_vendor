@@ -8,15 +8,18 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorManagementController;
+use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Backend\YearController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\StripeController;
@@ -53,6 +56,13 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
         Route::get('list','index')->name('list');
         Route::get('products','wishlist');
         Route::get('remove/{id}','destroy');
+    });
+
+    Route::prefix('user')->name('user.')->controller(AllUserController::class)->group(function () {
+        Route::get('account','UserAccount')->name('account.details');
+        Route::get('password','UserPassword')->name('account.password');
+        Route::get('order','UserOrders')->name('account.orders');
+        Route::get('order/view/{id}','orderview')->name('order.view');
     });
 
     Route::prefix('compare')->name('compare.')->controller(CompareController::class)->group(function () {
@@ -153,8 +163,6 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('details/{id}','Details')->name('details');
         Route::post('approve/{id}','Approve')->name('approve');
         Route::post('deactivate/{id}','Deactivate')->name('deactivate');
-        // Route::get('form','create')->name('create');
-        // Route::post('store','store')->name('store');
     });
     
     
@@ -236,6 +244,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('update/{id}','update')->name('update');
         Route::get('delete/{id}','destroy')->name('delete');
     });
+    
+    //Admin Order Routes
+    Route::prefix('order')->name('order.')->controller(OrderController::class)->group(function () {
+        Route::get('pending','pending')->name('pending');
+    });
 
 });
 
@@ -273,6 +286,13 @@ Route::middleware(['auth','role:vendor'])->group(function(){
             Route::get('inactive/{id}','inactive')->name('inactive');
             Route::get('active/{id}','active')->name('active');
             Route::get('delete/{id}','destroy')->name('delete');
+        });
+    });
+    
+    //Vendor Order Routes
+    Route::prefix('vendor')->name('vendor.')->group(function () {
+        Route::prefix('order')->name('order.')->controller(VendorOrderController::class)->group(function () {
+            Route::get('pending','pending')->name('pending');
         });
     });
 });

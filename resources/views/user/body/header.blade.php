@@ -1,6 +1,6 @@
 @php
 $categories = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->limit(5)->get();
-$categories_2 = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->skip(5)->limit(5)->get();
+$categories_2 = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->get();
 @endphp
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">
@@ -50,43 +50,15 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                         <form action="#">
                             <select class="select-active">
                                 <option>All Categories</option>
-                                <option>Milks and Dairies</option>
-                                <option>Wines & Alcohol</option>
-                                <option>Clothing & Beauty</option>
-                                <option>Pet Foods & Toy</option>
-                                <option>Fast food</option>
-                                <option>Baking material</option>
-                                <option>Vegetables</option>
-                                <option>Fresh Seafood</option>
-                                <option>Noodles & Rice</option>
-                                <option>Ice cream</option>
+                                @foreach ($categories_2 as $item)
+                                    <option>{{ $item->category_name }}</option>
+                                @endforeach
                             </select>
                             <input type="text" placeholder="Search for items..." />
                         </form>
                     </div>
                     <div class="header-action-right">
                         <div class="header-action-2">
-                            {{-- <div class="search-location">
-                                <form action="#">
-                                    <select class="select-active">
-                                        <option>Your Location</option>
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>Arizona</option>
-                                        <option>Delaware</option>
-                                        <option>Florida</option>
-                                        <option>Georgia</option>
-                                        <option>Hawaii</option>
-                                        <option>Indiana</option>
-                                        <option>Maryland</option>
-                                        <option>Nevada</option>
-                                        <option>New Jersey</option>
-                                        <option>New Mexico</option>
-                                        <option>New York</option>
-                                    </select>
-                                </form>
-                            </div> --}}
-
                             <div class="header-action-icon-2">
                                 <a href="{{ route('compare.list') }}">
                                     <img class="svgInject" alt="Nest" src="{{asset('user/assets/imgs/theme/icons/icon-compare.svg')}}" />

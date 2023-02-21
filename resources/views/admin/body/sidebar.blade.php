@@ -49,6 +49,17 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-cart"></i>
+            </div>
+            <div class="menu-title">Order Management</div>
+        </a>
+        <ul>
+            <li> <a href="{{ route('order.pending') }}"><i class="bx bx-right-arrow-alt"></i>Pending</a>
+            </li>
+        </ul>
+    </li>
     <li {{ ($prefix == '/shipping')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-map"></i>

@@ -37,6 +37,17 @@
             </li>
         </ul>
     </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-cart"></i>
+            </div>
+            <div class="menu-title">Order Management</div>
+        </a>
+        <ul>
+            <li> <a href="{{ route('vendor.order.pending') }}"><i class="bx bx-right-arrow-alt"></i>Pending</a>
+            </li>
+        </ul>
+    </li>
     @endif
     <li>
         <a href="https://themeforest.net/user/codervent" target="_blank">
