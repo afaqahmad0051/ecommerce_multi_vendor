@@ -63,6 +63,7 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
         Route::get('password','UserPassword')->name('account.password');
         Route::get('order','UserOrders')->name('account.orders');
         Route::get('order/view/{id}','orderview')->name('order.view');
+        Route::get('order/pdf/{id}','orderpdf')->name('order.pdf');
     });
 
     Route::prefix('compare')->name('compare.')->controller(CompareController::class)->group(function () {

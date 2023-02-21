@@ -65,7 +65,7 @@
                                                                 </td>
                                                                 <td>
                                                                     <a href="{{ route('user.order.view',$item->id) }}" class="btn-sm btn-success"><i class="fa fa-eye"></i> View</a>
-                                                                    <a href="#" class="btn-sm btn-danger"><i class="fa fa-download"></i> Invoice</a>
+                                                                    <a href="{{ route('user.order.pdf',$item->id) }}" class="btn-sm btn-danger"><i class="fa fa-download"></i> Invoice</a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
