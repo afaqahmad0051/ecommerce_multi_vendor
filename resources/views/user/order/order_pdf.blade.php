@@ -43,6 +43,10 @@
 
 </head>
 <body>
+    @php
+        $order = isset($data['order'])?$data['order']:'';
+        $order_item = isset($data['order_item'])?$data['order_item']:'';
+    @endphp
     <table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
         <tr>
             <td valign="top">

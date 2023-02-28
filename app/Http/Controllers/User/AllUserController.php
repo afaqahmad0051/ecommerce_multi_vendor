@@ -59,13 +59,17 @@ class AllUserController extends Controller
         $role = Auth::user()->role;
         if ($role == 'user') {
             $user_id = Auth::user()->id;
-            $order = Order::with('country','city','area','user')->where('id',$id)->where('user_id',$user_id)->first();
-            $order_item = OrderItem::with('product')->where('order_id',$id)->latest()->get();
-            $pdf = Pdf::loadView('user.order.order_pdf', compact('order','order_item'))->setPaper('a4')->setOption([
-                'tempDir' => public_path(),
-                'chroot' => public_path(),
-            ]);
-            return $pdf->download('invoice.pdf');
+            // $order = Order::with('country','city','area','user')->where('id',$id)->where('user_id',$user_id)->first();
+            // $order_item = OrderItem::with('product')->where('order_id',$id)->latest()->get();
+            // $pdf = Pdf::loadView('user.order.order_pdf', compact('order','order_item'))->setPaper('a4')->setOption([
+            //     'tempDir' => public_path(),
+            //     'chroot' => public_path(),
+            // ]);
+            // return $pdf->download('invoice.pdf');
+
+            $data['order'] = Order::with('country','city','area','user')->where('id',$id)->where('user_id',$user_id)->first();
+            $data['order_item'] = OrderItem::with('product')->where('order_id',$id)->latest()->get();
+            return view('user.order.order_pdf',compact('data'));
         }
     }
 }
