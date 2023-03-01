@@ -1,12 +1,12 @@
 @extends('admin.admin_dashboard')
 @section('title')
-Pending Orders
+Processing Orders
 @endsection
 @section('admin')
 <div class="page-content">
     <div class="row">
         <div class="col-md-6">
-            <h6 class="mb-0 text-uppercase">Pending Orders</h6>
+            <h6 class="mb-0 text-uppercase">Processing Orders</h6>
         </div>
         {{-- <div class="col-md-6">
             <a href="{{ route('category.create') }}" class="btn btn-success btn-sm" style="float: right;">Create</a>
@@ -37,7 +37,7 @@ Pending Orders
                                 <td>£{{ $item->amount }}</td>
                                 <td>{{ $item->payment_method }}</td>
                                 <td>
-                                    <span class="badge rounded-pill bg-warning">Pending</span>
+                                    <span class="badge rounded-pill bg-info">Processing</span>
                                 </td>
                                 <td>
                                     <a href="{{ route('order.details',$item->id) }}" class="btn btn-info" title="View"><i class="fa fa-eye"></i></a>

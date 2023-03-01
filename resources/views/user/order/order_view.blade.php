@@ -195,6 +195,14 @@
                             </div>
                         </div>
                     </div>
+                    @if ($order->status == 'delivered')
+                        {{-- Rerurn Order Option  --}}
+                        <div class="form-group">
+                            <label> Order Return Reason: </label>
+                            <textarea name="return_reason" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-danger">Return Order</button>
+                    @endif
                 </div>
             </div>
         </div>

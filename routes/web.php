@@ -249,6 +249,14 @@ Route::middleware(['auth','role:admin'])->group(function(){
     //Admin Order Routes
     Route::prefix('order')->name('order.')->controller(OrderController::class)->group(function () {
         Route::get('pending','pending')->name('pending');
+        Route::get('confirm','confirm')->name('confirm');
+        Route::get('processing','processing')->name('processing');
+        Route::get('delivered','delivered')->name('delivered');
+        Route::get('details/{id}','details')->name('details');
+        Route::get('pending-to-confirm/{id}','PendingConfirm')->name('status.confirm');
+        Route::get('confirm-to-processing/{id}','ConfirmProcessing')->name('status.process');
+        Route::get('processing-to-delivered/{id}','ProcessingDeliver')->name('status.deliver');
+        Route::get('invoice/{id}','invoice')->name('invoice');
     });
 
 });

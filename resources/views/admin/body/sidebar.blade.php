@@ -38,7 +38,7 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
-    <li>
+    <li {{ ($prefix == '/product')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-cart"></i>
             </div>
@@ -49,15 +49,17 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
-    <li>
+    <li {{ ($prefix == '/order')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-cart"></i>
             </div>
             <div class="menu-title">Order Management</div>
         </a>
         <ul>
-            <li> <a href="{{ route('order.pending') }}"><i class="bx bx-right-arrow-alt"></i>Pending</a>
-            </li>
+            <li class="{{ ($route == 'order.pending')?'mm-active':'' }}"> <a href="{{ route('order.pending') }}"><i class="bx bx-right-arrow-alt"></i>Pending</a></li>
+            <li class="{{ ($route == 'order.confirm')?'mm-active':'' }}"> <a href="{{ route('order.confirm') }}"><i class="bx bx-right-arrow-alt"></i>Confirm</a></li>
+            <li class="{{ ($route == 'order.processing')?'mm-active':'' }}"> <a href="{{ route('order.processing') }}"><i class="bx bx-right-arrow-alt"></i>Processing</a></li>
+            <li class="{{ ($route == 'order.delivered')?'mm-active':'' }}"> <a href="{{ route('order.delivered') }}"><i class="bx bx-right-arrow-alt"></i>Delivered</a></li>
         </ul>
     </li>
     <li {{ ($prefix == '/shipping')?'mm-active':'' }}>
