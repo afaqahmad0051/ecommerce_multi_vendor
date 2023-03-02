@@ -197,11 +197,28 @@
                     </div>
                     @if ($order->status == 'delivered')
                         {{-- Rerurn Order Option  --}}
-                        <div class="form-group">
-                            <label> Order Return Reason: </label>
-                            <textarea name="return_reason" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-sm btn-danger">Return Order</button>
+                        @php
+                            $order_status = App\Models\Order::where('id',$order->id)->where('return_reason','=',null)->first();
+                            // dd($order_status);
+                        @endphp
+                        @if (empty($order_status))
+                            <h5><span style="color: red;">Order Return Requested</span></h5>
+                        @else
+                            <form action="{{ route('user.order.return',$order->id) }}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group" style="font-weight:600; font-size: initial; color:#000000; padding-left: 20px;">
+                                            <label> Order Return Reason: </label>
+                                            <textarea name="return_reason" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" style="padding-top: 30px;">
+                                        <button type="submit" class="btn btn-sm">Return Order</button>
+                                    </div>
+                                </div>
+                            </form>
+                        @endif
                     @endif
                 </div>
             </div>

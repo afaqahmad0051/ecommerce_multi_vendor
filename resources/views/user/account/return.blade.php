@@ -1,6 +1,6 @@
 @extends('user.main_dashboard')
 @section('title')
-    Orders
+    Return Orders
 @endsection
 @section('main')
 <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
@@ -9,7 +9,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> Your Orders
+                <span></span> Return Orders
             </div>
         </div>
     </div>
@@ -36,8 +36,10 @@
                                                             <th>Sr</th>
                                                             <th>Date</th>
                                                             <th>Total</th>
-                                                            <th>Payment Through</th>
+                                                            {{-- <th>Payment Through</th> --}}
                                                             <th>Invoice</th>
+                                                            <th>Return Reason</th>
+                                                            <th>Return Date</th>
                                                             <th>Status</th>
                                                             <th>Actions</th>
                                                         </tr>
@@ -48,27 +50,20 @@
                                                                 <td>{{ $key+1 }}</td>
                                                                 <td>{{ $item->order_date }}</td>
                                                                 <td>£ {{ $item->amount }}</td>
-                                                                <td>{{ strtoupper($item->payment_method) }} </td>
+                                                                {{-- <td>{{ strtoupper($item->payment_method) }} </td> --}}
                                                                 <td>{{ $item->invoice_no }}</td>
+                                                                <td>{{ $item->return_reason }}</td>
+                                                                <td>{{ $item->return_date }}</td>
                                                                 <td>
-                                                                    @if ($item->status == 'pending')
-                                                                        <span class="badge rounded-pill bg-warning">Pending</span>
-                                                                    @elseif($item->status == 'confirm')
-                                                                        <span class="badge rounded-pill bg-info">Confirm</span>
-                                                                    @elseif($item->status == 'processing')
-                                                                        <span class="badge rounded-pill bg-primary">Processing</span>
-                                                                    @elseif($item->status == 'delivered')
-                                                                        <span class="badge rounded-pill bg-success">Delivered</span>
-                                                                    @elseif($item->status == 'cancel')
-                                                                        <span class="badge rounded-pill bg-danger">Cancelled</span>
-                                                                    @endif
-                                                                    @if ($item->return_order != null)
-                                                                        <span class="badge rounded-pill bg-danger">Return Requested</span>
+                                                                    @if ($item->return_order == 1)
+                                                                        <span class="badge rounded-pill bg-danger">Return Pending</span>
+                                                                    @elseif ($item->return_order == 2)
+                                                                        <span class="badge rounded-pill bg-success">Returned Accepted</span>
                                                                     @endif
                                                                 </td>
                                                                 <td>
-                                                                    <a href="{{ route('user.order.view',$item->id) }}" class="btn-sm btn-success"><i class="fa fa-eye"></i> View</a>
-                                                                    <a href="{{ route('user.order.pdf',$item->id) }}" class="btn-sm btn-danger"><i class="fa fa-download"></i> Invoice</a>
+                                                                    <a href="{{ route('user.order.view',$item->id) }}" class="btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                                                                    <a href="{{ route('user.order.pdf',$item->id) }}" class="btn-sm btn-danger"><i class="fa fa-download"></i></a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach

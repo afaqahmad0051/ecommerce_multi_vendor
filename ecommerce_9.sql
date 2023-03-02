@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 21, 2023 at 07:54 PM
+-- Generation Time: Mar 02, 2023 at 07:04 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.13
 
@@ -327,6 +327,7 @@ CREATE TABLE `orders` (
   `cancel_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `return_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `return_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -336,16 +337,17 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `country_id`, `city_id`, `area_id`, `name`, `email`, `phone`, `address`, `post_code`, `notes`, `payment_type`, `payment_method`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirm_date`, `processing_date`, `pickup_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
-(1, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', NULL, '50250', 'This is testing entry order', 'card_1MddWjLHUfosJYdWOQAp8ifd', 'stripe', 'txn_3MddWlLHUfosJYdW06LFtfPV', 'gbp', 7301.00, '63f3b3360d258', 'NMG99585486', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 12:51:52', NULL),
-(2, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Testing Order', 'card_1MdeDtLHUfosJYdW3nz3SFXR', 'stripe', 'txn_3MdeDvLHUfosJYdW1jRq6FJt', 'gbp', 3279.00, '63f3bdaa9c53f', 'NMG87044093', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 13:36:29', NULL),
-(3, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Cash Order', 'COD', 'Cash on delivery', '0', 'gbp', 472.00, '0', 'NMG18363126', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 13:48:59', NULL),
-(4, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Email Send', 'card_1MdeyuLHUfosJYdWVlKCR1g7', 'stripe', 'txn_3MdeyxLHUfosJYdW1crPMMZq', 'gbp', 2279.00, '63f3c90dd064e', 'NMG72871910', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 14:25:05', NULL),
-(5, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Email', 'card_1Mdf0lLHUfosJYdWk8pUbrjh', 'stripe', 'txn_3Mdf0nLHUfosJYdW0Bv7foSC', 'gbp', 850.00, '63f3c9804f9a7', 'NMG95457361', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 14:26:59', NULL),
-(6, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Mail', 'card_1MdfCaLHUfosJYdW3HvystkA', 'stripe', 'txn_3MdfCcLHUfosJYdW1RAwBBS0', 'gbp', 1250.00, '63f3cc5d71916', 'NMG28166273', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 14:39:12', NULL),
-(7, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'card_1MdfTDLHUfosJYdWpE3FtaXa', 'stripe', 'txn_3MdfTELHUfosJYdW02oVggD8', 'gbp', 445.00, '63f3d063d06f5', 'NMG26860735', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 14:56:21', NULL),
-(13, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 795.00, '0', 'NMG86590830', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 15:10:45', NULL),
-(14, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '56255', 'Email Strip', 'card_1MdfkDLHUfosJYdW9FqzTMuy', 'stripe', 'txn_3MdfkELHUfosJYdW1Or4HFIz', 'gbp', 6650.00, '63f3d481dbfae', 'NMG51284636', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 15:13:55', NULL);
+INSERT INTO `orders` (`id`, `user_id`, `country_id`, `city_id`, `area_id`, `name`, `email`, `phone`, `address`, `post_code`, `notes`, `payment_type`, `payment_method`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirm_date`, `processing_date`, `pickup_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_reason`, `return_order`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', NULL, '50250', 'This is testing entry order', 'card_1MddWjLHUfosJYdWOQAp8ifd', 'stripe', 'txn_3MddWlLHUfosJYdW06LFtfPV', 'gbp', 7301.00, '63f3b3360d258', 'NMG99585486', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 12:51:52', NULL),
+(2, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Testing Order', 'card_1MdeDtLHUfosJYdW3nz3SFXR', 'stripe', 'txn_3MdeDvLHUfosJYdW1jRq6FJt', 'gbp', 3279.00, '63f3bdaa9c53f', 'NMG87044093', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'confirm', '2023-02-20 13:36:29', NULL),
+(3, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Cash Order', 'COD', 'Cash on delivery', '0', 'gbp', 472.00, '0', 'NMG18363126', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'processing', '2023-02-20 13:48:59', NULL),
+(4, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Email Send', 'card_1MdeyuLHUfosJYdWVlKCR1g7', 'stripe', 'txn_3MdeyxLHUfosJYdW1crPMMZq', 'gbp', 2279.00, '63f3c90dd064e', 'NMG72871910', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '01 March 2023', 'Another Color', '2', 'delivered', '2023-02-20 14:25:05', '2023-03-02 13:36:34'),
+(5, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Email', 'card_1Mdf0lLHUfosJYdWk8pUbrjh', 'stripe', 'txn_3Mdf0nLHUfosJYdW0Bv7foSC', 'gbp', 850.00, '63f3c9804f9a7', 'NMG95457361', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '01 March 2023', 'Not the product i want.', '1', 'delivered', '2023-02-20 14:26:59', '2023-03-01 13:15:53'),
+(6, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'Mail', 'card_1MdfCaLHUfosJYdW3HvystkA', 'stripe', 'txn_3MdfCcLHUfosJYdW1RAwBBS0', 'gbp', 1250.00, '63f3cc5d71916', 'NMG28166273', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 14:39:12', NULL),
+(7, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'card_1MdfTDLHUfosJYdWpE3FtaXa', 'stripe', 'txn_3MdfTELHUfosJYdW02oVggD8', 'gbp', 445.00, '63f3d063d06f5', 'NMG26860735', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 14:56:21', NULL),
+(13, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 795.00, '0', 'NMG86590830', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 15:10:45', NULL),
+(14, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '56255', 'Email Strip', 'card_1MdfkDLHUfosJYdW9FqzTMuy', 'stripe', 'txn_3MdfkELHUfosJYdW1Or4HFIz', 'gbp', 6650.00, '63f3d481dbfae', 'NMG51284636', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-02-20 15:13:55', '2023-03-01 12:04:40'),
+(15, 3, 2, 6, 2, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'New Testing purpose order', 'COD', 'Cash on delivery', '0', 'gbp', 5780.00, '0', 'NMG60214724', '02 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '02 March 2023', 'Another Perfume Recieved', '2', 'delivered', '2023-03-02 13:46:02', '2023-03-02 14:01:40');
 
 -- --------------------------------------------------------
 
@@ -381,7 +383,8 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `vendor_id`, `color`,
 (8, 6, 60, '2', NULL, NULL, '1', 1250.00, '2023-02-20 14:39:12', NULL),
 (9, 7, 61, '16', NULL, NULL, '1', 445.00, '2023-02-20 14:56:21', NULL),
 (10, 13, 62, '17', NULL, NULL, '1', 795.00, '2023-02-20 15:10:51', NULL),
-(11, 14, 53, '17', NULL, NULL, '1', 7000.00, '2023-02-20 15:14:00', NULL);
+(11, 14, 53, '17', NULL, NULL, '1', 7000.00, '2023-02-20 15:14:00', NULL),
+(12, 15, 54, '17', NULL, NULL, '1', 6800.00, '2023-03-02 13:46:16', NULL);
 
 -- --------------------------------------------------------
 
@@ -1099,13 +1102,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

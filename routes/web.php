@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ReturnOrderController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorManagementController;
@@ -62,8 +63,10 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
         Route::get('account','UserAccount')->name('account.details');
         Route::get('password','UserPassword')->name('account.password');
         Route::get('order','UserOrders')->name('account.orders');
+        Route::get('return/order','UserReturnOrders')->name('account.return.orders');
         Route::get('order/view/{id}','orderview')->name('order.view');
         Route::get('order/pdf/{id}','orderpdf')->name('order.pdf');
+        Route::post('order/return/{id}','orderreturn')->name('order.return');
     });
 
     Route::prefix('compare')->name('compare.')->controller(CompareController::class)->group(function () {
@@ -258,6 +261,13 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('processing-to-delivered/{id}','ProcessingDeliver')->name('status.deliver');
         Route::get('invoice/{id}','invoice')->name('invoice');
     });
+    
+    //Admin Return Order Routes
+    Route::prefix('return')->name('return.')->controller(ReturnOrderController::class)->group(function () {
+        Route::get('order/request','orderReturn')->name('request');
+        Route::get('order/approve/{order_id}','returnApprove')->name('approve');
+        Route::get('order/complete','orderReturncomplete')->name('complete');
+    });
 
 });
 
@@ -302,6 +312,8 @@ Route::middleware(['auth','role:vendor'])->group(function(){
     Route::prefix('vendor')->name('vendor.')->group(function () {
         Route::prefix('order')->name('order.')->controller(VendorOrderController::class)->group(function () {
             Route::get('pending','pending')->name('pending');
+            Route::get('return','return')->name('return');
+            Route::get('approve','approve')->name('approve');
         });
     });
 });

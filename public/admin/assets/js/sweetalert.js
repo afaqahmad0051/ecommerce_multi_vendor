@@ -97,3 +97,28 @@ $(function(){
         }) 
     });
 });
+
+$(function(){
+    $(document).on('click','#approve',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, approve!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link
+                Swal.fire(
+                'Confirmed!',
+                'Order return approved.',
+                'success'
+                )
+            }
+        }) 
+    });
+});

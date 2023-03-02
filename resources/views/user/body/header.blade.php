@@ -231,8 +231,8 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                                         <h4>Total <span id="mbcartsubTotal"></span></h4>
                                     </div>
                                     <div class="shopping-cart-button">
-                                        <a href="shop-cart.html">View cart</a>
-                                        <a href="shop-checkout.html">Checkout</a>
+                                        <a href="{{ route('cart.page') }}">View cart</a>
+                                        <a href="{{ route('checkout') }}">Checkout</a>
                                     </div>
                                 </div>
                             </div>

@@ -62,6 +62,17 @@ $route = Route::current()->getName();
             <li class="{{ ($route == 'order.delivered')?'mm-active':'' }}"> <a href="{{ route('order.delivered') }}"><i class="bx bx-right-arrow-alt"></i>Delivered</a></li>
         </ul>
     </li>
+    <li {{ ($prefix == '/return')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-cart"></i>
+            </div>
+            <div class="menu-title">Order Return</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'return.request')?'mm-active':'' }}"> <a href="{{ route('return.request') }}"><i class="bx bx-right-arrow-alt"></i>Return Request</a></li>
+            <li class="{{ ($route == 'return.complete')?'mm-active':'' }}"> <a href="{{ route('return.complete') }}"><i class="bx bx-right-arrow-alt"></i>Return Complete</a></li>
+        </ul>
+    </li>
     <li {{ ($prefix == '/shipping')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-map"></i>

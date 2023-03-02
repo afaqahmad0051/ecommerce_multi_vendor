@@ -24,6 +24,24 @@ class VendorOrderController extends Controller
         }
     }
 
+    public function return()
+    {
+        if (Auth::user()->role == 'vendor') {
+            $vendor_id = Auth::id();
+            $orderItem = OrderItem::with('order')->where('vendor_id',$vendor_id)->latest()->get();
+            return view('vendor.order.return',compact('orderItem'));
+        }
+    }
+
+    public function approve()
+    {
+        if (Auth::user()->role == 'vendor') {
+            $vendor_id = Auth::id();
+            $orderItem = OrderItem::with('order')->where('vendor_id',$vendor_id)->latest()->get();
+            return view('vendor.order.approve',compact('orderItem'));
+        }
+    }
+
     public function index()
     {
         //
