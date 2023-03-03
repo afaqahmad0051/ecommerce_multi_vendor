@@ -12,8 +12,8 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><a href="page-account.html">My Cart</a></li>
-                            <li><a href="shop-wishlist.html">Checkout</a></li>
+                            <li><a href="{{ route('cart.page') }}">My Cart</a></li>
+                            <li><a href="{{ route('checkout') }}">Checkout</a></li>
                             <li><a href="shop-order.html">Order Tracking</a></li>
                         </ul>
                     </div>

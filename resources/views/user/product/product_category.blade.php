@@ -129,7 +129,7 @@
                                     @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
                                         <span class="font-small text-muted">By <a href="javascript:;">Admin</a></span>
                                     @else
-                                        <span class="font-small text-muted">By <a href="{{ route('supplier.shop',$item->id) }}">{{ $item['vendor']['name'] }}</a></span>
+                                        <span class="font-small text-muted">By <a href="{{ route('supplier.shop',$item->vendor_id) }}">{{ $item['vendor']['name'] }}</a></span>
                                     @endif
                                 </div>
                                 <div class="product-card-bottom">
