@@ -28,7 +28,7 @@
     @if ($status == 'active')
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-cart"></i>
+            <div class="parent-icon"><i class="bx bx-cube"></i>
             </div>
             <div class="menu-title">Inventory</div>
         </a>
@@ -39,7 +39,7 @@
     </li>
     <li>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-cart"></i>
+            <div class="parent-icon"><i class="bx bx-shopping-bag"></i>
             </div>
             <div class="menu-title">Order Management</div>
         </a>

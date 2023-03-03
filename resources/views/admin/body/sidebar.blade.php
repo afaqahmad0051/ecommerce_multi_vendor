@@ -40,7 +40,7 @@ $route = Route::current()->getName();
     </li>
     <li {{ ($prefix == '/product')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-cart"></i>
+            <div class="parent-icon"><i class="bx bx-cube"></i>
             </div>
             <div class="menu-title">Inventory</div>
         </a>
@@ -51,7 +51,7 @@ $route = Route::current()->getName();
     </li>
     <li {{ ($prefix == '/order')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-cart"></i>
+            <div class="parent-icon"><i class="bx bx-shopping-bag"></i>
             </div>
             <div class="menu-title">Order Management</div>
         </a>
@@ -64,7 +64,7 @@ $route = Route::current()->getName();
     </li>
     <li {{ ($prefix == '/return')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-cart"></i>
+            <div class="parent-icon"><i class="bx bx-recycle"></i>
             </div>
             <div class="menu-title">Order Return</div>
         </a>
@@ -97,7 +97,7 @@ $route = Route::current()->getName();
     </li>
     <li {{ ($prefix == '/vendor')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-briefcase"></i>
+            <div class="parent-icon"><i class="bx bx-layer"></i>
             </div>
             <div class="menu-title">Vendor Management</div>
         </a>
