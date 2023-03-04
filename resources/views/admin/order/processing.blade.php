@@ -41,6 +41,7 @@ Processing Orders
                                 </td>
                                 <td>
                                     <a href="{{ route('order.details',$item->id) }}" class="btn btn-info" title="View"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('order.invoice',$item->id) }}" class="btn btn-danger" title="Invoice"><i class="fa fa-download"></i></a>
                                 </td>
                             </tr>
                         @endforeach
