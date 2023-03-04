@@ -1,5 +1,6 @@
 @php
 $categories = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->limit(5)->get();
+$categories_skip = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->skip(5)->limit(5)->get();
 $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->get();
 @endphp
 <header class="header-area header-style-1 header-height-2">
@@ -159,7 +160,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                                     @endforeach
                                 </ul>
                                 <ul class="end">
-                                    @foreach ($categories_2 as $item)
+                                    @foreach ($categories_skip as $item)
                                         <li>
                                             <a href="{{ route('product.category',[$item->category_slug, $item->id]) }}"> <img src="{{asset($item->category_image)}}" alt="" />{{$item->category_name}}</a>
                                         </li>

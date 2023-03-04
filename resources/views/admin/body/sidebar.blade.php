@@ -49,6 +49,18 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
+    <li {{ ($prefix == '/coupon')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-purchase-tag-alt"></i>
+            </div>
+            <div class="menu-title">Discount Setup</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'coupon.list')?'mm-active':'' }} || {{ ($route == 'coupon.create')?'mm-active':'' }} || {{ ($route == 'coupon.edit')?'mm-active':'' }}">
+                <a href="{{ route('coupon.list') }}"><i class="bx bx-right-arrow-alt"></i>Coupon System</a>
+            </li>
+        </ul>
+    </li>
     <li {{ ($prefix == '/order')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-shopping-bag"></i>
@@ -112,15 +124,20 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
-    <li {{ ($prefix == '/coupon')?'mm-active':'' }}>
+    <li {{ ($prefix == '/user')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-purchase-tag-alt"></i>
+            <div class="parent-icon"><i class="bx bx-layer"></i>
             </div>
-            <div class="menu-title">Discount Setup</div>
+            <div class="menu-title">User Management</div>
         </a>
         <ul>
-            <li class="{{ ($route == 'coupon.list')?'mm-active':'' }} || {{ ($route == 'coupon.create')?'mm-active':'' }} || {{ ($route == 'coupon.edit')?'mm-active':'' }}">
-                <a href="{{ route('coupon.list') }}"><i class="bx bx-right-arrow-alt"></i>Coupon System</a>
+            <li class="{{ ($route == 'user.customer.list')?'mm-active':'' }}">
+                <a href="{{ route('user.customer.list') }}"><i class="bx bx-right-arrow-alt"></i>Customers</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'user.vendor.list')?'mm-active':'' }}">
+                <a href="{{ route('user.vendor.list') }}"><i class="bx bx-right-arrow-alt"></i>Vendors</a>
             </li>
         </ul>
     </li>
@@ -150,6 +167,19 @@ $route = Route::current()->getName();
                 <a href="{{ route('brand.list') }}"><i class="bx bx-right-arrow-alt"></i>Brand</a>
             </li>
         </ul>
-    </li> 
+    </li>
+    <li class="menu-label">Reporting</li>
+    <li {{ ($prefix == '/vendor')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-clipboard"></i>
+            </div>
+            <div class="menu-title">Reports</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'vendor.inactive')?'mm-active':'' }}">
+                <a href="{{ route('report.view') }}"><i class="bx bx-right-arrow-alt"></i>Report Filters</a>
+            </li>
+        </ul>
+    </li>
 </ul>
 <!--end navigation-->

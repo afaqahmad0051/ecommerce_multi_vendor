@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\AreaController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnOrderController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -268,6 +270,21 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('order/approve/{order_id}','returnApprove')->name('approve');
         Route::get('order/complete','orderReturncomplete')->name('complete');
     });
+    
+    //Admin Report Order Routes
+    Route::prefix('report')->name('report.')->controller(ReportController::class)->group(function () {
+        Route::get('view','reportView')->name('view');
+        Route::post('search-by-date','searchbyDate')->name('date');
+        Route::post('search-by-month','searchbyMonth')->name('month');
+        Route::post('search-by-year','searchbyYear')->name('year');
+        Route::post('search-by-user','searchbyUser')->name('user');
+    });
+    
+    //Admin Users Routes
+    Route::prefix('user')->name('user.')->controller(ActiveUserController::class)->group(function () {
+        Route::get('customers/list','customerList')->name('customer.list');
+        Route::get('vendors/list','vendorList')->name('vendor.list');
+    });
 
 });
 
@@ -314,6 +331,7 @@ Route::middleware(['auth','role:vendor'])->group(function(){
             Route::get('pending','pending')->name('pending');
             Route::get('return','return')->name('return');
             Route::get('approve','approve')->name('approve');
+            Route::get('details/{id}','details')->name('details');
         });
     });
 });
