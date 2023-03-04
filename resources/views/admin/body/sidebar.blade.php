@@ -126,7 +126,7 @@ $route = Route::current()->getName();
     </li>
     <li {{ ($prefix == '/user')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-layer"></i>
+            <div class="parent-icon"><i class="bx bx-user-circle"></i>
             </div>
             <div class="menu-title">User Management</div>
         </a>
@@ -138,6 +138,23 @@ $route = Route::current()->getName();
         <ul>
             <li class="{{ ($route == 'user.vendor.list')?'mm-active':'' }}">
                 <a href="{{ route('user.vendor.list') }}"><i class="bx bx-right-arrow-alt"></i>Vendors</a>
+            </li>
+        </ul>
+    </li>
+    <li {{ ($prefix == '/blog')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-notepad"></i>
+            </div>
+            <div class="menu-title">Blog Management</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'blog.category.list')?'mm-active':'' }}">
+                <a href="{{ route('blog.category.list') }}"><i class="bx bx-right-arrow-alt"></i>Blog Category</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'blog.post.list')?'mm-active':'' }}">
+                <a href="{{ route('blog.post.list') }}"><i class="bx bx-right-arrow-alt"></i>Blog Posts</a>
             </li>
         </ul>
     </li>

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\AreaController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
@@ -285,6 +286,25 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('customers/list','customerList')->name('customer.list');
         Route::get('vendors/list','vendorList')->name('vendor.list');
     });
+    
+    //Admin Blog Routes
+    Route::prefix('blog')->name('blog.')->controller(BlogController::class)->group(function () {
+        //Blog Category
+        Route::get('category/list','categoryList')->name('category.list');
+        Route::get('category/create','categoryCreate')->name('category.create');
+        Route::post('category/store','categoryStore')->name('category.store');
+        Route::get('category/edit/{id}','categoryEdit')->name('category.edit');
+        Route::post('category/update/{id}','categoryUpdate')->name('category.update');
+        Route::get('category/delete/{id}','categoryDelete')->name('category.delete');
+        
+        //Blog Post
+        Route::get('list','index')->name('post.list');
+        Route::get('create','create')->name('post.create');
+        Route::post('store','store')->name('post.store');
+        Route::get('edit/{id}','edit')->name('post.edit');
+        Route::post('update/{id}','update')->name('post.update');
+        Route::get('delete/{id}','destroy')->name('post.delete');
+    });
 
 });
 
@@ -308,7 +328,6 @@ Route::middleware(['auth','role:vendor'])->group(function(){
     });
 
     //Vendor Product Routes
-    
     Route::prefix('vendor')->name('vendor.')->group(function () {
         Route::prefix('product')->name('product.')->controller(VendorProductController::class)->group(function () {
             Route::get('list','index')->name('list');
