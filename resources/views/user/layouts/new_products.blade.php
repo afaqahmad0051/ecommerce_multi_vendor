@@ -119,7 +119,7 @@
                                             @php
                                                 $img = App\Models\ProductImage::where('product_id',$item->id)->first();
                                             @endphp
-                                            <a href="shop-product-right.html">
+                                            <a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">
                                                 <img class="default-img" src="{{ asset($item->product_thumbnail) }}" alt="" />
                                                 <img class="hover-img" src="{{ asset($img->photo_name) }}" alt="" />
                                             </a>

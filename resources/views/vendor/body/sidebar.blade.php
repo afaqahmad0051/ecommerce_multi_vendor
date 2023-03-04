@@ -44,7 +44,7 @@
             <div class="menu-title">Order Management</div>
         </a>
         <ul>
-            <li> <a href="{{ route('vendor.order.pending') }}"><i class="bx bx-right-arrow-alt"></i>Pending</a>
+            <li> <a href="{{ route('vendor.order.pending') }}"><i class="bx bx-right-arrow-alt"></i>All Orders</a>
             </li>
             <li> <a href="{{ route('vendor.order.return') }}"><i class="bx bx-right-arrow-alt"></i>Return Orders</a>
             </li>

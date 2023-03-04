@@ -42,9 +42,11 @@ class VendorOrderController extends Controller
         }
     }
 
-    public function index()
+    public function details($id)
     {
-        //
+        $data['order'] = Order::with('country','city','area','user')->where('id',$id)->first();
+        $data['order_item'] = OrderItem::with('product')->where('order_id',$id)->latest()->get();
+        return view('vendor.order.order_view',compact('data'));
     }
 
     /**

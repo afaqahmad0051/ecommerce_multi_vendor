@@ -37,10 +37,18 @@ Pending Orders
                                 <td>£{{ $item->order->amount }}</td>
                                 <td>{{ $item->order->payment_method }}</td>
                                 <td>
-                                    <span class="badge rounded-pill bg-warning">Pending</span>
+                                    @if ($item->order->status == 'pending')
+                                        <span class="badge rounded-pill bg-warning">Pending</span>
+                                    @elseif($item->order->status == 'confirm')
+                                        <span class="badge rounded-pill bg-info">Confirm</span>
+                                    @elseif($item->order->status == 'processing')
+                                        <span class="badge rounded-pill bg-primary">Processing</span>
+                                    @elseif($item->order->status == 'delivered')
+                                        <span class="badge rounded-pill bg-success">Delivered</span>
+                                    @endif
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-info" title="View"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('vendor.order.details',$item->order->id) }}" class="btn btn-info" title="View"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach
