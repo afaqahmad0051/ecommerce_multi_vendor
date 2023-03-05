@@ -10,6 +10,24 @@
 {{ $product->product_name }}
 @endsection
 @section('main')
+<style>
+    .wrapper {
+    display: inline-block;
+    }
+    .wrapper * {
+    float: right;
+    }
+    .inp {
+    display: none;
+    }
+    .label {
+    font-size: 30px;
+    }
+
+    .inp:checked ~ label {
+    color: #FDC040;
+    }
+</style>
 <div class="page-header breadcrumb-wrap">
     <div class="container">
         <div class="breadcrumb">
@@ -322,63 +340,41 @@
                                         <div class="col-lg-8">
                                             <h4 class="mb-30">Customer questions & answers</h4>
                                             <div class="comment-list">
-                                                <div class="single-comment justify-content-between d-flex mb-30">
-                                                    <div class="user justify-content-between d-flex">
-                                                        <div class="thumb text-center">
-                                                            <img src="assets/imgs/blog/author-2.png" alt="" />
-                                                            <a href="#" class="font-heading text-brand">Sienna</a>
-                                                        </div>
-                                                        <div class="desc">
-                                                            <div class="d-flex justify-content-between mb-10">
-                                                                <div class="d-flex align-items-center">
-                                                                    <span class="font-xs text-muted">December 4, 2022 at 3:12 pm </span>
-                                                                </div>
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width: 100%"></div>
-                                                                </div>
+                                                @php
+                                                    $reviews = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                                    // $reviews = App\Models\Review::where('product_id',$product->id)->latest()->get();
+                                                @endphp
+                                                 @foreach ($reviews as $item)
+                                                    <div class="single-comment justify-content-between d-flex mb-30">
+                                                        <div class="user justify-content-between d-flex">
+                                                            <div class="thumb text-center">
+                                                                <img src="{{ (!empty($item->user->photo)) ? url('upload/user_images/'.$item->user->photo):url('upload/blank.jpg') }}" alt="" />
+                                                                <a href="#" class="font-heading text-brand">{{ $item->user->name }}</a>
                                                             </div>
-                                                            <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt? <a href="#" class="reply">Reply</a></p>
+                                                            <div class="desc">
+                                                                <div class="d-flex justify-content-between mb-10">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <span class="font-xs text-muted">{{ Carbon\Carbon::parse($item->created_at)->format('F d, Y' ) }} at {{ Carbon\Carbon::parse($item->created_at)->format('h:i a' ) }}</span>
+                                                                    </div>
+                                                                    <div class="product-rate d-inline-block">
+                                                                        @if ($item->rating=="1")
+                                                                            <div class="product-rating" style="width: 20%"></div>
+                                                                        @elseif($item->rating=="2")
+                                                                            <div class="product-rating" style="width: 40%"></div>
+                                                                        @elseif($item->rating=="3")
+                                                                            <div class="product-rating" style="width: 60%"></div>
+                                                                        @elseif($item->rating=="4")
+                                                                            <div class="product-rating" style="width: 80%"></div>
+                                                                        @elseif($item->rating=="5")
+                                                                            <div class="product-rating" style="width: 100%"></div>
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
+                                                                <p class="mb-10">{{ $item->comment }} <a href="#" class="reply">Reply</a></p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="single-comment justify-content-between d-flex mb-30 ml-30">
-                                                    <div class="user justify-content-between d-flex">
-                                                        <div class="thumb text-center">
-                                                            <img src="assets/imgs/blog/author-3.png" alt="" />
-                                                            <a href="#" class="font-heading text-brand">Brenna</a>
-                                                        </div>
-                                                        <div class="desc">
-                                                            <div class="d-flex justify-content-between mb-10">
-                                                                <div class="d-flex align-items-center">
-                                                                    <span class="font-xs text-muted">December 4, 2022 at 3:12 pm </span>
-                                                                </div>
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width: 80%"></div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt? <a href="#" class="reply">Reply</a></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="single-comment justify-content-between d-flex">
-                                                    <div class="user justify-content-between d-flex">
-                                                        <div class="thumb text-center">
-                                                            <img src="assets/imgs/blog/author-4.png" alt="" />
-                                                            <a href="#" class="font-heading text-brand">Gemma</a>
-                                                        </div>
-                                                        <div class="desc">
-                                                            <div class="d-flex justify-content-between mb-10">
-                                                                <div class="d-flex align-items-center">
-                                                                    <span class="font-xs text-muted">December 4, 2022 at 3:12 pm </span>
-                                                                </div>
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width: 80%"></div>
-                                                                </div>
-                                                            </div>
-                                                            <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt? <a href="#" class="reply">Reply</a></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -416,38 +412,43 @@
                                 <!--comment form-->
                                 <div class="comment-form">
                                     <h4 class="mb-15">Add a review</h4>
-                                    <div class="product-rate d-inline-block mb-30"></div>
-                                    <div class="row">
-                                        <div class="col-lg-8 col-md-12">
-                                            <form class="form-contact comment_form" action="#" id="commentForm">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                    @guest
+                                        <p><b> Login/Register to add a review or comment! <a href="{{ route('login') }}">Login Here</a></b></p>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-12">
+                                                <form class="form-contact comment_form" method="post" action="{{ route('review.store') }}" id="commentForm">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="vendor_id" value="{{ isset($product->vendor_id)?$product->vendor_id:'' }}">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="wrapper">
+                                                                <input class="inp" type="radio" id="r1" name="quality" value="5">
+                                                                <label class="label" for="r1">&#10038;</label>
+                                                                <input class="inp" type="radio" id="r2" name="quality" value="4">
+                                                                <label class="label" for="r2">&#10038;</label>
+                                                                <input class="inp" type="radio" id="r3" name="quality" value="3">
+                                                                <label class="label" for="r3">&#10038;</label>
+                                                                <input class="inp" type="radio" id="r4" name="quality" value="2">
+                                                                <label class="label" for="r4">&#10038;</label>
+                                                                <input class="inp" type="radio" id="r5" name="quality" value="1">
+                                                                <label class="label" for="r5">&#10038;</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <input class="form-control" name="name" id="name" type="text" placeholder="Name" />
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <button type="submit" class="button button-contactForm">Submit Review</button>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <input class="form-control" name="email" id="email" type="email" placeholder="Email" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <input class="form-control" name="website" id="website" type="text" placeholder="Website" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="button button-contactForm">Submit Review</button>
-                                                </div>
-                                            </form>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endguest
                                 </div>
                             </div>
                         </div>

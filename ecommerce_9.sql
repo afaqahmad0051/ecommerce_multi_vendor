@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 02, 2023 at 07:04 PM
+-- Generation Time: Mar 05, 2023 at 08:23 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.13
 
@@ -69,6 +69,58 @@ INSERT INTO `banners` (`id`, `banner_title`, `banner_url`, `banner_image`, `stat
 (1, 'Everyday Fresh & <br> Clean with Our <br> Products', 'javascript:;', 'upload/banner/1756293971040020.png', 1, '2023-01-28 14:00:52', NULL),
 (2, 'Make your Breakfast <br> Healthy and Easy', 'javascript:;', 'upload/banner/1756294039443966.png', 1, '2023-01-28 14:01:57', NULL),
 (3, 'The best Organic <br> Products Online', 'javascript:;', 'upload/banner/1756294110725832.png', 1, '2023-01-28 14:03:05', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
+--
+
+CREATE TABLE `blogs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `user_id` int(20) NOT NULL,
+  `post_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `post_short_desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_long_desc` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `category_id`, `user_id`, `post_title`, `post_slug`, `post_image`, `post_short_desc`, `post_long_desc`, `status`, `created_at`, `updated_at`) VALUES
+(2, 3, 1, 'Inspirations and Tools to Build Your Online Store', 'inspirations-and-tools-to-build-your-online-store', 'upload/blog_images/1759459537784948.png', 'Creating an online store has been hot in recent years. More and more cross-border sellers are participating in the wave. They are affected by the epidemic and e-commerce platform policies and rules are changing, many platform sellers have also begun to choose to open another window of “independent stations”.', '<p style=\"text-align: justify;\"><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\"><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, segoe ui, roboto, oxygen, ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;\">Creating an online store has been hot in recent years. More and more cross-border sellers are participating in the wave. They are affected by the epidemic and e-commerce platform policies and rules are changing, many platform sellers have also begun to choose to open another window of &ldquo;independent stations&rdquo;. Everything is difficult at the beginning. Unlike retailer platforms, in order to build an online store, it requires sellers to build their own websites, which has been a headache for sellers. Basically, sellers will go for one of the following three solutions to build their websites. First one, Software as a solution. Sellers create their online shopping websites on an e-commerce platform that integrate with social networking, post products, shopping cart and payment features. Sellers are allowed to design the website interface with templates. In other words, these softwares/solutions serve as hosts to sellers&rsquo; stores that support sellers to create and launch their stores. You may know some of these platforms. ShopBase, Shopify, XShoppy, Shoplazza, etc.&nbsp; Some solution providers give out source codes that the sellers can build up on. Woocommerce, Magento, WordPress, and OpenCart are these providers that give more flexibility over design and features. The last solution is to start from scratch, which requires full knowledge of coding or HTML. For most cross-border sellers, SaaS website construction is the most preferred, because it saves time and effort and can focus on operations. While interface is an important part of building your stores, you will want to put some effort into it. Here is a list of top Shopify stores that you can use as an inspiration to build yours.</span></span></p>\r\n<p>&nbsp;</p>\r\n<p><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\"><strong>New York Times Store </strong></span></p>\r\n<p style=\"text-align: justify;\"><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\">The New York Times store is one of the most prestigious stores in the United States, and almost every single person in the US knows about the Times. They&rsquo;re using Shopify, which is a clear proof that Shopify is endorsed by the great brands and is a one-stop solution for setting up an eCommerce store. The New York Times store contains the items that are specially designed for the Times fans such as Apparels, Books, Puzzles, Personalized items, Gifts, Photographs, and much more.</span></p>\r\n<p><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\"><br /></span><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\"><strong>Rindip:</strong></span></p>\r\n<p style=\"text-align: justify;\"><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\"> Rindip is one of the most creative types of stores that are present on the internet, starting from the unified animated logo, which looks cute and gives an attractive look to the website. The store also contains a video on the front page. If we look at the navigation, it&rsquo;s minimalistic and clean as well.</span></p>\r\n<p><br style=\"box-sizing: border-box; color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\" /><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\"><strong>Looks Like Summer: </strong></span></p>\r\n<p style=\"text-align: justify;\"><span style=\"color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\">Looks Like Summer is a Portugal based store built on the platform of Shopify. The store is all about the collection of the women&rsquo;s summer collection. The feminine design of the store adds to its attractiveness. One of the great features that they are using with their Shopify store is the use of email marketing, as you can see their email Newsletter popup in the image below. Email marketing is one of the essentials of promoting a business online, and Shopify surely facilitates in this.</span><br style=\"box-sizing: border-box; color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\" /><br style=\"box-sizing: border-box; color: #333333; font-family: -apple-system, BlinkMacSystemFont, \'segoe ui\', roboto, oxygen, ubuntu, cantarell, \'fira sans\', \'droid sans\', \'helvetica neue\', sans-serif; font-size: 16px; background-color: #ffffff;\" /></p>', 1, '2023-03-04 09:50:32', '2023-03-05 02:37:36'),
+(4, 2, 1, 'Jenny Rosenstrach Has a Game Plan for the Weekday Vegetarian', 'jenny-rosenstrach-has-a-game-plan-for-the-weekday-vegetarian', 'upload/blog_images/1759460061749993.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', '<p class=\"single-excerpt\" style=\"box-sizing: border-box; margin: 0px 0px 1.2em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 24px; line-height: 32px; font-family: Lato, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff;\">Helping everyone live happier, healthier lives at home through their kitchen. Kitchn is a daily food magazine on the Web celebrating life in the kitchen through home cooking and kitchen intelligence.</p>\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 1.2em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 17px; line-height: 24px; font-family: Lato, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff;\">We\'ve reviewed and ranked all of the best smartwatches on the market right now, and we\'ve made a definitive list of the top 10 devices you can buy today. One of the 10 picks below may just be your perfect next smartwatch.</p>\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 1.2em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 17px; line-height: 24px; font-family: Lato, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff;\">Those top-end wearables span from the Apple Watch to Fitbits, Garmin watches to Tizen-sporting Samsung watches. There\'s also Wear OS which is Google\'s own wearable operating system in the vein of Apple\'s watchOS - you&rsquo;ll see it show up in a lot of these devices.</p>\r\n<h5 class=\"mt-50\" style=\"box-sizing: border-box; line-height: 24px; font-size: 20px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-family: Quicksand, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff; margin: 50px !important 0px 24px 0px;\">Lorem ipsum dolor sit amet cons</h5>\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 1.2em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 17px; line-height: 24px; font-family: Lato, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff;\">Throughout our review process, we look at the design, features, battery life, spec, price and more for each smartwatch, rank it against the competition and enter it into the list you\'ll find below.</p>\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 1.2em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 17px; line-height: 24px; font-family: Lato, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff;\">Tortor, lobortis semper viverra ac, molestie tortor laoreet amet euismod et diam quis aliquam consequat porttitor integer a nisl, in faucibus nunc et aenean turpis dui dignissim nec scelerisque ullamcorper eu neque, augue quam quis lacus pretium eros est amet turpis nunc in turpis massa et eget facilisis ante molestie penatibus dolor volutpat, porta pellentesque scelerisque at ornare dui tincidunt cras feugiat tempor lectus<br /><br /></p>\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 1.2em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 17px; line-height: 24px; font-family: Lato, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet id enim, libero sit. Est donec lobortis cursus amet, cras elementum libero convallis feugiat. Nulla faucibus facilisi tincidunt a arcu, sem donec sed sed. Tincidunt morbi scelerisque lectus non. At leo mauris, vel augue. Facilisi diam consequat amet, commodo lorem nisl, odio malesuada cras. Tempus lectus sed libero viverra ut. Facilisi rhoncus elit sit sit.</p>\r\n<p style=\"box-sizing: border-box; margin: 0px 0px 1.2em; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-stretch: inherit; font-size: 17px; line-height: 24px; font-family: Lato, sans-serif; vertical-align: baseline; color: #253d4e; background-color: #ffffff;\">&nbsp;</p>', 1, '2023-03-04 12:44:32', '2023-03-05 02:37:28'),
+(5, 2, 1, 'Can Ice Cream Help You Lose Weight', 'can-ice-cream-help-you-lose-weight', 'upload/blog_images/1759460336328085.jpeg', 'Ice creams are one of the most loved and consumed sweets in the world. Whether it’s after delicious main courses or a random midnight snack, ice creams serve best for all. They have this unique satisfying and fulfilling attribute that compares to none.', '<p class=\"eplus-Y7Fc6W\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">Sweet, creamy, and cold &ndash; How can one&nbsp;<em style=\"box-sizing: border-box;\">not&nbsp;</em>crave such a foodstuff? Perhaps, one simply&nbsp;<em style=\"box-sizing: border-box;\">cannot.</em></p>\r\n<p class=\"eplus-JbT7Ew\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">Ice creams are one of the most loved and consumed sweets in the world. Whether it&rsquo;s after delicious main courses or a random midnight snack, ice creams serve best for all. They have this unique satisfying and fulfilling attribute that compares to none.</p>\r\n<p class=\"eplus-L3pr2K\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">Plus, the good part is that they are available in several flavors and forms. You can have ice cream in vanilla, chocolate, strawberry, mango, pistachio, and practically&nbsp;<em style=\"box-sizing: border-box;\">any&nbsp;</em>flavor that you can think of. Plus, it comes with one stick, in cups, in tubs, and whatnot. And if you feel a bit fancy, you can even try ice cream sundaes, cakes, sandwiches, etc.</p>\r\n<p class=\"eplus-bnaxn0\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">But one thing that keeps some of us back is the fact that ice cream has a bad nutritional reputation. Hence, in this post, we will have a look at some factual data to determine how healthy ice cream is and whether or not it helps in losing weight.</p>\r\n<h4 style=\"text-align: justify;\">Calories in an Ice Cream</h4>\r\n<p class=\"eplus-eiT8dL\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">If we were to state the&nbsp;<em style=\"box-sizing: border-box;\">exact&nbsp;</em>count of calories in a certain serving of ice cream, then we would have to select a particular brand. That&rsquo;sThat&rsquo;s because each brand offers a different set of flavors with different recipes and thickness. Hence, the calorie count varies greatly. However, one thing is for sure; all ice creams are calorie-dense.</p>\r\n<p class=\"eplus-UxqYiA\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">About &frac12; cup of regular ice cream (60-90 grams) offers 140 calories, which, when compared to other nutrients in the same cup, is way too high. For example, from the same cup, you will get 7 grams of fat and 30 milligrams of cholesterol. On top of that, you&rsquo;ll get only 2 grams of protein, 17 grams of total carbs, and 14 grams of sugar.</p>\r\n<p class=\"eplus-lknDRy\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">&nbsp;While in the same quantity, premium quality creamy and thick ice cream will provide you 210 grams of calories and low amounts of other nutrients accordingly. About 70 mg cholesterol, 3 grams protein, 13 grams of fats, 20 grams of total carbs, and 19 grams of sugar.</p>\r\n<p class=\"eplus-gTiryJ\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">As you can see, both varieties offer quite very high amounts of calories. Hence, rationally, the high consumption of ice cream is not advisable. It will only lead to weight gain. Plus, if it contains any additional additives, then it may also lead to bloating, gas, inflammation, hyperactivity, behavioral changes (especially in children), etc.</p>\r\n<h4 style=\"text-align: justify;\">What\'s with the Ice Cream diet then?</h4>\r\n<p class=\"eplus-twRIbE\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">Well, the Ice cream diet promises slimming down and a healthier body while involving ice cream in the daily diet. The original concept of this diet comes from a book written by a nutritionist named Holly McCord in 2002.</p>\r\n<p class=\"eplus-OYln1P\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">But if that were the case, then how and why would ice creams develop such a bad reputation in regard to calories, in the first place? That&rsquo;sThat&rsquo;s because, in reality, ice cream still possesses as many calories as mentioned in the earlier sections of this article.</p>\r\n<p class=\"eplus-qA1tOC\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">However, what still makes this diet effective is the general reduction in daily calorie intake. In the bigger picture, the Ice cream asks you to reduce the calories you consume each day (preferably to 1250). With this, you can add in your favorite food like ice cream worth 250 calories. Hence, the total calories you consume are no more than 1500. Thus, helping you reduce weight along with making it fun.</p>\r\n<p class=\"eplus-hYaGGp\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">One thing that you should keep in check while following this diet is the nutritional composition of the ice cream. Make sure it contains only 250 calories and avoid consuming rich and creamy ice creams.</p>\r\n<h4 style=\"text-align: justify;\">What is Low-Calorie Ice Cream?</h4>\r\n<p class=\"eplus-HMkhTF\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">As the name suggests, the Low-Calorie Ice Creams reduce the calories by using low-fat dairy products, artificial sweeteners, and milk substitutes. These ice creams can be a great way to satisfy your sweet-driven cravings while maintaining a healthy body.&nbsp;</p>\r\n<p class=\"eplus-vfFwgM\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">Nowadays, a lot of high-quality brands are manufacturing Low-Calorie Ice cream in Pakistan too. However, although the purpose of the product is to reduce calories, some brands utilize heavy processing methods that make the Low-Calorie Ice Cream much richer in calories than a regular one. Ironic, but it&rsquo;sits merely the truth. So, what should one do?&nbsp;</p>\r\n<p class=\"eplus-25uH9i\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">Perhaps, you should try making Low-Calorie Ice Cream at home! Here are some ways to do it:</p>\r\n<div class=\"code-block code-block-3\" style=\"box-sizing: border-box; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; margin: 8px auto; clear: both; text-align: justify;\">&nbsp;</div>\r\n<ul class=\"eplus-NWgjLO\" style=\"box-sizing: border-box; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bold;\"><em style=\"box-sizing: border-box;\">Strawberry Ice Cream</em></span></li>\r\n</ul>\r\n<p class=\"eplus-81l4lJ\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">In a medium bowl, stir together 1-cup of low-fat cottage cheese, 2-tbsp of unsweetened almond milk, 2-tbsp of desired sweetener (honey or any sugar substitute), and freeze till solid. Cut the solidified mixture into cubes and let it rest for 10-minutes. Then, add it into a food processor as well as 10-strawberries and blend until smooth. It yields two servings.&nbsp;</p>\r\n<ul class=\"eplus-5xAcnp\" style=\"box-sizing: border-box; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">\r\n<li style=\"box-sizing: border-box;\"><span style=\"box-sizing: border-box; font-weight: bold;\"><em style=\"box-sizing: border-box;\">&nbsp;Mango Ice Cream&nbsp;</em></span></li>\r\n</ul>\r\n<p class=\"eplus-PYgg1X\" style=\"box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; color: #70778b; font-family: Roboto, sans-serif; font-size: 14px; letter-spacing: 0.28px; background-color: #ffffff; text-align: justify;\">In a food processor, combine 2-cups of mango, half a cup of non-fat Greek yogurt, 2-tsp of vanilla extract, and 2-tsp of honey. Blend it until smooth. It will yield four servings.</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>', 1, '2023-03-04 12:48:53', '2023-03-05 06:39:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_categories`
+--
+
+CREATE TABLE `blog_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `blog_category_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_category_slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_categories`
+--
+
+INSERT INTO `blog_categories` (`id`, `blog_category_name`, `blog_category_slug`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Product Announcements', 'product-announcements', 1, '2023-03-04 07:54:55', '2023-03-04 08:04:10'),
+(3, 'Motivation', 'motivation', 1, '2023-03-04 09:38:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -289,7 +341,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2023_02_13_174414_create_cities_table', 12),
 (18, '2023_02_13_174539_create_areas_table', 12),
 (19, '2023_02_20_145708_create_orders_table', 13),
-(20, '2023_02_20_150716_create_order_items_table', 13);
+(20, '2023_02_20_150716_create_order_items_table', 13),
+(21, '2023_03_04_123001_create_blog_categories_table', 14),
+(22, '2023_03_04_123259_create_blogs_table', 15),
+(23, '2023_03_05_142613_create_reviews_table', 16);
 
 -- --------------------------------------------------------
 
@@ -697,6 +752,31 @@ INSERT INTO `product_images` (`id`, `product_id`, `photo_name`, `created_at`, `u
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rating` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `vendor_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `comment`, `rating`, `status`, `vendor_id`, `created_at`, `updated_at`) VALUES
+(1, 9, 3, 'The staff was great. The receptionists were very helpful and answered all our questions. The room was clean and bright, and the room service was always on time. Will be coming back!', '4', '0', 15, '2023-03-05 14:33:36', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sliders`
 --
 
@@ -824,6 +904,7 @@ CREATE TABLE `users` (
   `vendor_short_info` text COLLATE utf8mb4_unicode_ci,
   `role` enum('admin','vendor','user') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `status` enum('active','inactive') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+  `last_seen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -833,18 +914,18 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `photo`, `phone`, `address`, `year_id`, `vendor_short_info`, `role`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', NULL, NULL, '2023-01-03 13:37:08'),
-(2, 'Nest Food.,Ltd', 'vendor12', 'vendor@gmail.com', NULL, '$2y$10$vG6N.zGHOGurM01ULjIlkOUsg/yTdea.0K0ut5TF.jkdapKfN8ZxC', '202301032007vendor-16.png', '+92 324 0725122', 'Cardiff CF10 3AT, UK', 4, 'Got a smooth, buttery spread in your fridge? Chances are good that it\'s Good Chef. This brand made Lionto\'s list of the most popular grocery brands across the country.', 'vendor', 'active', NULL, '2023-01-11 06:27:18', '2023-01-12 13:46:10'),
-(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', NULL, NULL, '2023-02-21 02:53:57'),
-(12, 'user1', NULL, 'user1@gmail.com', NULL, '$2y$10$ZD8bezyH2umjaHaPMbbvwO.hFv7oQzQRLuHPGIutajfS9Erei1lHG', NULL, NULL, NULL, NULL, NULL, 'user', 'active', NULL, '2022-12-31 15:19:30', '2022-12-31 15:19:30'),
-(13, 'hassan', NULL, 'hassan@gmail.com', NULL, '$2y$10$aP7D8mMfZPykO17pokgmb.keMAePuK/wMikWstmDXl.auTQ6MZKCq', NULL, NULL, NULL, NULL, NULL, 'user', 'active', NULL, '2023-01-07 10:26:06', '2023-01-07 10:26:06'),
-(14, 'Computer Dealers', 'Hassan UK', 'healthy_food@gmail.com', NULL, '$2y$10$OCBe6jSLUklwkWf2KrN6Aul0EmlzjeCxbQwC4fzE4ySsex/rnq0Ry', '202301121728vendor-15.png', '+92 306 7823773', 'Some where from UK', 1, 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum', 'vendor', 'active', NULL, '2023-01-12 12:23:33', '2023-01-12 13:45:59'),
-(15, 'Brands Febrics', 'Salman', 'nature_food@gmail.com', NULL, '$2y$10$uN6OVrVULa6be/fL9ED1n.oSmg0mZmA9JKdxrxvU8yAYoConMy3qW', NULL, '+92 3072024700', NULL, 3, NULL, 'vendor', 'active', NULL, '2023-01-12 12:31:18', '2023-01-15 11:03:43'),
-(16, 'I & I Enterprises', 'I & I Enterprises', 'enterprises@gmail.com', NULL, '$2y$10$/Fg44.dwQM3MnnzgM6d0OeLwRlxcgwgaEsvCIr96bk9kkH0KGSBRi', NULL, '+92 306 7483281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL),
-(17, 'Sigma Distributors', 'Sigma Distributors', 'sigma@gmail.com', NULL, '$2y$10$HIbbohapZB241Bcd3zdBDeqkN4czxsi0ik27M/f0ZIELWQPIs2Lia', NULL, '+92 306 783367', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL),
-(18, 'Punjab Oil Mills LTD', 'Punjab Oil Mills LTD', 'punjaboil@gmail.com', NULL, '$2y$10$iIATahsDlA8bovJCKzoFbOzzN/FHHajNNMgg71J.if88n1Ya273qe', NULL, '+92 306 7673822', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL),
-(19, 'KK Sports', 'KK Sports', 'kksports@gmail.com', NULL, '$2y$10$9aNmHGWDW29Rz4oCnwnPmuUqfhX1HRFYjSBJpHCUzCuwnxG.q9Jlq', NULL, '+92 306 1562281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `photo`, `phone`, `address`, `year_id`, `vendor_short_info`, `role`, `status`, `last_seen`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-05 11:51:22', NULL, NULL, '2023-03-05 06:51:22'),
+(2, 'Nest Food.,Ltd', 'vendor12', 'vendor@gmail.com', NULL, '$2y$10$vG6N.zGHOGurM01ULjIlkOUsg/yTdea.0K0ut5TF.jkdapKfN8ZxC', '202301032007vendor-16.png', '+92 324 0725122', 'Cardiff CF10 3AT, UK', 4, 'Got a smooth, buttery spread in your fridge? Chances are good that it\'s Good Chef. This brand made Lionto\'s list of the most popular grocery brands across the country.', 'vendor', 'active', NULL, NULL, '2023-01-11 06:27:18', '2023-01-12 13:46:10'),
+(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-05 20:22:15', NULL, NULL, '2023-03-05 15:22:15'),
+(12, 'Salman', 'Salman112', 'salman@gmail.com', NULL, '$2y$10$ZD8bezyH2umjaHaPMbbvwO.hFv7oQzQRLuHPGIutajfS9Erei1lHG', '202303040655202203281017503889_1_81445.png', '03069696089', 'Hostel Inn 2000, Near Punjab Bar Council, Lahore, Punjab Pakistan', NULL, NULL, 'user', 'active', '2023-03-04 06:55:46', NULL, '2022-12-31 15:19:30', '2023-03-04 01:55:46'),
+(13, 'hassan', NULL, 'hassan@gmail.com', NULL, '$2y$10$aP7D8mMfZPykO17pokgmb.keMAePuK/wMikWstmDXl.auTQ6MZKCq', NULL, NULL, NULL, NULL, NULL, 'user', 'active', NULL, NULL, '2023-01-07 10:26:06', '2023-01-07 10:26:06'),
+(14, 'Computer Dealers', 'Hassan UK', 'healthy_food@gmail.com', NULL, '$2y$10$OCBe6jSLUklwkWf2KrN6Aul0EmlzjeCxbQwC4fzE4ySsex/rnq0Ry', '202303040630d89f9c1e19bb01a129b1f3f67925a745.jpg', '+92 306 7823773', 'Some where from UK', 1, 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum', 'vendor', 'active', '2023-03-04 06:45:54', NULL, '2023-01-12 12:23:33', '2023-03-04 01:45:54'),
+(15, 'Brands Febrics', 'Salman', 'nature_food@gmail.com', NULL, '$2y$10$uN6OVrVULa6be/fL9ED1n.oSmg0mZmA9JKdxrxvU8yAYoConMy3qW', NULL, '+92 3072024700', NULL, 3, NULL, 'vendor', 'active', NULL, NULL, '2023-01-12 12:31:18', '2023-01-15 11:03:43'),
+(16, 'I & I Enterprises', 'I & I Enterprises', 'enterprises@gmail.com', NULL, '$2y$10$/Fg44.dwQM3MnnzgM6d0OeLwRlxcgwgaEsvCIr96bk9kkH0KGSBRi', NULL, '+92 306 7483281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
+(17, 'Sigma Distributors', 'Sigma Distributors', 'sigma@gmail.com', NULL, '$2y$10$HIbbohapZB241Bcd3zdBDeqkN4czxsi0ik27M/f0ZIELWQPIs2Lia', NULL, '+92 306 783367', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
+(18, 'Punjab Oil Mills LTD', 'Punjab Oil Mills LTD', 'punjaboil@gmail.com', NULL, '$2y$10$iIATahsDlA8bovJCKzoFbOzzN/FHHajNNMgg71J.if88n1Ya273qe', NULL, '+92 306 7673822', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
+(19, 'KK Sports', 'KK Sports', 'kksports@gmail.com', NULL, '$2y$10$9aNmHGWDW29Rz4oCnwnPmuUqfhX1HRFYjSBJpHCUzCuwnxG.q9Jlq', NULL, '+92 306 1562281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -912,6 +993,18 @@ ALTER TABLE `areas`
 -- Indexes for table `banners`
 --
 ALTER TABLE `banners`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog_categories`
+--
+ALTER TABLE `blog_categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1003,6 +1096,14 @@ ALTER TABLE `product_images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reviews_product_id_foreign` (`product_id`),
+  ADD KEY `reviews_user_id_foreign` (`user_id`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -1051,6 +1152,18 @@ ALTER TABLE `banners`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `blogs`
+--
+ALTER TABLE `blogs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `blog_categories`
+--
+ALTER TABLE `blog_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
@@ -1096,7 +1209,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1127,6 +1240,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `product_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `sliders`
@@ -1167,6 +1286,13 @@ ALTER TABLE `years`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

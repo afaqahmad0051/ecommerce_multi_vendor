@@ -26,6 +26,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
@@ -90,6 +91,10 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
 
     Route::prefix('cash')->name('cash.')->controller(StripeController::class)->group(function () {
         Route::post('order','cashorder')->name('order');
+    });
+
+    Route::prefix('review')->name('review.')->controller(ReviewController::class)->group(function () {
+        Route::post('store','store')->name('store');
     });
 });
 
