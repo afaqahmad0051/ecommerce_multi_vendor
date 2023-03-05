@@ -291,17 +291,17 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::prefix('blog')->name('blog.')->controller(BlogController::class)->group(function () {
         //Blog Category
         Route::get('category/list','categoryList')->name('category.list');
-        Route::get('category/create','categoryCreate')->name('category.create');
+        Route::get('category/form','categoryCreate')->name('category.create');
         Route::post('category/store','categoryStore')->name('category.store');
-        Route::get('category/edit/{id}','categoryEdit')->name('category.edit');
+        Route::get('category/form/{id}','categoryEdit')->name('category.edit');
         Route::post('category/update/{id}','categoryUpdate')->name('category.update');
         Route::get('category/delete/{id}','categoryDelete')->name('category.delete');
         
         //Blog Post
         Route::get('list','index')->name('post.list');
-        Route::get('create','create')->name('post.create');
+        Route::get('form','create')->name('post.create');
         Route::post('store','store')->name('post.store');
-        Route::get('edit/{id}','edit')->name('post.edit');
+        Route::get('form/{id}','edit')->name('post.edit');
         Route::post('update/{id}','update')->name('post.update');
         Route::get('delete/{id}','destroy')->name('post.delete');
     });
@@ -403,4 +403,12 @@ Route::get('/checkout', [CartController::class,'checkout'])->name('checkout');
 Route::prefix('vendor')->name('supplier.')->controller(IndexController::class)->group(function () {
     Route::get('shop/details/{id}','VendorDetails')->name('shop');
     Route::get('list','List')->name('all');
+});
+
+//Blog Routes
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/blog','Blog')->name('blog.home');
+    Route::get('/blog/grid','BlogGrid')->name('blog.grid');
+    Route::get('/blog/category/{slug}/{id}','BlogCategoryGrid')->name('blog.category.grid');
+    Route::get('/blog/{slug}/{id}','blogRead')->name('blog.read');
 });

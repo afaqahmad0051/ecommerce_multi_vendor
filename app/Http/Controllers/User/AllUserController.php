@@ -83,7 +83,7 @@ class AllUserController extends Controller
 
             $data['order'] = Order::with('country','city','area','user')->where('id',$id)->where('user_id',$user_id)->first();
             $data['order_item'] = OrderItem::with('product')->where('order_id',$id)->latest()->get();
-            return view('user.order.order_pdf',compact('data'));
+            return view('user.order.order_invoice',compact('data'));
         }
     }
 

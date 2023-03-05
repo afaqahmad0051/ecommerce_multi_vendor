@@ -193,7 +193,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                                     </li>
                                 @endforeach
                                 <li>
-                                    <a href="page-contact.html">Contact</a>
+                                    <a href="{{ route('blog.home') }}">Blog</a>
                                 </li>
                             </ul>
                         </nav>

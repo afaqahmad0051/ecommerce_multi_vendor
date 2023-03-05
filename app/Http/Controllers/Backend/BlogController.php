@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
@@ -112,7 +113,6 @@ class BlogController extends Controller
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(1103,906)->save('upload/blog_images/'.$name_gen);
         $save_url = 'upload/blog_images/'.$name_gen;
-
         Blog::insert([
             'category_id' => $request->category_id,
             'post_title' => $request->post_title,
@@ -128,17 +128,6 @@ class BlogController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('blog.post.list')->with($notification);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -174,6 +163,7 @@ class BlogController extends Controller
             }
             Blog::findOrFail($id)->update([
                 'category_id' => $request->category_id,
+                'user_id' => auth()->user()->id,
                 'post_title' => $request->post_title,
                 'post_slug' => strtolower(str_replace(' ','-',$request->post_title)),
                 'post_image' => $save_url,
@@ -190,6 +180,7 @@ class BlogController extends Controller
         }else{
             Blog::findOrFail($id)->update([
                 'category_id' => $request->category_id,
+                'user_id' => auth()->user()->id,
                 'post_title' => $request->post_title,
                 'post_slug' => strtolower(str_replace(' ','-',$request->post_title)),
                 'post_short_desc' => $request->post_short_desc,
@@ -223,5 +214,39 @@ class BlogController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+    */
+    public function Blog()
+    {
+        $data['category'] = BlogCategory::where('status',1)->latest()->get();
+        $data['post'] = Blog::where('status',1)->latest()->get();
+        return view('user.blog.home_blog',compact('data'));
+    }
+
+    public function BlogGrid()
+    {
+        $data['category'] = BlogCategory::where('status',1)->latest()->get();
+        $data['post'] = Blog::where('status',1)->latest()->get();
+        return view('user.blog.home_blog_grid',compact('data'));
+    }
+
+    public function BlogCategoryGrid(Request $reques, $slug, $id)
+    {
+        $data['blog'] = Blog::where('category_id',$id)->where('status',1)->get();
+        $data['category'] = BlogCategory::where('id',$id)->first();
+        return view('user.blog.category_blog',compact('data'));
+    }
+
+    public function blogRead(Request $request, $slug, $id)
+    {
+        $data['category'] = BlogCategory::where('status',1)->latest()->get();
+        $data['blog'] = Blog::findOrFail($id);
+        return view('user.blog.detail',compact('data'));
     }
 }
