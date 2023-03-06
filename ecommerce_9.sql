@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 05, 2023 at 08:23 PM
+-- Generation Time: Mar 06, 2023 at 08:49 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.13
 
@@ -772,7 +772,12 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `comment`, `rating`, `status`, `vendor_id`, `created_at`, `updated_at`) VALUES
-(1, 9, 3, 'The staff was great. The receptionists were very helpful and answered all our questions. The room was clean and bright, and the room service was always on time. Will be coming back!', '4', '0', 15, '2023-03-05 14:33:36', NULL);
+(1, 9, 3, 'The staff was great. The receptionists were very helpful and answered all our questions. The room was clean and bright, and the room service was always on time. Will be coming back!', '4', '1', 15, '2023-03-05 14:33:36', '2023-03-06 14:51:30'),
+(2, 9, 13, 'The staff was great. The receptionists were very helpful and answered all our questions. The room was clean and bright, and the room service was always on time. Will be coming back!', '3', '1', 15, '2023-03-06 10:25:36', '2023-03-06 14:51:27'),
+(3, 9, 12, 'The staff was great. The receptionists were very helpful and answered all our questions. The room was clean and bright, and the room service was always on time. Will be coming back!', '5', '1', 15, '2023-03-06 10:41:41', '2023-03-06 14:51:23'),
+(6, 54, 12, 'Overall, I would not recommend the FANTASY perfume by Hira Mani. While the packaging is lovely, the scent itself is too overpowering and does not last very long on the skin. There are many other fragrances on the market that are much more well-balanced and long-lasting.', '2', '1', 17, '2023-03-06 14:57:52', '2023-03-06 15:16:28'),
+(7, 54, 3, 'I recently had the pleasure of trying out the FANTASY perfume by Hira Mani, and I must say, I am thoroughly impressed! This fragrance is absolutely delightful and has quickly become one of my favorite scents to wear.', '5', '1', 17, '2023-03-06 15:04:52', '2023-03-06 15:16:25'),
+(8, 54, 13, 'What I love most about FANTASY is how versatile it is. I can wear it for any occasion - whether I\'m running errands during the day or going out for a fancy dinner at night. It\'s the perfect balance of fun and sophistication, and it always makes me feel confident and beautiful.', '5', '1', 17, '2023-03-06 15:05:11', '2023-03-06 15:16:21');
 
 -- --------------------------------------------------------
 
@@ -915,15 +920,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `photo`, `phone`, `address`, `year_id`, `vendor_short_info`, `role`, `status`, `last_seen`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-05 11:51:22', NULL, NULL, '2023-03-05 06:51:22'),
+(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-06 20:29:39', NULL, NULL, '2023-03-06 15:29:39'),
 (2, 'Nest Food.,Ltd', 'vendor12', 'vendor@gmail.com', NULL, '$2y$10$vG6N.zGHOGurM01ULjIlkOUsg/yTdea.0K0ut5TF.jkdapKfN8ZxC', '202301032007vendor-16.png', '+92 324 0725122', 'Cardiff CF10 3AT, UK', 4, 'Got a smooth, buttery spread in your fridge? Chances are good that it\'s Good Chef. This brand made Lionto\'s list of the most popular grocery brands across the country.', 'vendor', 'active', NULL, NULL, '2023-01-11 06:27:18', '2023-01-12 13:46:10'),
-(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-05 20:22:15', NULL, NULL, '2023-03-05 15:22:15'),
-(12, 'Salman', 'Salman112', 'salman@gmail.com', NULL, '$2y$10$ZD8bezyH2umjaHaPMbbvwO.hFv7oQzQRLuHPGIutajfS9Erei1lHG', '202303040655202203281017503889_1_81445.png', '03069696089', 'Hostel Inn 2000, Near Punjab Bar Council, Lahore, Punjab Pakistan', NULL, NULL, 'user', 'active', '2023-03-04 06:55:46', NULL, '2022-12-31 15:19:30', '2023-03-04 01:55:46'),
-(13, 'hassan', NULL, 'hassan@gmail.com', NULL, '$2y$10$aP7D8mMfZPykO17pokgmb.keMAePuK/wMikWstmDXl.auTQ6MZKCq', NULL, NULL, NULL, NULL, NULL, 'user', 'active', NULL, NULL, '2023-01-07 10:26:06', '2023-01-07 10:26:06'),
+(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-06 15:24:06', NULL, NULL, '2023-03-06 10:24:06'),
+(12, 'Salman', 'Salman112', 'salman@gmail.com', NULL, '$2y$10$ZD8bezyH2umjaHaPMbbvwO.hFv7oQzQRLuHPGIutajfS9Erei1lHG', '202303040655202203281017503889_1_81445.png', '03069696089', 'Hostel Inn 2000, Near Punjab Bar Council, Lahore, Punjab Pakistan', NULL, NULL, 'user', 'active', '2023-03-06 15:52:13', NULL, '2022-12-31 15:19:30', '2023-03-06 10:52:13'),
+(13, 'hassan', NULL, 'hassan@gmail.com', NULL, '$2y$10$aP7D8mMfZPykO17pokgmb.keMAePuK/wMikWstmDXl.auTQ6MZKCq', NULL, NULL, NULL, NULL, NULL, 'user', 'active', '2023-03-06 20:29:28', NULL, '2023-01-07 10:26:06', '2023-03-06 15:29:28'),
 (14, 'Computer Dealers', 'Hassan UK', 'healthy_food@gmail.com', NULL, '$2y$10$OCBe6jSLUklwkWf2KrN6Aul0EmlzjeCxbQwC4fzE4ySsex/rnq0Ry', '202303040630d89f9c1e19bb01a129b1f3f67925a745.jpg', '+92 306 7823773', 'Some where from UK', 1, 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum', 'vendor', 'active', '2023-03-04 06:45:54', NULL, '2023-01-12 12:23:33', '2023-03-04 01:45:54'),
 (15, 'Brands Febrics', 'Salman', 'nature_food@gmail.com', NULL, '$2y$10$uN6OVrVULa6be/fL9ED1n.oSmg0mZmA9JKdxrxvU8yAYoConMy3qW', NULL, '+92 3072024700', NULL, 3, NULL, 'vendor', 'active', NULL, NULL, '2023-01-12 12:31:18', '2023-01-15 11:03:43'),
 (16, 'I & I Enterprises', 'I & I Enterprises', 'enterprises@gmail.com', NULL, '$2y$10$/Fg44.dwQM3MnnzgM6d0OeLwRlxcgwgaEsvCIr96bk9kkH0KGSBRi', NULL, '+92 306 7483281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
-(17, 'Sigma Distributors', 'Sigma Distributors', 'sigma@gmail.com', NULL, '$2y$10$HIbbohapZB241Bcd3zdBDeqkN4czxsi0ik27M/f0ZIELWQPIs2Lia', NULL, '+92 306 783367', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
+(17, 'Sigma Distributors', 'Sigma Distributors', 'sigma@gmail.com', NULL, '$2y$10$HIbbohapZB241Bcd3zdBDeqkN4czxsi0ik27M/f0ZIELWQPIs2Lia', NULL, '+92 306 783367', NULL, NULL, NULL, 'vendor', 'active', '2023-03-06 20:43:32', NULL, NULL, '2023-03-06 15:43:32'),
 (18, 'Punjab Oil Mills LTD', 'Punjab Oil Mills LTD', 'punjaboil@gmail.com', NULL, '$2y$10$iIATahsDlA8bovJCKzoFbOzzN/FHHajNNMgg71J.if88n1Ya273qe', NULL, '+92 306 7673822', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
 (19, 'KK Sports', 'KK Sports', 'kksports@gmail.com', NULL, '$2y$10$9aNmHGWDW29Rz4oCnwnPmuUqfhX1HRFYjSBJpHCUzCuwnxG.q9Jlq', NULL, '+92 306 1562281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL);
 
@@ -1245,7 +1250,7 @@ ALTER TABLE `product_images`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sliders`
