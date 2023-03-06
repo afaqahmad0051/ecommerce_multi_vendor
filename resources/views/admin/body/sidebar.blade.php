@@ -158,6 +158,23 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
+    <li {{ ($prefix == '/review')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-notepad"></i>
+            </div>
+            <div class="menu-title">Review Management</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'review.pending')?'mm-active':'' }}">
+                <a href="{{ route('review.pending') }}"><i class="bx bx-right-arrow-alt"></i>Pending Reviews</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'review.published')?'mm-active':'' }}">
+                <a href="{{ route('review.published') }}"><i class="bx bx-right-arrow-alt"></i>Published Reviews</a>
+            </li>
+        </ul>
+    </li>
     <li {{ ($prefix == '/setting')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-cog"></i>

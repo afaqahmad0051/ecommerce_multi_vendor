@@ -310,6 +310,14 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('update/{id}','update')->name('post.update');
         Route::get('delete/{id}','destroy')->name('post.delete');
     });
+    
+    //Admin Review Routes
+    Route::prefix('review')->name('review.')->controller(ReviewController::class)->group(function () {
+        Route::get('pending','reviewPending')->name('pending');
+        Route::get('publish/{id}','reviewPublish')->name('publish');
+        Route::get('published','reviewPublished')->name('published');
+        Route::get('delete/{id}','reviewDelete')->name('delete');
+    });
 
 });
 
@@ -357,6 +365,11 @@ Route::middleware(['auth','role:vendor'])->group(function(){
             Route::get('approve','approve')->name('approve');
             Route::get('details/{id}','details')->name('details');
         });
+    });
+    
+    //Vendor Review Routes
+    Route::prefix('review')->name('review.')->controller(ReviewController::class)->group(function () {
+        Route::get('vendor/all','AllreviewVendor')->name('vendor.all');
     });
 });
 

@@ -52,6 +52,23 @@
             </li>
         </ul>
     </li>
+    <li>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-notepad"></i>
+            </div>
+            <div class="menu-title">Review Management</div>
+        </a>
+        <ul>
+            <li>
+                <a href="{{ route('review.vendor.all') }}"><i class="bx bx-right-arrow-alt"></i>All Reviews</a>
+            </li>
+        </ul>
+        {{-- <ul>
+            <li class="{{ ($route == 'review.published')?'mm-active':'' }}">
+                <a href="{{ route('review.published') }}"><i class="bx bx-right-arrow-alt"></i>Published Reviews</a>
+            </li>
+        </ul> --}}
+    </li>
     @endif
     <li>
         <a href="https://themeforest.net/user/codervent" target="_blank">

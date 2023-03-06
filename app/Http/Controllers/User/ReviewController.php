@@ -32,4 +32,49 @@ class ReviewController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    public function reviewPending()
+    {
+        $reviews = Review::where('status',0)->latest()->get();
+        return view('admin.review.pending',compact('reviews'));
+    }
+
+    public function reviewPublished()
+    {
+        $reviews = Review::where('status',1)->latest()->get();
+        return view('admin.review.published',compact('reviews'));
+    }
+
+    public function reviewPublish($id)
+    {
+        Review::where('id',$id)->update([
+            'status' => 1,
+            'updated_at' => Carbon::now(),
+        ]);
+        $notification = array(
+            'message' => 'Review published',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function reviewDelete($id)
+    {
+        Review::where('id',$id)->delete();
+        $notification = array(
+            'message' => 'Review deleted',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+    public function AllreviewVendor()
+    {
+        
+        $role = Auth::user()->role;
+        if ($role == 'vendor') {
+            $user_id = Auth::user()->id;
+            $reviews = Review::where('vendor_id',$user_id)->where('status',1)->latest()->get();
+            return view('vendor.review.vendor_review',compact('reviews'));
+        }
+    }
 }
