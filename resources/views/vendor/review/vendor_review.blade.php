@@ -19,12 +19,14 @@
                     <thead>
                         <tr>
                             <th>Sr.</th>
+                            <th>Image</th>
                             <th>Product</th>
                             <th>User</th>
                             <th>Rating</th>
                             <th style="text-align: center;">Comment</th>
                             <th>Date</th>
                             <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +39,9 @@
                             @endphp
                             <tr>
                                 <td>{{ $key+1 }}</td>
+                                <td>
+                                    <img src="{{ asset($item->product->product_thumbnail) }}" style="width: 40px; height:40px;">
+                                </td>
                                 <td>{{ $item->product->product_name }}</td>
                                 <td>{{ $item->user->name }}</td>
                                 <td>
@@ -84,12 +89,14 @@
                     <tfoot>
                         <tr>
                             <th>Sr.</th>
-                            <th>Comment</th>
-                            <th>User</th>
+                            <th>Image</th>
                             <th>Product</th>
+                            <th>User</th>
                             <th>Rating</th>
+                            <th style="text-align: center;">Comment</th>
                             <th>Date</th>
                             <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </tfoot>
                 </table>

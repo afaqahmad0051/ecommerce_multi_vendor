@@ -82,10 +82,25 @@
                                     </div>
                                     <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
                                     <div class="product-rate-cover">
+                                        @php
+                                            $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                            $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                        @endphp
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                        @if ($average == 0)
+                                        @elseif($average == 1 || $average < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($average == 2 || $average < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($average == 3 || $average < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($average == 4 || $average < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($average == 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                     </div>
                                     <div>
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
@@ -180,10 +195,25 @@
                                     </div>
                                     <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
                                     <div class="product-rate-cover">
+                                        @php
+                                            $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                            $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                        @endphp
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                        @if ($average == 0)
+                                        @elseif($average == 1 || $average < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($average == 2 || $average < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($average == 3 || $average < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($average == 4 || $average < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($average == 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                     </div>
                                     <div>
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
@@ -278,10 +308,25 @@
                                     </div>
                                     <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
                                     <div class="product-rate-cover">
+                                        @php
+                                            $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                            $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                        @endphp
                                         <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                        @if ($average == 0)
+                                        @elseif($average == 1 || $average < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($average == 2 || $average < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($average == 3 || $average < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($average == 4 || $average < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($average == 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                         </div>
-                                        <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                        <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                     </div>
                                     <div>
                                         @if ($item->vendor_id == null || $item->vendor_id == 0 || $item->vendor_id == '')
@@ -342,10 +387,25 @@
                                     <a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a>
                                 </h6>
                                 <div class="product-rate-cover">
+                                    @php
+                                        $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                        $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                    @endphp
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                    @if ($average == 0)
+                                    @elseif($average == 1 || $average < 2)
+                                        <div class="product-rating" style="width: 20%"></div>
+                                    @elseif($average == 2 || $average < 3)
+                                        <div class="product-rating" style="width: 40%"></div>
+                                    @elseif($average == 3 || $average < 4)
+                                        <div class="product-rating" style="width: 60%"></div>
+                                    @elseif($average == 4 || $average < 5)
+                                        <div class="product-rating" style="width: 80%"></div>
+                                    @elseif($average == 5)
+                                        <div class="product-rating" style="width: 100%"></div>
+                                    @endif
                                     </div>
-                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                    <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                 </div>
                                 @if ($item->discount_price == null || $item->discount_price == 0 || $item->discount_price == '')
                                     <div class="product-price">
@@ -382,10 +442,25 @@
                                     <a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a>
                                 </h6>
                                 <div class="product-rate-cover">
+                                    @php
+                                        $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                        $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                    @endphp
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                    @if ($average == 0)
+                                    @elseif($average == 1 || $average < 2)
+                                        <div class="product-rating" style="width: 20%"></div>
+                                    @elseif($average == 2 || $average < 3)
+                                        <div class="product-rating" style="width: 40%"></div>
+                                    @elseif($average == 3 || $average < 4)
+                                        <div class="product-rating" style="width: 60%"></div>
+                                    @elseif($average == 4 || $average < 5)
+                                        <div class="product-rating" style="width: 80%"></div>
+                                    @elseif($average == 5)
+                                        <div class="product-rating" style="width: 100%"></div>
+                                    @endif
                                     </div>
-                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                    <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                 </div>
                                 @if ($item->discount_price == null || $item->discount_price == 0 || $item->discount_price == '')
                                     <div class="product-price">
@@ -421,10 +496,25 @@
                                     <a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a>
                                 </h6>
                                 <div class="product-rate-cover">
+                                    @php
+                                        $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                        $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                    @endphp
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                    @if ($average == 0)
+                                    @elseif($average == 1 || $average < 2)
+                                        <div class="product-rating" style="width: 20%"></div>
+                                    @elseif($average == 2 || $average < 3)
+                                        <div class="product-rating" style="width: 40%"></div>
+                                    @elseif($average == 3 || $average < 4)
+                                        <div class="product-rating" style="width: 60%"></div>
+                                    @elseif($average == 4 || $average < 5)
+                                        <div class="product-rating" style="width: 80%"></div>
+                                    @elseif($average == 5)
+                                        <div class="product-rating" style="width: 100%"></div>
+                                    @endif
                                     </div>
-                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                    <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                 </div>
                                 @if ($item->discount_price == null || $item->discount_price == 0 || $item->discount_price == '')
                                     <div class="product-price">
@@ -461,10 +551,25 @@
                                     <a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a>
                                 </h6>
                                 <div class="product-rate-cover">
+                                    @php
+                                        $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                        $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                    @endphp
                                     <div class="product-rate d-inline-block">
-                                        <div class="product-rating" style="width: 90%"></div>
+                                    @if ($average == 0)
+                                    @elseif($average == 1 || $average < 2)
+                                        <div class="product-rating" style="width: 20%"></div>
+                                    @elseif($average == 2 || $average < 3)
+                                        <div class="product-rating" style="width: 40%"></div>
+                                    @elseif($average == 3 || $average < 4)
+                                        <div class="product-rating" style="width: 60%"></div>
+                                    @elseif($average == 4 || $average < 5)
+                                        <div class="product-rating" style="width: 80%"></div>
+                                    @elseif($average == 5)
+                                        <div class="product-rating" style="width: 100%"></div>
+                                    @endif
                                     </div>
-                                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                                    <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                 </div>
                                 @if ($item->discount_price == null || $item->discount_price == 0 || $item->discount_price == '')
                                     <div class="product-price">

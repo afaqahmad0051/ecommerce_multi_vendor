@@ -66,9 +66,25 @@
                                                 @endif
                                             </div>
                                             <h2><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h2>
+                                            @php
+                                                $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                                $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                            @endphp
                                             <div class="product-rate d-inline-block">
+                                            @if ($average == 0)
+                                            @elseif($average == 1 || $average < 2)
+                                                <div class="product-rating" style="width: 20%"></div>
+                                            @elseif($average == 2 || $average < 3)
+                                                <div class="product-rating" style="width: 40%"></div>
+                                            @elseif($average == 3 || $average < 4)
+                                                <div class="product-rating" style="width: 60%"></div>
+                                            @elseif($average == 4 || $average < 5)
                                                 <div class="product-rating" style="width: 80%"></div>
+                                            @elseif($average == 5)
+                                                <div class="product-rating" style="width: 100%"></div>
+                                            @endif
                                             </div>
+                                            <span class="font-small ml-5 text-muted"> ({{$r_count}} reviews)</span>
                                             @if ($item->discount_price == null || $item->discount_price == 0 || $item->discount_price == '')
                                                 <div class="product-price mt-10">
                                                     <span>£{{ $item->selling_price }}</span>
@@ -84,7 +100,7 @@
                                                     <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
-                                            <a href="shop-cart.html" class="btn w-100 hover-up"><i class="fi-rs-shopping-cart mr-5"></i>Add To Cart</a>
+                                            <a href="{{ route('product.details',[$item->product_slug, $item->id]) }}" class="btn w-100 hover-up"><i class="fi-rs-shopping-cart mr-5"></i>Details</a>
                                         </div>
                                     </div>    
                                 @endforeach

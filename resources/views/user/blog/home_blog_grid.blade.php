@@ -153,8 +153,23 @@
                                     <div class="content pt-10">
                                         <h6><a href="{{ route('product.details',[$item->product_slug, $item->id]) }}">{{ $item->product_name }}</a></h6>
                                         <p class="price mb-0 mt-5">£{{ isset($item->discount_price)?$item->discount_price:$item->selling_price }}</p>
+                                        @php
+                                            $average = App\Models\Review::where('product_id',$item->id)->where('status',1)->avg('rating');
+                                            $r_count = App\Models\Review::where('product_id',$item->id)->where('status',1)->count();
+                                        @endphp
                                         <div class="product-rate">
-                                            <div class="product-rating" style="width: 90%"></div>
+                                        @if ($average == 0)
+                                        @elseif($average == 1 || $average < 2)
+                                            <div class="product-rating" style="width: 20%"></div>
+                                        @elseif($average == 2 || $average < 3)
+                                            <div class="product-rating" style="width: 40%"></div>
+                                        @elseif($average == 3 || $average < 4)
+                                            <div class="product-rating" style="width: 60%"></div>
+                                        @elseif($average == 4 || $average < 5)
+                                            <div class="product-rating" style="width: 80%"></div>
+                                        @elseif($average == 5)
+                                            <div class="product-rating" style="width: 100%"></div>
+                                        @endif
                                         </div>
                                     </div>
                                 </div>
