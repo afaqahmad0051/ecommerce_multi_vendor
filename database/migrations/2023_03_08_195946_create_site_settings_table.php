@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
             $table->string('logo')->nullable();
+            $table->string('slogan')->nullable();
             $table->string('cell_phone')->nullable();
             $table->string('support_phone')->nullable();
             $table->string('email')->nullable();

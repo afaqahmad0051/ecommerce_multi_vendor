@@ -27,6 +27,7 @@ Site Info
                         <div class="card-body">
                             <form action="{{ route('site.update',$setting->id) }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="old_image" value="{{ isset($category->logo)?$category->logo:'' }}">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row mb-3">
@@ -47,31 +48,43 @@ Site Info
                                                 <input type="email" class="form-control" name="email" value="{{ $setting->email }}"/>
                                             </div>
                                         </div>
+                                        <div class="row mb-3">
+                                            <strong class="col-sm-3 form-label">Slogan:</strong>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="slogan" value="{{ $setting->slogan }}"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <strong class="col-sm-3 form-label">Address:</strong>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" name="address">{{ $setting->address }}</textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row mb-3">
                                             <strong class="col-sm-3 form-label">Facebook Link:</strong>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" name="facebook" value="{{ $setting->facebook }}"/>
+                                                <input type="text" class="form-control" name="facebook" value="{{ $setting->facebook }}"/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <strong class="col-sm-3 form-label">Twitter Link:</strong>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" name="twitter" value="{{ $setting->twitter }}"/>
+                                                <input type="text" class="form-control" name="twitter" value="{{ $setting->twitter }}"/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <strong class="col-sm-3 form-label">Instagram Link:</strong>
                                             <div class="col-sm-9">
-                                                <input type="email" class="form-control" name="instagram" value="{{ $setting->instagram }}"/>
+                                                <input type="text" class="form-control" name="instagram" value="{{ $setting->instagram }}"/>
                                             </div>
                                         </div>
                                         <div class="row mb-3">
                                             <strong class="col-sm-4">Logo:</strong>
                                             <div class="col-sm-8">
                                                 <img class="rounded avatar-lg" id="showImg" src="{{ asset($setting->logo) }}" alt="No logo" style="float: right; heigt:100px; width:100px;">
-                                                <input class="form-control" type="file" name="loho" id="image" readonly style="margin-top: 7rem">
+                                                <input class="form-control" type="file" name="logo" id="image" readonly style="margin-top: 7rem">
                                             </div>
                                         </div>
                                     </div><hr>

@@ -2,6 +2,7 @@
 $categories = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->limit(5)->get();
 $categories_skip = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->skip(5)->limit(5)->get();
 $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name','ASC')->get();
+$setting = App\Models\SiteSetting::find(1);
 @endphp
 <header class="header-area header-style-1 header-height-2">
     <div class="mobile-promotion">
@@ -33,7 +34,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>
-                            <li>Need help? Call Us: <strong class="text-brand"> + 1800 900</strong></li>
+                            <li>Need help? Call Us: <strong class="text-brand"> {{$setting->support_phone}}</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -44,7 +45,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="{{ url('/') }}"><img src="{{asset('user/assets/imgs/theme/logo.svg')}}" alt="logo" /></a>
+                    <a href="{{ url('/') }}"><img src="{{asset($setting->logo)}}" alt="logo" /></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
@@ -142,7 +143,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="{{ url('/') }}"><img src="{{asset('user/assets/imgs/theme/logo.svg')}}" alt="logo" /></a>
+                    <a href="{{ url('/') }}"><img src="{{asset($setting->logo)}}" alt="logo" /></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -203,7 +204,7 @@ $categories_2 = App\Models\Category::where('status',1)->orderBy('category_name',
 
                 <div class="hotline d-none d-lg-flex">
                     <img src="{{asset('user/assets/imgs/theme/icons/icon-headphone.svg')}}" alt="hotline" />
-                    <p>1900 - 888<span>24/7 Support Center</span></p>
+                    <p>{{ $setting->support_phone }}<span>24/7 Support Center</span></p>
                 </div>
                 <div class="header-action-icon-2 d-block d-lg-none">
                     <div class="burger-icon burger-icon-white">

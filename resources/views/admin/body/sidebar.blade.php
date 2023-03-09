@@ -187,6 +187,11 @@ $route = Route::current()->getName();
             </li>
         </ul>
         <ul>
+            <li class="{{ ($route == 'seo.edit')?'mm-active':'' }}">
+                <a href="{{ route('seo.edit') }}"><i class="bx bx-right-arrow-alt"></i>SEO</a>
+            </li>
+        </ul>
+        <ul>
             <li class="{{ ($route == 'slider.list')?'mm-active':'' }} || {{ ($route == 'slider.create')?'mm-active':'' }} || {{ ($route == 'slider.edit')?'mm-active':'' }}">
                 <a href="{{ route('slider.list') }}"><i class="bx bx-right-arrow-alt"></i>Slider</a>
             </li>

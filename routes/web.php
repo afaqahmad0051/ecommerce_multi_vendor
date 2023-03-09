@@ -134,6 +134,12 @@ Route::middleware(['auth','role:admin'])->group(function(){
             Route::get('form','edit')->name('edit');
             Route::post('update/{id}','update')->name('update');
         });
+        
+        //Admin SEO Routes
+        Route::prefix('seo')->name('seo.')->controller(SiteSettingController::class)->group(function () {
+            Route::get('form','seoedit')->name('edit');
+            Route::post('update/{id}','seoupdate')->name('update');
+        });
 
         //Admin Year Routes
         Route::prefix('year')->name('year.')->controller(YearController::class)->group(function () {
