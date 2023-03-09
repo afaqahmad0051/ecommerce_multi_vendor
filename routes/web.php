@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnOrderController;
+use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorManagementController;
@@ -128,6 +129,12 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
     // Setting Prefix
     Route::prefix('setting')->group(function () {
+        //Admin Site Info Routes
+        Route::prefix('site')->name('site.')->controller(SiteSettingController::class)->group(function () {
+            Route::get('form','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+        });
+
         //Admin Year Routes
         Route::prefix('year')->name('year.')->controller(YearController::class)->group(function () {
             Route::get('list','index')->name('list');

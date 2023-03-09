@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 06, 2023 at 08:49 PM
+-- Generation Time: Mar 09, 2023 at 04:55 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.13
 
@@ -344,7 +344,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2023_02_20_150716_create_order_items_table', 13),
 (21, '2023_03_04_123001_create_blog_categories_table', 14),
 (22, '2023_03_04_123259_create_blogs_table', 15),
-(23, '2023_03_05_142613_create_reviews_table', 16);
+(23, '2023_03_05_142613_create_reviews_table', 16),
+(24, '2023_03_08_195946_create_site_settings_table', 17);
 
 -- --------------------------------------------------------
 
@@ -782,6 +783,34 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `comment`, `rating`, `stat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cell_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `support_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_address` text COLLATE utf8mb4_unicode_ci,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copyright` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`id`, `logo`, `cell_phone`, `support_phone`, `email`, `company_address`, `facebook`, `twitter`, `instagram`, `copyright`, `created_at`, `updated_at`) VALUES
+(1, NULL, '(+91) - 540-025-124553', '1900 - 8888', 'sale@Nest.com', '5171 W Campbell Ave undefined Kent, Utah 53127 United States', 'https://web.facebook.com/afaqahmad0051/', NULL, 'https://www.instagram.com/afaqahmad0051/?hl=en', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sliders`
 --
 
@@ -920,15 +949,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `photo`, `phone`, `address`, `year_id`, `vendor_short_info`, `role`, `status`, `last_seen`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-06 20:29:39', NULL, NULL, '2023-03-06 15:29:39'),
+(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-08 20:32:31', NULL, NULL, '2023-03-08 15:32:31'),
 (2, 'Nest Food.,Ltd', 'vendor12', 'vendor@gmail.com', NULL, '$2y$10$vG6N.zGHOGurM01ULjIlkOUsg/yTdea.0K0ut5TF.jkdapKfN8ZxC', '202301032007vendor-16.png', '+92 324 0725122', 'Cardiff CF10 3AT, UK', 4, 'Got a smooth, buttery spread in your fridge? Chances are good that it\'s Good Chef. This brand made Lionto\'s list of the most popular grocery brands across the country.', 'vendor', 'active', NULL, NULL, '2023-01-11 06:27:18', '2023-01-12 13:46:10'),
-(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-06 15:24:06', NULL, NULL, '2023-03-06 10:24:06'),
+(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-08 20:15:40', NULL, NULL, '2023-03-08 15:15:40'),
 (12, 'Salman', 'Salman112', 'salman@gmail.com', NULL, '$2y$10$ZD8bezyH2umjaHaPMbbvwO.hFv7oQzQRLuHPGIutajfS9Erei1lHG', '202303040655202203281017503889_1_81445.png', '03069696089', 'Hostel Inn 2000, Near Punjab Bar Council, Lahore, Punjab Pakistan', NULL, NULL, 'user', 'active', '2023-03-06 15:52:13', NULL, '2022-12-31 15:19:30', '2023-03-06 10:52:13'),
 (13, 'hassan', NULL, 'hassan@gmail.com', NULL, '$2y$10$aP7D8mMfZPykO17pokgmb.keMAePuK/wMikWstmDXl.auTQ6MZKCq', NULL, NULL, NULL, NULL, NULL, 'user', 'active', '2023-03-06 20:29:28', NULL, '2023-01-07 10:26:06', '2023-03-06 15:29:28'),
 (14, 'Computer Dealers', 'Hassan UK', 'healthy_food@gmail.com', NULL, '$2y$10$OCBe6jSLUklwkWf2KrN6Aul0EmlzjeCxbQwC4fzE4ySsex/rnq0Ry', '202303040630d89f9c1e19bb01a129b1f3f67925a745.jpg', '+92 306 7823773', 'Some where from UK', 1, 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum', 'vendor', 'active', '2023-03-04 06:45:54', NULL, '2023-01-12 12:23:33', '2023-03-04 01:45:54'),
 (15, 'Brands Febrics', 'Salman', 'nature_food@gmail.com', NULL, '$2y$10$uN6OVrVULa6be/fL9ED1n.oSmg0mZmA9JKdxrxvU8yAYoConMy3qW', NULL, '+92 3072024700', NULL, 3, NULL, 'vendor', 'active', NULL, NULL, '2023-01-12 12:31:18', '2023-01-15 11:03:43'),
 (16, 'I & I Enterprises', 'I & I Enterprises', 'enterprises@gmail.com', NULL, '$2y$10$/Fg44.dwQM3MnnzgM6d0OeLwRlxcgwgaEsvCIr96bk9kkH0KGSBRi', NULL, '+92 306 7483281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
-(17, 'Sigma Distributors', 'Sigma Distributors', 'sigma@gmail.com', NULL, '$2y$10$HIbbohapZB241Bcd3zdBDeqkN4czxsi0ik27M/f0ZIELWQPIs2Lia', NULL, '+92 306 783367', NULL, NULL, NULL, 'vendor', 'active', '2023-03-06 20:43:32', NULL, NULL, '2023-03-06 15:43:32'),
+(17, 'Sigma Distributors', 'Sigma Distributors', 'sigma@gmail.com', NULL, '$2y$10$HIbbohapZB241Bcd3zdBDeqkN4czxsi0ik27M/f0ZIELWQPIs2Lia', NULL, '+92 306 783367', NULL, NULL, NULL, 'vendor', 'active', '2023-03-08 19:56:58', NULL, NULL, '2023-03-08 14:56:58'),
 (18, 'Punjab Oil Mills LTD', 'Punjab Oil Mills LTD', 'punjaboil@gmail.com', NULL, '$2y$10$iIATahsDlA8bovJCKzoFbOzzN/FHHajNNMgg71J.if88n1Ya273qe', NULL, '+92 306 7673822', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
 (19, 'KK Sports', 'KK Sports', 'kksports@gmail.com', NULL, '$2y$10$9aNmHGWDW29Rz4oCnwnPmuUqfhX1HRFYjSBJpHCUzCuwnxG.q9Jlq', NULL, '+92 306 1562281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL);
 
@@ -1109,6 +1138,12 @@ ALTER TABLE `reviews`
   ADD KEY `reviews_user_id_foreign` (`user_id`);
 
 --
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -1214,7 +1249,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -1251,6 +1286,12 @@ ALTER TABLE `product_images`
 --
 ALTER TABLE `reviews`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sliders`
