@@ -21,6 +21,9 @@
 </head>
 
 <body>
+    @php
+        $setting = App\Models\SiteSetting::find(1);
+    @endphp
     <!-- Header  -->
     @include('user.body.header')
    <!-- End Header  -->
@@ -85,16 +88,16 @@
                         @endauth
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>
+                        <a href="#"><i class="fi-rs-headphones"></i>{{$setting->support_phone}} </a>
                     </div>
                 </div>
                 <div class="mobile-social-icon mb-50">
-                    <h6 class="mb-15">Follow Us</h6>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                    <h6>Follow Us</h6>
+                    <a href="{{ $setting->facebook }}" target="_blank"><img src="{{asset('user/assets/imgs/theme/icons/icon-facebook-white.svg')}}" alt="" /></a>
+                    <a href="{{ $setting->twitter }}" target="_blank"><img src="{{asset('user/assets/imgs/theme/icons/icon-twitter-white.svg')}}" alt="" /></a>
+                    <a href="{{ $setting->instagram }}" target="_blank"><img src="{{asset('user/assets/imgs/theme/icons/icon-instagram-white.svg')}}" alt="" /></a>
+                    <a href="#" target="_blank"><img src="{{asset('user/assets/imgs/theme/icons/icon-pinterest-white.svg')}}" alt="" /></a>
+                    <a href="#" target="_blank"><img src="{{asset('user/assets/imgs/theme/icons/icon-youtube-white.svg')}}" alt="" /></a>
                 </div>
                 <div class="site-copyright"><strong class="text-brand">Nest </strong> &copy; {{ date('Y') }}, All rights reserved</div>
             </div>

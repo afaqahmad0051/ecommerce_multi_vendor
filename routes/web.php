@@ -72,6 +72,8 @@ Route::middleware(['auth','role:user','verified'])->group(function(){
         Route::get('order/view/{id}','orderview')->name('order.view');
         Route::get('order/pdf/{id}','orderpdf')->name('order.pdf');
         Route::post('order/return/{id}','orderreturn')->name('order.return');
+        Route::get('track/order','orderTracking')->name('account.track.order');
+        Route::post('order/tracking','invoiceTracking')->name('order.tracking');
     });
 
     Route::prefix('compare')->name('compare.')->controller(CompareController::class)->group(function () {
@@ -258,6 +260,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('inactive/{id}','inactive')->name('inactive');
         Route::get('active/{id}','active')->name('active');
         Route::get('delete/{id}','destroy')->name('delete');
+        //Admin Stock Routes
+        Route::get('stock','stock')->name('stock');
     });
     
     //Admin Coupon Routes

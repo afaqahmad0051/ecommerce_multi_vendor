@@ -45,8 +45,8 @@ $route = Route::current()->getName();
             <div class="menu-title">Inventory</div>
         </a>
         <ul>
-            <li> <a href="{{ route('product.list') }}"><i class="bx bx-right-arrow-alt"></i>Product</a>
-            </li>
+            <li> <a href="{{ route('product.list') }}"><i class="bx bx-right-arrow-alt"></i>Product</a></li>
+            <li> <a href="{{ route('product.stock') }}"><i class="bx bx-right-arrow-alt"></i>Stock</a></li>
         </ul>
     </li>
     <li {{ ($prefix == '/coupon')?'mm-active':'' }}>
@@ -160,7 +160,7 @@ $route = Route::current()->getName();
     </li>
     <li {{ ($prefix == '/review')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
-            <div class="parent-icon"><i class="bx bx-notepad"></i>
+            <div class="parent-icon"><i class="bx bx-dna"></i>
             </div>
             <div class="menu-title">Review Management</div>
         </a>

@@ -289,4 +289,10 @@ class ProductController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    public function stock()
+    {
+        $products = Product::latest()->get();
+        return view('admin.product.stock',compact('products'));
+    }
 }

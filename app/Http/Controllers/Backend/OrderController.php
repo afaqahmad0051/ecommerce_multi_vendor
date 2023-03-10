@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -72,6 +74,12 @@ class OrderController extends Controller
 
     public function ProcessingDeliver($id)
     {
+        $product = OrderItem::where('order_id',$id)->get();
+        foreach ($product as $item) {
+            Product::where('id',$item->product_id)->update([
+                'product_qty' => DB::raw('product_qty-'.$item->qty)
+            ]);
+        }
         $data['order'] = Order::findOrFail($id)->update([
             'status' => 'delivered',
         ]);

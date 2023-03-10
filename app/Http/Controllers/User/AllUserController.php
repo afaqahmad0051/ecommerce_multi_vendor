@@ -100,4 +100,24 @@ class AllUserController extends Controller
         );
         return redirect()->route('user.account.orders')->with($notification);
     }
+
+    public function orderTracking()
+    {
+        return view('user.account.order_tracking');
+    }
+
+    public function invoiceTracking(Request $request)
+    {
+        $invoice = $request->code;
+        $track = Order::where('invoice_no',$invoice)->first();
+        if ($track) {
+            return view('user.account.track_order_map',compact('track'));
+        }else{
+            $notification = array(
+                'message' => 'Invalid invoice code',
+                'alert-type' => 'error'
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
 }
