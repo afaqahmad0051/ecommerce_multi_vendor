@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
+@php
+    $seo = App\Models\Seo::find(1);
+    $setting = App\Models\SiteSetting::find(1);
+@endphp
 <head>
     <meta charset="utf-8" />
     <title>@yield('title')</title>
@@ -11,6 +14,11 @@
     <meta property="og:type" content="" />
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
+    <meta name="title" content="{{ $seo->meta_title }}" />
+    <meta name="author" content="{{ $seo->meta_author }}" />
+    <meta name="keyword" content="{{ $seo->meta_keyword }}" />
+    <meta name="description" content="{{ $seo->meta_descripiton }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('user/assets/imgs/theme/favicon.svg')}}" />
     <!-- Template CSS -->
@@ -43,9 +51,10 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
-                        <input type="text" placeholder="Search for items…" />
-                        <button type="submit"><i class="fi-rs-search"></i></button>
+                    <form action="{{ route('product.search') }}" method="POST">
+                        @csrf
+                        <input name="search" id="search" placeholder="Search for items..." />
+                        <div id="searchProducts"></div>
                     </form>
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
@@ -140,6 +149,7 @@
     <!-- Template  JS -->
     <script src="{{asset('user/assets/js/main.js?v=5.3')}}"></script>
     <script src="{{asset('user/assets/js/shop.js?v=5.3')}}"></script>
+    <script src="{{asset('user/assets/js/product-search.js')}}"></script>
      {{-- Toastr --}}
 	<script type="text/javascript" src="{{asset('toastr/toastr.min.js')}}"></script>
 	<script>

@@ -54,9 +54,10 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
-                        <input type="text" placeholder="Search for items…" />
-                        <button type="submit"><i class="fi-rs-search"></i></button>
+                    <form action="{{ route('product.search') }}" method="POST">
+                        @csrf
+                        <input name="search" id="search" placeholder="Search for items..." />
+                        <div id="searchProducts"></div>
                     </form>
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
@@ -155,6 +156,7 @@
     {{-- Toastr --}}
     
     <script src="{{asset('user/assets/js/toast.min.js')}}"></script>
+    <script src="{{asset('user/assets/js/product-search.js')}}"></script>
 	<script type="text/javascript" src="{{asset('toastr/toastr.min.js')}}"></script>
 	<script>
 		@if(Session::has('message'))

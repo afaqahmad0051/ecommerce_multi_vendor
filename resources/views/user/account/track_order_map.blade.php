@@ -82,7 +82,7 @@
                     <div class="col"> <strong>Shipping BY:</strong> <br> NEST, | <i class="fa fa-phone"></i> {{$setting->cell_phone}} </div>
                     <div class="col"> <strong>Payment Method:</strong> <br> {{ $track->payment_method }} </div>
                     <div class="col"> <strong>Status:</strong> <br> {{ $track->status }} </div>
-                    <div class="col"> <strong>Amount:</strong> <br> £{{ $track->amount }} </div>
+                    <div class="col"> <strong>Amount:</strong> <br> £{{ number_format($track->amount, 2, '.', ',') }} </div>
                 </div>
             </article>
             <div class="track">
@@ -123,7 +123,7 @@
                             <figure class="itemside mb-3">
                                 <div class="aside"><img src="{{ asset($item->product_thumbnail) }}" class="img-sm border"></div>
                                 <figcaption class="info align-self-center">
-                                    <p class="title">{{ $item->product_name }}</p> <span class="text-muted">£{{isset($item->discount_price)?$item->discount_price:$item->selling_price}}</span>
+                                    <p class="title">{{ $item->product_name }}</p> <span class="text-muted">£{{isset($item->discount_price)?number_format($item->discount_price, 2, '.', ','):number_format($item->selling_price, 2, '.', ',') }}</span>
                                 </figcaption>
                             </figure>
                         </li>

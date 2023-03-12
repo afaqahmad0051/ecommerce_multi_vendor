@@ -137,9 +137,15 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function Productsearch(Request $request)
     {
-        //
+        $request->validate(['search' => 'required']);
+        $item = $request->search;
+        $data['categories'] = Category::orderBy('category_name','asc')->get();
+        $data['products'] = Product::where('product_name','like',"%$item%")->get();
+        $data['count'] = Product::where('product_name','like',"%$item%")->count();
+        $data['new_product'] = Product::where('status',1)->latest()->limit(3)->get();
+        return view('user.product.search',compact('data','item'));
     }
 
     /**
@@ -148,9 +154,13 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function searchProduct(Request $request)
     {
-        //
+        $request->validate(['search' => 'required']);
+
+        $item = $request->search;
+        $data['products'] = Product::where('product_name','LIKE',"%$item%")->select('product_name','product_slug','product_thumbnail','selling_price','id')->latest()->get();
+        return view('user.product.ajax_search',compact('data','item'));
     }
 
     /**

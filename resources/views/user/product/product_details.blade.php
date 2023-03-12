@@ -103,7 +103,7 @@
                                 @endphp
                                 @if(empty($product->discount_price))
                                     <div class="product-price primary-color float-left">
-                                        <span class="current-price text-brand">£{{ $product->selling_price }}</span>
+                                        <span class="current-price text-brand">£{{ number_format($product->selling_price, 2, '.', ',') }}</span>
                                     </div>
                                     <div class="detail-extralink" id="user_bargain">
                                         <div class="user-offer border radius">
@@ -112,10 +112,10 @@
                                     </div>
                                 @else
                                     <div class="product-price primary-color float-left">
-                                        <span class="current-price text-brand">£{{ $product->discount_price }}</span>
+                                        <span class="current-price text-brand">£{{ number_format($product->discount_price, 2, '.', ',') }}</span>
                                         <span>
                                             <span class="save-price font-md color3 ml-15">{{round($discount)}}% Off</span>
-                                            <span class="old-price font-md ml-15">£{{ $product->selling_price }}</span>
+                                            <span class="old-price font-md ml-15">£{{ number_format($product->selling_price, 2, '.', ',') }}</span>
                                         </span>
                                     </div>
                                 @endif
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                             @if (!empty($product->vendor_id))
-                                <h6>By: <a href=""><span class="text-danger">{{ $product['vendor']['name'] }}</span></a></h6>
+                                <h6>By: <a href="{{ route('supplier.shop',$product->vendor_id) }}"><span class="text-danger">{{ $product['vendor']['name'] }}</span></a></h6>
                                 @else
                                 <h6>By: <a href=""><span class="text-danger">Admin</span></a></h6>
                             @endif
@@ -317,7 +317,7 @@
                                         </h6>
                                         @else
                                         <h6>
-                                            <a href="vendor-details-2.html">{{ $product['vendor']['name'] }}</a>
+                                            <a href="{{ route('supplier.shop',$product->vendor_id) }}">{{ $product['vendor']['name'] }}</a>
                                         </h6>
                                         @endif
                                         <div class="product-rate-cover text-end">
@@ -518,12 +518,12 @@
                                             </div>
                                             @if ($item->discount_price == null || $item->discount_price == 0 || $item->discount_price == '')
                                                 <div class="product-price">
-                                                    <span>£{{ $item->selling_price }}</span>
+                                                    <span>£{{ number_format($item->selling_price, 2, '.', ',') }}</span>
                                                 </div>
                                             @else
                                                 <div class="product-price">
-                                                    <span>£{{ $item->discount_price }}</span>
-                                                    <span class="old-price">£{{ $item->selling_price }}</span>
+                                                    <span>£{{ number_format($item->discount_price, 2, '.', ',') }}</span>
+                                                    <span class="old-price">£{{ number_format($item->selling_price, 2, '.', ',') }}</span>
                                                 </div>
                                             @endif
                                         </div>

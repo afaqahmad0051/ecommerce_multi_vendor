@@ -145,7 +145,7 @@ $setting = App\Models\SiteSetting::find(1);
                         @endauth
                         <li><a href="{{ route('cart.page') }}">View Cart</a></li>
                         <li><a href="{{ route('wishlist.list') }}">My Wishlist</a></li>
-                        <li><a href="#">Track My Order</a></li>
+                        <li><a href="{{ route('user.account.track.order')}}">Track My Order</a></li>
                         <li><a href="#">Help Ticket</a></li>
                         <li><a href="#">Shipping Details</a></li>
                         <li><a href="{{ route('compare.list') }}">Compare products</a></li>

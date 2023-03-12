@@ -399,6 +399,8 @@ Route::prefix('product')->name('product.')->controller(IndexController::class)->
     Route::get('quick/view/{id}','quickview');
     Route::get('bargain/{id}','userbargain');
     Route::get('detail/bargain/{id}','Detailuserbargain');
+    Route::post('search','Productsearch')->name('search');
+    Route::post('ajax-search','searchProduct');
 });
 
 //Product Details

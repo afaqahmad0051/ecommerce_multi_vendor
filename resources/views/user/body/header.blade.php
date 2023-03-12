@@ -49,14 +49,16 @@ $setting = App\Models\SiteSetting::find(1);
                 </div>
                 <div class="header-right">
                     <div class="search-style-2">
-                        <form action="#">
+                        <form action="{{ route('product.search') }}" method="POST">
+                            @csrf
                             <select class="select-active">
                                 <option>All Categories</option>
                                 @foreach ($categories_2 as $item)
                                     <option>{{ $item->category_name }}</option>
                                 @endforeach
                             </select>
-                            <input type="text" placeholder="Search for items..." />
+                            <input onfocus="search_result_show()" onblur="search_result_hide()" name="search" id="search" placeholder="Search for items..." />
+                            <div id="searchProducts"></div>
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -245,3 +247,23 @@ $setting = App\Models\SiteSetting::find(1);
         </div>
     </div>
 </header>
+<style>
+    #searchProducts{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+</style>
+<script>
+    function search_result_show() {
+        $('#searchProducts').slideDown();
+    }
+    function search_result_hide() {
+        $('#searchProducts').slideUp();
+    }
+</script>
