@@ -141,6 +141,28 @@ $route = Route::current()->getName();
             </li>
         </ul>
     </li>
+    <li {{ ($prefix == '/permission')?'mm-active':'' }}>
+        <a href="javascript:;" class="has-arrow">
+            <div class="parent-icon"><i class="bx bx-user-circle"></i>
+            </div>
+            <div class="menu-title">Roles & Permissions</div>
+        </a>
+        <ul>
+            <li class="{{ ($route == 'permission.list')?'mm-active':'' }}">
+                <a href="{{ route('permission.list') }}"><i class="bx bx-right-arrow-alt"></i>Permissions</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'permission.role.list')?'mm-active':'' }}">
+                <a href="{{ route('permission.role.list') }}"><i class="bx bx-right-arrow-alt"></i>Roles</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'permission.assign.role')?'mm-active':'' }}">
+                <a href="{{ route('permission.assign.role') }}"><i class="bx bx-right-arrow-alt"></i>Assign Roles</a>
+            </li>
+        </ul>
+    </li>
     <li {{ ($prefix == '/blog')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class="bx bx-notepad"></i>
@@ -189,6 +211,11 @@ $route = Route::current()->getName();
         <ul>
             <li class="{{ ($route == 'seo.edit')?'mm-active':'' }}">
                 <a href="{{ route('seo.edit') }}"><i class="bx bx-right-arrow-alt"></i>SEO</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="{{ ($route == 'permission-group.list')?'mm-active':'' }} || {{ ($route == 'permission-group.create')?'mm-active':'' }} || {{ ($route == 'permission-group.edit')?'mm-active':'' }}">
+                <a href="{{ route('permission-group.list') }}"><i class="bx bx-right-arrow-alt"></i>Permission Group</a>
             </li>
         </ul>
         <ul>

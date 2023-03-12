@@ -11,9 +11,11 @@ use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\CountryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\PermissionGroupController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnOrderController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -145,6 +147,15 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
         //Admin Year Routes
         Route::prefix('year')->name('year.')->controller(YearController::class)->group(function () {
+            Route::get('list','index')->name('list');
+            Route::get('form','create')->name('create');
+            Route::post('store','store')->name('store');
+            Route::get('form/{id}','edit')->name('edit');
+            Route::post('update/{id}','update')->name('update');
+        });
+
+        //Admin Year Routes
+        Route::prefix('permission-group')->name('permission-group.')->controller(PermissionGroupController::class)->group(function () {
             Route::get('list','index')->name('list');
             Route::get('form','create')->name('create');
             Route::post('store','store')->name('store');
@@ -307,6 +318,26 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::prefix('user')->name('user.')->controller(ActiveUserController::class)->group(function () {
         Route::get('customers/list','customerList')->name('customer.list');
         Route::get('vendors/list','vendorList')->name('vendor.list');
+    });
+    
+    //Admin User permissions Routes
+    Route::prefix('permission')->name('permission.')->controller(RoleController::class)->group(function () {
+        Route::get('list','index')->name('list');
+        Route::get('form','create')->name('create');
+        Route::post('store','store')->name('store');
+        Route::get('edit/{id}','edit')->name('edit');
+        Route::post('update/{id}','update')->name('update');
+        Route::get('delete/{id}','destroy')->name('delete');
+        //Admin user role Routes
+        Route::get('role/list','roleindex')->name('role.list');
+        Route::get('role/form','rolecreate')->name('role.create');
+        Route::post('role/store','rolestore')->name('role.store');
+        Route::get('role/edit/{id}','roleedit')->name('role.edit');
+        Route::post('role/update/{id}','roleupdate')->name('role.update');
+        Route::get('role/delete/{id}','roledestroy')->name('role.delete');
+        // Assign permissions to user role
+        Route::get('assign','assignRolePermission')->name('assign.role');
+
     });
     
     //Admin Blog Routes
