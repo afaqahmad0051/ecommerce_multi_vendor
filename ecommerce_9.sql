@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 09, 2023 at 04:55 AM
+-- Generation Time: Mar 12, 2023 at 08:36 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.13
 
@@ -345,7 +345,34 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21, '2023_03_04_123001_create_blog_categories_table', 14),
 (22, '2023_03_04_123259_create_blogs_table', 15),
 (23, '2023_03_05_142613_create_reviews_table', 16),
-(24, '2023_03_08_195946_create_site_settings_table', 17);
+(24, '2023_03_08_195946_create_site_settings_table', 17),
+(25, '2023_03_09_174607_create_seos_table', 18),
+(26, '2023_03_12_143013_create_permission_tables', 19),
+(27, '2023_03_12_151347_create_permission_groups_table', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -403,7 +430,8 @@ INSERT INTO `orders` (`id`, `user_id`, `country_id`, `city_id`, `area_id`, `name
 (7, 3, 2, 6, 2, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'card_1MdfTDLHUfosJYdWpE3FtaXa', 'stripe', 'txn_3MdfTELHUfosJYdW02oVggD8', 'gbp', 445.00, '63f3d063d06f5', 'NMG26860735', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 14:56:21', NULL),
 (13, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 795.00, '0', 'NMG86590830', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 15:10:45', NULL),
 (14, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '56255', 'Email Strip', 'card_1MdfkDLHUfosJYdW9FqzTMuy', 'stripe', 'txn_3MdfkELHUfosJYdW1Or4HFIz', 'gbp', 6650.00, '63f3d481dbfae', 'NMG51284636', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-02-20 15:13:55', '2023-03-01 12:04:40'),
-(15, 3, 2, 6, 2, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'New Testing purpose order', 'COD', 'Cash on delivery', '0', 'gbp', 5780.00, '0', 'NMG60214724', '02 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '02 March 2023', 'Another Perfume Recieved', '2', 'delivered', '2023-03-02 13:46:02', '2023-03-02 14:01:40');
+(15, 3, 2, 6, 2, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'New Testing purpose order', 'COD', 'Cash on delivery', '0', 'gbp', 5780.00, '0', 'NMG60214724', '02 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '02 March 2023', 'Another Perfume Recieved', '2', 'delivered', '2023-03-02 13:46:02', '2023-03-02 14:01:40'),
+(16, 3, 2, 2, 1, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 4795.00, '0', 'NMG70224496', '10 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-03-10 13:06:08', '2023-03-10 13:11:56');
 
 -- --------------------------------------------------------
 
@@ -440,7 +468,9 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `vendor_id`, `color`,
 (9, 7, 61, '16', NULL, NULL, '1', 445.00, '2023-02-20 14:56:21', NULL),
 (10, 13, 62, '17', NULL, NULL, '1', 795.00, '2023-02-20 15:10:51', NULL),
 (11, 14, 53, '17', NULL, NULL, '1', 7000.00, '2023-02-20 15:14:00', NULL),
-(12, 15, 54, '17', NULL, NULL, '1', 6800.00, '2023-03-02 13:46:16', NULL);
+(12, 15, 54, '17', NULL, NULL, '1', 6800.00, '2023-03-02 13:46:16', NULL),
+(13, 16, 64, '18', NULL, NULL, '5', 515.00, '2023-03-10 13:06:23', NULL),
+(14, 16, 63, '18', NULL, NULL, '4', 555.00, '2023-03-10 13:06:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -453,6 +483,168 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `group_id` int(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_id`, `created_at`, `updated_at`) VALUES
+(1, 'dashboard.menu', 'web', 1, '2023-03-12 11:08:23', '2023-03-12 11:08:23'),
+(2, 'product_group.menu', 'web', 2, '2023-03-12 11:09:33', '2023-03-12 14:10:42'),
+(3, 'product_group.category.list', 'web', 2, '2023-03-12 11:10:11', '2023-03-12 13:49:28'),
+(4, 'product_group.category.add', 'web', 2, '2023-03-12 11:10:49', '2023-03-12 13:49:41'),
+(5, 'product_group.category.edit', 'web', 2, '2023-03-12 11:10:56', '2023-03-12 13:49:51'),
+(6, 'product_group.category.delete', 'web', 2, '2023-03-12 11:11:49', '2023-03-12 13:50:00'),
+(7, 'product_group.subcategory.list', 'web', 2, '2023-03-12 11:12:03', '2023-03-12 13:50:08'),
+(8, 'product_group.subcategory.add', 'web', 2, '2023-03-12 11:12:14', '2023-03-12 13:50:17'),
+(9, 'product_group.subcategory.edit', 'web', 2, '2023-03-12 11:12:21', '2023-03-12 13:50:28'),
+(10, 'product_group.subcategory.delete', 'web', 2, '2023-03-12 11:12:28', '2023-03-12 13:50:36'),
+(11, 'inventory.menu', 'web', 3, '2023-03-12 11:13:02', '2023-03-12 11:13:02'),
+(13, 'inventory.product.list', 'web', 3, '2023-03-12 11:13:17', '2023-03-12 13:51:03'),
+(14, 'inventory.product.add', 'web', 3, '2023-03-12 11:13:24', '2023-03-12 13:51:58'),
+(15, 'inventory.product.edit', 'web', 3, '2023-03-12 11:13:31', '2023-03-12 13:52:05'),
+(16, 'inventory.product.delete', 'web', 3, '2023-03-12 11:13:38', '2023-03-12 13:52:16'),
+(17, 'inventory.stock.list', 'web', 3, '2023-03-12 11:14:21', '2023-03-12 13:52:23'),
+(18, 'discount_setup.coupon.list', 'web', 4, '2023-03-12 11:15:02', '2023-03-12 13:53:33'),
+(19, 'discount_setup.coupon.add', 'web', 4, '2023-03-12 11:15:09', '2023-03-12 13:53:48'),
+(20, 'discount_setup.coupon.edit', 'web', 4, '2023-03-12 11:15:19', '2023-03-12 13:53:57'),
+(21, 'discount_setup.coupon.delete', 'web', 4, '2023-03-12 11:15:28', '2023-03-12 13:54:11'),
+(22, 'order_management.menu', 'web', 5, '2023-03-12 11:16:19', '2023-03-12 11:16:19'),
+(23, 'order_management.pending.list', 'web', 5, '2023-03-12 11:16:47', '2023-03-12 13:54:25'),
+(24, 'order_management.pending.details', 'web', 5, '2023-03-12 11:17:55', '2023-03-12 13:54:33'),
+(25, 'order_management.pending.invoice', 'web', 5, '2023-03-12 11:18:05', '2023-03-12 13:54:40'),
+(26, 'order_management.confirm.list', 'web', 5, '2023-03-12 11:18:25', '2023-03-12 13:54:49'),
+(27, 'order_management.confirm.details', 'web', 5, '2023-03-12 11:18:47', '2023-03-12 13:54:59'),
+(28, 'order_management.confirm.invoice', 'web', 5, '2023-03-12 11:19:00', '2023-03-12 13:55:07'),
+(29, 'order_management.processing.list', 'web', 5, '2023-03-12 11:19:19', '2023-03-12 13:55:15'),
+(30, 'order_management.processing.details', 'web', 5, '2023-03-12 11:19:29', '2023-03-12 13:55:27'),
+(31, 'order_management.processing.invoice', 'web', 5, '2023-03-12 11:19:38', '2023-03-12 13:55:35'),
+(32, 'order_management.delivered.list', 'web', 5, '2023-03-12 11:19:51', '2023-03-12 13:55:41'),
+(33, 'order_management.delivered.details', 'web', 5, '2023-03-12 11:20:02', '2023-03-12 13:55:50'),
+(34, 'order_management.delivered.invoice', 'web', 5, '2023-03-12 11:20:14', '2023-03-12 13:56:02'),
+(35, 'order_return.menu', 'web', 6, '2023-03-12 11:20:55', '2023-03-12 11:20:55'),
+(36, 'order_return.return_request.list', 'web', 6, '2023-03-12 11:21:40', '2023-03-12 13:56:18'),
+(37, 'order_return.return_request.details', 'web', 6, '2023-03-12 11:21:51', '2023-03-12 13:56:25'),
+(38, 'order_return.return_request.approve', 'web', 6, '2023-03-12 11:22:01', '2023-03-12 13:56:34'),
+(39, 'order_return.approve.list', 'web', 6, '2023-03-12 11:22:22', '2023-03-12 13:56:43'),
+(40, 'order_return.approve.details', 'web', 6, '2023-03-12 11:22:29', '2023-03-12 13:56:50'),
+(41, 'shippment.menu', 'web', 7, '2023-03-12 11:22:53', '2023-03-12 11:22:53'),
+(42, 'shippment.country.list', 'web', 7, '2023-03-12 11:23:22', '2023-03-12 11:23:22'),
+(43, 'shippment.country.add', 'web', 7, '2023-03-12 11:23:33', '2023-03-12 11:23:33'),
+(44, 'shippment.country.edit', 'web', 7, '2023-03-12 11:23:42', '2023-03-12 11:23:42'),
+(45, 'shippment.country.delete', 'web', 7, '2023-03-12 11:23:52', '2023-03-12 11:23:52'),
+(46, 'shippment.city.list', 'web', 7, '2023-03-12 11:24:28', '2023-03-12 11:24:28'),
+(47, 'shippment.city.add', 'web', 7, '2023-03-12 11:24:37', '2023-03-12 11:24:37'),
+(48, 'shippment.city.edit', 'web', 7, '2023-03-12 11:24:47', '2023-03-12 11:24:47'),
+(49, 'shippment.city.delete', 'web', 7, '2023-03-12 11:24:55', '2023-03-12 11:24:55'),
+(50, 'shippment.area.list', 'web', 7, '2023-03-12 11:25:19', '2023-03-12 11:25:19'),
+(51, 'shippment.area.add', 'web', 7, '2023-03-12 11:25:30', '2023-03-12 11:25:30'),
+(52, 'shippment.area.edit', 'web', 7, '2023-03-12 11:25:41', '2023-03-12 11:25:41'),
+(53, 'shippment.area.delete', 'web', 7, '2023-03-12 11:26:27', '2023-03-12 11:26:27'),
+(54, 'vendor_management.menu', 'web', 8, '2023-03-12 11:26:59', '2023-03-12 11:26:59'),
+(55, 'vendor_management.inactive.list', 'web', 8, '2023-03-12 11:27:13', '2023-03-12 13:59:01'),
+(56, 'vendor_management.inactive.details', 'web', 8, '2023-03-12 11:28:00', '2023-03-12 13:59:10'),
+(57, 'vendor_management.active.list', 'web', 8, '2023-03-12 11:28:16', '2023-03-12 13:59:23'),
+(58, 'vendor_management.active.details', 'web', 8, '2023-03-12 11:28:29', '2023-03-12 13:59:35'),
+(59, 'user_management.menu', 'web', 9, '2023-03-12 11:29:42', '2023-03-12 11:29:42'),
+(60, 'user_management.customer.list', 'web', 9, '2023-03-12 11:29:55', '2023-03-12 14:00:28'),
+(61, 'user_management.customer.edit', 'web', 9, '2023-03-12 11:30:08', '2023-03-12 14:00:38'),
+(62, 'user_management.customer.delete', 'web', 9, '2023-03-12 11:30:21', '2023-03-12 14:00:48'),
+(63, 'user_management.vendor.list', 'web', 9, '2023-03-12 11:31:04', '2023-03-12 14:00:57'),
+(64, 'user_management.vendor.edit', 'web', 9, '2023-03-12 11:31:14', '2023-03-12 14:01:05'),
+(65, 'user_management.vendor.delete', 'web', 9, '2023-03-12 11:31:22', '2023-03-12 14:01:14'),
+(66, 'role_permission.menu', 'web', 10, '2023-03-12 11:31:45', '2023-03-12 11:31:45'),
+(67, 'role_permission.permission.list', 'web', 10, '2023-03-12 11:31:54', '2023-03-12 14:01:32'),
+(68, 'role_permission.permission.add', 'web', 10, '2023-03-12 11:32:05', '2023-03-12 14:01:50'),
+(69, 'role_permission.permission.edit', 'web', 10, '2023-03-12 11:32:13', '2023-03-12 14:01:59'),
+(70, 'role_permission.permission.delete', 'web', 10, '2023-03-12 11:32:50', '2023-03-12 14:02:07'),
+(71, 'blog_management.menu', 'web', 11, '2023-03-12 11:33:21', '2023-03-12 11:33:21'),
+(72, 'blog_management.blog_category.list', 'web', 11, '2023-03-12 11:33:46', '2023-03-12 14:02:30'),
+(73, 'blog_management.blog_category.add', 'web', 11, '2023-03-12 11:33:52', '2023-03-12 14:02:39'),
+(74, 'blog_management.blog_category.edit', 'web', 11, '2023-03-12 11:34:25', '2023-03-12 14:02:49'),
+(75, 'blog_management.blog_category.delete', 'web', 11, '2023-03-12 11:34:36', '2023-03-12 14:02:58'),
+(76, 'blog_management.blog_post.list', 'web', 11, '2023-03-12 11:34:50', '2023-03-12 14:03:10'),
+(77, 'blog_management.blog_post.add', 'web', 11, '2023-03-12 11:34:57', '2023-03-12 14:03:19'),
+(78, 'blog_management.blog_post.edit', 'web', 11, '2023-03-12 11:35:04', '2023-03-12 14:03:29'),
+(79, 'blog_management.blog_post.delete', 'web', 11, '2023-03-12 11:35:13', '2023-03-12 14:03:42'),
+(80, 'review.pending.list', 'web', 12, '2023-03-12 11:37:00', '2023-03-12 11:37:00'),
+(81, 'review.pending.publish', 'web', 12, '2023-03-12 11:37:14', '2023-03-12 11:37:14'),
+(82, 'review.publish.list', 'web', 12, '2023-03-12 11:37:34', '2023-03-12 11:37:34'),
+(83, 'review.publish.delete', 'web', 12, '2023-03-12 11:37:46', '2023-03-12 11:37:46'),
+(84, 'setting.site.edit', 'web', 13, '2023-03-12 11:39:43', '2023-03-12 11:39:43'),
+(85, 'setting.seo.edit', 'web', 13, '2023-03-12 11:40:13', '2023-03-12 11:40:13'),
+(86, 'setting.permission_group.list', 'web', 13, '2023-03-12 11:40:44', '2023-03-12 11:40:44'),
+(87, 'setting.permission_group.add', 'web', 13, '2023-03-12 11:40:50', '2023-03-12 11:40:50'),
+(88, 'setting.permission_group.edit', 'web', 13, '2023-03-12 11:40:56', '2023-03-12 11:40:56'),
+(89, 'setting.slider.list', 'web', 13, '2023-03-12 11:41:17', '2023-03-12 11:41:17'),
+(90, 'setting.slider.add', 'web', 13, '2023-03-12 11:41:23', '2023-03-12 11:41:23'),
+(91, 'setting.slider.edit', 'web', 13, '2023-03-12 11:41:30', '2023-03-12 11:41:30'),
+(92, 'setting.slider.delete', 'web', 13, '2023-03-12 11:41:39', '2023-03-12 11:41:39'),
+(93, 'setting.banner.list', 'web', 13, '2023-03-12 11:42:08', '2023-03-12 11:42:08'),
+(94, 'setting.banner.add', 'web', 13, '2023-03-12 11:42:14', '2023-03-12 11:42:14'),
+(95, 'setting.banner.edit', 'web', 13, '2023-03-12 11:42:22', '2023-03-12 11:42:22'),
+(96, 'setting.banner.delete', 'web', 13, '2023-03-12 11:42:30', '2023-03-12 11:42:30'),
+(97, 'setting.year.list', 'web', 13, '2023-03-12 11:42:42', '2023-03-12 11:42:42'),
+(98, 'setting.year.add', 'web', 13, '2023-03-12 11:43:25', '2023-03-12 11:43:25'),
+(99, 'setting.year.edit', 'web', 13, '2023-03-12 11:43:31', '2023-03-12 11:43:31'),
+(100, 'setting.year.delete', 'web', 13, '2023-03-12 11:43:58', '2023-03-12 11:43:58'),
+(101, 'setting.brand.list', 'web', 13, '2023-03-12 11:44:37', '2023-03-12 11:44:37'),
+(102, 'setting.brand.add', 'web', 13, '2023-03-12 11:44:53', '2023-03-12 11:44:53'),
+(103, 'setting.brand.edit', 'web', 13, '2023-03-12 11:45:06', '2023-03-12 11:45:06'),
+(104, 'setting.brand.delete', 'web', 13, '2023-03-12 11:45:15', '2023-03-12 11:45:15'),
+(105, 'reports.menu', 'web', 14, '2023-03-12 11:46:23', '2023-03-12 11:46:23'),
+(106, 'reports.report_filter', 'web', 14, '2023-03-12 11:46:53', '2023-03-12 11:46:53'),
+(107, 'discount_setup.menu', 'web', 4, '2023-03-12 13:53:13', '2023-03-12 13:53:13'),
+(108, 'setting.menu', 'web', 13, '2023-03-12 14:04:46', '2023-03-12 14:04:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permission_groups`
+--
+
+CREATE TABLE `permission_groups` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permission_groups`
+--
+
+INSERT INTO `permission_groups` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Dashboard', 1, '2023-03-12 10:47:32', NULL),
+(2, 'Product Group', 1, '2023-03-12 10:47:32', NULL),
+(3, 'Inventory', 1, '2023-03-12 10:47:32', NULL),
+(4, 'Discount Setup', 1, '2023-03-12 10:47:32', NULL),
+(5, 'Order Management', 1, '2023-03-12 10:47:32', NULL),
+(6, 'Order Return', 1, '2023-03-12 10:47:32', NULL),
+(7, 'Shippment', 1, '2023-03-12 10:47:32', NULL),
+(8, 'Vendor Management', 1, '2023-03-12 10:47:32', NULL),
+(9, 'User Management', 1, '2023-03-12 10:47:32', NULL),
+(10, 'Roles & Permissions', 1, '2023-03-12 10:47:32', NULL),
+(11, 'Blog Management', 1, '2023-03-12 10:47:33', '2023-03-12 10:50:49'),
+(12, 'Review Management', 1, '2023-03-12 10:47:33', NULL),
+(13, 'Setting', 1, '2023-03-12 10:47:33', NULL),
+(14, 'Reports', 1, '2023-03-12 10:47:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -578,8 +770,8 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `vend
 (60, 18, 7, 61, 2, 'Fajita', 'fajita', 'piz', '15', 'Pizza', NULL, NULL, '1250', NULL, NULL, NULL, 'upload/product/thumbnail/1756659950521019.png', 0, 0, 0, 0, 1, '2023-02-01 14:57:57', NULL),
 (61, 8, 9, 47, 16, 'Bright 1KG', 'bright-1kg', 'AFP-000116687', '50', NULL, NULL, NULL, '480', '445', 'BRITE WASHING POWDER MAXIMUM POWER 1 KG', NULL, 'upload/product/thumbnail/1756660172221327.png', 0, 0, 0, 0, 1, '2023-02-01 15:01:29', NULL),
 (62, 8, 9, 49, 17, 'Harpic 1 Ltr', 'harpic-1-ltr', 'AFP-000117980', '100', NULL, NULL, NULL, '825', '795', NULL, NULL, 'upload/product/thumbnail/1756660320346867.png', 0, 0, 1, 0, 1, '2023-02-01 15:03:50', NULL),
-(63, 8, 8, 56, 18, 'SUFI Canola Cooking Oil', 'sufi-canola-cooking-oil', 'AFP-000113385', '54', NULL, NULL, NULL, '555', NULL, 'SUFI CANOLA COOKING OIL POUCH 1 LTR', '<p>Sufi Canola Oil is ideal for mayonnaise and other salad dressings and is excellent when frying delicate foods due to its light texture and mild flavor.</p>', 'upload/product/thumbnail/1756660536620012.png', 0, 0, 0, 0, 1, '2023-02-01 15:07:17', NULL),
-(64, 8, 8, 56, 18, 'SUFI BANASPATI GHEE 1 KG', 'sufi-banaspati-ghee-1-kg', 'FP-000113403', '125', NULL, NULL, NULL, '515', NULL, 'SUFI BANASPATI GHEE POUCH 1 KG', '<div id=\"collapse-tab1\" class=\"tab-content\" style=\"box-sizing: border-box; line-height: 24px; padding-top: 4px; color: #606060; font-family: \'Sofia pro\', Arial, \'sans-serif\'; font-size: 12px; background-color: #ffffff;\" data-tabcontent=\"\">\r\n<div style=\"box-sizing: border-box;\">\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 2rem;\">Special banaspati maintains a very low level of cholesterol so you can enjoy every moment of your life.</p>\r\n</div>\r\n</div>\r\n<div class=\"tab-title\" style=\"box-sizing: border-box; border-top: 1px solid #e6e6e6; position: relative; color: #3c3c3c; font-family: \'Sofia pro\', Arial, \'sans-serif\'; font-size: 12px; background-color: #ffffff;\">&nbsp;</div>', 'upload/product/thumbnail/1756660642182774.png', 0, 0, 0, 0, 1, '2023-02-01 15:08:57', NULL);
+(63, 8, 8, 56, 18, 'SUFI Canola Cooking Oil', 'sufi-canola-cooking-oil', 'AFP-000113385', '50', NULL, NULL, NULL, '555', NULL, 'SUFI CANOLA COOKING OIL POUCH 1 LTR', '<p>Sufi Canola Oil is ideal for mayonnaise and other salad dressings and is excellent when frying delicate foods due to its light texture and mild flavor.</p>', 'upload/product/thumbnail/1756660536620012.png', 0, 0, 0, 0, 1, '2023-02-01 15:07:17', '2023-03-10 13:11:56'),
+(64, 8, 8, 56, 18, 'SUFI BANASPATI GHEE 1 KG', 'sufi-banaspati-ghee-1-kg', 'FP-000113403', '120', NULL, NULL, NULL, '515', NULL, 'SUFI BANASPATI GHEE POUCH 1 KG', '<div id=\"collapse-tab1\" class=\"tab-content\" style=\"box-sizing: border-box; line-height: 24px; padding-top: 4px; color: #606060; font-family: \'Sofia pro\', Arial, \'sans-serif\'; font-size: 12px; background-color: #ffffff;\" data-tabcontent=\"\">\r\n<div style=\"box-sizing: border-box;\">\r\n<p style=\"box-sizing: border-box; margin-top: 0px; margin-bottom: 2rem;\">Special banaspati maintains a very low level of cholesterol so you can enjoy every moment of your life.</p>\r\n</div>\r\n</div>\r\n<div class=\"tab-title\" style=\"box-sizing: border-box; border-top: 1px solid #e6e6e6; position: relative; color: #3c3c3c; font-family: \'Sofia pro\', Arial, \'sans-serif\'; font-size: 12px; background-color: #ffffff;\">&nbsp;</div>', 'upload/product/thumbnail/1756660642182774.png', 0, 0, 0, 0, 1, '2023-02-01 15:08:57', '2023-03-10 13:11:56');
 
 -- --------------------------------------------------------
 
@@ -778,7 +970,66 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `comment`, `rating`, `stat
 (3, 9, 12, 'The staff was great. The receptionists were very helpful and answered all our questions. The room was clean and bright, and the room service was always on time. Will be coming back!', '5', '1', 15, '2023-03-06 10:41:41', '2023-03-06 14:51:23'),
 (6, 54, 12, 'Overall, I would not recommend the FANTASY perfume by Hira Mani. While the packaging is lovely, the scent itself is too overpowering and does not last very long on the skin. There are many other fragrances on the market that are much more well-balanced and long-lasting.', '2', '1', 17, '2023-03-06 14:57:52', '2023-03-06 15:16:28'),
 (7, 54, 3, 'I recently had the pleasure of trying out the FANTASY perfume by Hira Mani, and I must say, I am thoroughly impressed! This fragrance is absolutely delightful and has quickly become one of my favorite scents to wear.', '5', '1', 17, '2023-03-06 15:04:52', '2023-03-06 15:16:25'),
-(8, 54, 13, 'What I love most about FANTASY is how versatile it is. I can wear it for any occasion - whether I\'m running errands during the day or going out for a fancy dinner at night. It\'s the perfect balance of fun and sophistication, and it always makes me feel confident and beautiful.', '5', '1', 17, '2023-03-06 15:05:11', '2023-03-06 15:16:21');
+(8, 54, 13, 'What I love most about FANTASY is how versatile it is. I can wear it for any occasion - whether I\'m running errands during the day or going out for a fancy dinner at night. It\'s the perfect balance of fun and sophistication, and it always makes me feel confident and beautiful.', '5', '0', 17, '2023-03-06 15:05:11', '2023-03-06 15:16:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'C.E.O', 'web', '2023-03-12 14:28:59', '2023-03-12 14:37:42'),
+(2, 'Super Admin', 'web', '2023-03-12 14:29:10', '2023-03-12 14:37:17'),
+(3, 'Admin', 'web', '2023-03-12 14:29:19', '2023-03-12 14:37:25'),
+(4, 'Content Writer', 'web', '2023-03-12 14:29:32', '2023-03-12 14:29:32'),
+(5, 'Accountant', 'web', '2023-03-12 14:29:43', '2023-03-12 14:29:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seos`
+--
+
+CREATE TABLE `seos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_descripiton` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `seos`
+--
+
+INSERT INTO `seos` (`id`, `meta_title`, `meta_author`, `meta_keyword`, `meta_descripiton`, `created_at`, `updated_at`) VALUES
+(1, 'Nest', 'Afaq Ahmad', 'Nest, Ecommerce, Mart', 'All you need is here!', NULL, '2023-03-09 13:06:05');
 
 -- --------------------------------------------------------
 
@@ -789,6 +1040,7 @@ INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `comment`, `rating`, `stat
 CREATE TABLE `site_settings` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slogan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cell_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `support_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -796,7 +1048,7 @@ CREATE TABLE `site_settings` (
   `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `copyright` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -805,8 +1057,8 @@ CREATE TABLE `site_settings` (
 -- Dumping data for table `site_settings`
 --
 
-INSERT INTO `site_settings` (`id`, `logo`, `cell_phone`, `support_phone`, `email`, `company_address`, `facebook`, `twitter`, `instagram`, `copyright`, `created_at`, `updated_at`) VALUES
-(1, NULL, '(+91) - 540-025-124553', '1900 - 8888', 'sale@Nest.com', '5171 W Campbell Ave undefined Kent, Utah 53127 United States', 'https://web.facebook.com/afaqahmad0051/', NULL, 'https://www.instagram.com/afaqahmad0051/?hl=en', NULL, NULL, NULL);
+INSERT INTO `site_settings` (`id`, `logo`, `slogan`, `cell_phone`, `support_phone`, `email`, `company_address`, `facebook`, `twitter`, `instagram`, `address`, `created_at`, `updated_at`) VALUES
+(1, 'upload/logo/1759911519684320.png', 'All you need is here!', '(+91) - 540-025-124553', '1900 - 888', 'sale@Nest.com', NULL, 'https://web.facebook.com/afaqahmad0051', NULL, 'https://www.instagram.com/afaqahmad0051/?hl=en', '5171 W Campbell Ave undefined Kent, Utah 53127 United States', NULL, '2023-03-10 14:01:15');
 
 -- --------------------------------------------------------
 
@@ -949,9 +1201,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `photo`, `phone`, `address`, `year_id`, `vendor_short_info`, `role`, `status`, `last_seen`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-08 20:32:31', NULL, NULL, '2023-03-08 15:32:31'),
+(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-12 20:34:59', NULL, NULL, '2023-03-12 15:34:59'),
 (2, 'Nest Food.,Ltd', 'vendor12', 'vendor@gmail.com', NULL, '$2y$10$vG6N.zGHOGurM01ULjIlkOUsg/yTdea.0K0ut5TF.jkdapKfN8ZxC', '202301032007vendor-16.png', '+92 324 0725122', 'Cardiff CF10 3AT, UK', 4, 'Got a smooth, buttery spread in your fridge? Chances are good that it\'s Good Chef. This brand made Lionto\'s list of the most popular grocery brands across the country.', 'vendor', 'active', NULL, NULL, '2023-01-11 06:27:18', '2023-01-12 13:46:10'),
-(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-08 20:15:40', NULL, NULL, '2023-03-08 15:15:40'),
+(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-12 14:15:06', NULL, NULL, '2023-03-12 09:15:06'),
 (12, 'Salman', 'Salman112', 'salman@gmail.com', NULL, '$2y$10$ZD8bezyH2umjaHaPMbbvwO.hFv7oQzQRLuHPGIutajfS9Erei1lHG', '202303040655202203281017503889_1_81445.png', '03069696089', 'Hostel Inn 2000, Near Punjab Bar Council, Lahore, Punjab Pakistan', NULL, NULL, 'user', 'active', '2023-03-06 15:52:13', NULL, '2022-12-31 15:19:30', '2023-03-06 10:52:13'),
 (13, 'hassan', NULL, 'hassan@gmail.com', NULL, '$2y$10$aP7D8mMfZPykO17pokgmb.keMAePuK/wMikWstmDXl.auTQ6MZKCq', NULL, NULL, NULL, NULL, NULL, 'user', 'active', '2023-03-06 20:29:28', NULL, '2023-01-07 10:26:06', '2023-03-06 15:29:28'),
 (14, 'Computer Dealers', 'Hassan UK', 'healthy_food@gmail.com', NULL, '$2y$10$OCBe6jSLUklwkWf2KrN6Aul0EmlzjeCxbQwC4fzE4ySsex/rnq0Ry', '202303040630d89f9c1e19bb01a129b1f3f67925a745.jpg', '+92 306 7823773', 'Some where from UK', 1, 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum', 'vendor', 'active', '2023-03-04 06:45:54', NULL, '2023-01-12 12:23:33', '2023-03-04 01:45:54'),
@@ -1091,6 +1343,20 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -1108,6 +1374,19 @@ ALTER TABLE `order_items`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `permission_groups`
+--
+ALTER TABLE `permission_groups`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -1136,6 +1415,26 @@ ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`),
   ADD KEY `reviews_product_id_foreign` (`product_id`),
   ADD KEY `reviews_user_id_foreign` (`user_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indexes for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
+
+--
+-- Indexes for table `seos`
+--
+ALTER TABLE `seos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `site_settings`
@@ -1249,19 +1548,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+
+--
+-- AUTO_INCREMENT for table `permission_groups`
+--
+ALTER TABLE `permission_groups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1286,6 +1597,18 @@ ALTER TABLE `product_images`
 --
 ALTER TABLE `reviews`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `seos`
+--
+ALTER TABLE `seos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `site_settings`
@@ -1328,6 +1651,18 @@ ALTER TABLE `years`
 --
 
 --
+-- Constraints for table `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
@@ -1339,6 +1674,13 @@ ALTER TABLE `order_items`
 ALTER TABLE `reviews`
   ADD CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
