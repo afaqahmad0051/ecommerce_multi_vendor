@@ -29,6 +29,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\WishlistController;
@@ -477,6 +478,8 @@ Route::prefix('coupon')->name('coupon.')->controller(CartController::class)->gro
 
 //Add to checkout
 Route::get('/checkout', [CartController::class,'checkout'])->name('checkout');
+Route::get('/about-us', [ContactController::class,'aboutus'])->name('about.us');
+Route::get('/contact-us', [ContactController::class,'contactus'])->name('contact.us');
 
 //Vendor Details
 Route::prefix('vendor')->name('supplier.')->controller(IndexController::class)->group(function () {

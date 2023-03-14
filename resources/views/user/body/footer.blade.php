@@ -126,11 +126,11 @@ $setting = App\Models\SiteSetting::find(1);
                 <div class="footer-link-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                     <h4 class=" widget-title">Company</h4>
                     <ul class="footer-list mb-sm-5 mb-md-0">
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{{ route('about.us') }}">About Us</a></li>
                         <li><a href="#">Delivery Information</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                         <li><a href="#">Support Center</a></li>
                         <li><a href="#">Careers</a></li>
                     </ul>
