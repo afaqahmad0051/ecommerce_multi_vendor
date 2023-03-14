@@ -337,6 +337,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('role/delete/{id}','roledestroy')->name('role.delete');
         // Assign permissions to user role
         Route::get('assign','assignRolePermission')->name('assign.role');
+        Route::post('store/role/permission','storeRolePermission')->name('assign.store');
+        Route::get('assign/list','ListRolePermission')->name('assign.list');
+        Route::get('assign/edit/{id}','EditRolePermission')->name('assign.edit');
+        Route::post('update/role/permission/{id}','updateRolePermission')->name('assign.update');
+        Route::get('assign/role/delete/{id}','DeleteRolePermission')->name('assign.delete');
 
     });
     

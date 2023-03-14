@@ -162,6 +162,11 @@ $route = Route::current()->getName();
                 <a href="{{ route('permission.assign.role') }}"><i class="bx bx-right-arrow-alt"></i>Assign Roles</a>
             </li>
         </ul>
+        <ul>
+            <li class="{{ ($route == 'permission.assign.list')?'mm-active':'' }}">
+                <a href="{{ route('permission.assign.list') }}"><i class="bx bx-right-arrow-alt"></i>Assign Roles List</a>
+            </li>
+        </ul>
     </li>
     <li {{ ($prefix == '/blog')?'mm-active':'' }}>
         <a href="javascript:;" class="has-arrow">
