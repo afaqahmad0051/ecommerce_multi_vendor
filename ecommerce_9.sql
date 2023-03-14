@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 12, 2023 at 08:36 PM
+-- Generation Time: Mar 14, 2023 at 09:37 PM
 -- Server version: 5.7.24
 -- PHP Version: 8.1.13
 
@@ -348,7 +348,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2023_03_08_195946_create_site_settings_table', 17),
 (25, '2023_03_09_174607_create_seos_table', 18),
 (26, '2023_03_12_143013_create_permission_tables', 19),
-(27, '2023_03_12_151347_create_permission_groups_table', 20);
+(27, '2023_03_12_151347_create_permission_groups_table', 20),
+(28, '2023_03_14_202608_create_notifications_table', 21);
 
 -- --------------------------------------------------------
 
@@ -373,6 +374,51 @@ CREATE TABLE `model_has_roles` (
   `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1),
+(5, 'App\\Models\\User', 20),
+(4, 'App\\Models\\User', 21);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `notifiable_id` bigint(20) UNSIGNED NOT NULL,
+  `data` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `read_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`id`, `type`, `notifiable_type`, `notifiable_id`, `data`, `read_at`, `created_at`, `updated_at`) VALUES
+('1f2e9f6b-66f2-4862-96b3-69be50f11e3e', 'App\\Notifications\\OrderComplete', 'App\\Models\\User', 21, '{\"message\":\"New Order Recieved\"}', NULL, '2023-03-14 15:43:51', '2023-03-14 15:43:51'),
+('1f596678-6a8f-41b4-86a2-cd2ee782d26e', 'App\\Notifications\\UserRegistration', 'App\\Models\\User', 20, '{\"message\":\"New user registered\"}', NULL, '2023-03-14 16:22:49', '2023-03-14 16:22:49'),
+('27f30f72-edca-4923-96ed-4b247992dd4c', 'App\\Notifications\\VendorRegistration', 'App\\Models\\User', 20, '{\"message\":\"New vendor registrtation request\"}', NULL, '2023-03-14 16:13:44', '2023-03-14 16:13:44'),
+('2ec2b7d3-3e46-4a95-93f0-56521c21f9c6', 'App\\Notifications\\OrderComplete', 'App\\Models\\User', 1, '{\"message\":\"New Order Recieved\"}', NULL, '2023-03-14 16:03:53', '2023-03-14 16:03:53'),
+('3f52371d-491e-4f26-80b4-adbcea1892ca', 'App\\Notifications\\OrderComplete', 'App\\Models\\User', 20, '{\"message\":\"New Order Recieved\"}', NULL, '2023-03-14 16:03:53', '2023-03-14 16:03:53'),
+('74b0f3c2-c325-4511-9571-23c7f26e6115', 'App\\Notifications\\VendorRegistration', 'App\\Models\\User', 21, '{\"message\":\"New vendor registrtation request\"}', NULL, '2023-03-14 16:13:44', '2023-03-14 16:13:44'),
+('8dc9ad96-4b6c-4204-a6a7-93d1c711291f', 'App\\Notifications\\OrderComplete', 'App\\Models\\User', 20, '{\"message\":\"New Order Recieved\"}', NULL, '2023-03-14 15:43:51', '2023-03-14 15:43:51'),
+('9fa8745f-1cc6-4e73-9615-5651ac5b5a8a', 'App\\Notifications\\UserRegistration', 'App\\Models\\User', 1, '{\"message\":\"New user registered\"}', NULL, '2023-03-14 16:22:48', '2023-03-14 16:22:48'),
+('a5373dd3-5d4b-439b-9cbf-ecbf619213c9', 'App\\Notifications\\UserRegistration', 'App\\Models\\User', 21, '{\"message\":\"New user registered\"}', NULL, '2023-03-14 16:22:49', '2023-03-14 16:22:49'),
+('b1482ad6-c734-4e9e-80d8-2bc69d08f9b2', 'App\\Notifications\\OrderComplete', 'App\\Models\\User', 21, '{\"message\":\"New Order Recieved\"}', NULL, '2023-03-14 16:03:53', '2023-03-14 16:03:53'),
+('b9ab42a0-6653-4dc8-8f14-3c13d6d0581a', 'App\\Notifications\\VendorApproveNotification', 'App\\Models\\User', 24, '{\"message\":\"Your account has activated\"}', NULL, '2023-03-14 16:33:56', '2023-03-14 16:33:56'),
+('c8066581-4677-4207-823f-d499742ea395', 'App\\Notifications\\VendorRegistration', 'App\\Models\\User', 1, '{\"message\":\"New vendor registrtation request\"}', NULL, '2023-03-14 16:13:44', '2023-03-14 16:13:44'),
+('f282de8f-e712-4a45-9692-d701f4b49d21', 'App\\Notifications\\OrderComplete', 'App\\Models\\User', 1, '{\"message\":\"New Order Recieved\"}', NULL, '2023-03-14 15:43:51', '2023-03-14 15:43:51');
 
 -- --------------------------------------------------------
 
@@ -431,7 +477,9 @@ INSERT INTO `orders` (`id`, `user_id`, `country_id`, `city_id`, `area_id`, `name
 (13, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 795.00, '0', 'NMG86590830', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-02-20 15:10:45', NULL),
 (14, 3, 2, 2, 1, 'User', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '56255', 'Email Strip', 'card_1MdfkDLHUfosJYdW9FqzTMuy', 'stripe', 'txn_3MdfkELHUfosJYdW1Or4HFIz', 'gbp', 6650.00, '63f3d481dbfae', 'NMG51284636', '20 February 2023', 'February', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-02-20 15:13:55', '2023-03-01 12:04:40'),
 (15, 3, 2, 6, 2, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', 'New Testing purpose order', 'COD', 'Cash on delivery', '0', 'gbp', 5780.00, '0', 'NMG60214724', '02 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, '02 March 2023', 'Another Perfume Recieved', '2', 'delivered', '2023-03-02 13:46:02', '2023-03-02 14:01:40'),
-(16, 3, 2, 2, 1, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 4795.00, '0', 'NMG70224496', '10 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-03-10 13:06:08', '2023-03-10 13:11:56');
+(16, 3, 2, 2, 1, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 4795.00, '0', 'NMG70224496', '10 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2023-03-10 13:06:08', '2023-03-10 13:11:56'),
+(17, 3, 2, 2, 1, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 2339.00, '0', 'NMG73255879', '14 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-03-14 15:43:37', NULL),
+(18, 3, 2, 2, 1, 'Zubair', 'user@gmail.com', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', '50250', NULL, 'COD', 'Cash on delivery', '0', 'gbp', 539245.00, '0', 'NMG90281210', '14 March 2023', 'March', '2023', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'pending', '2023-03-14 16:03:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -470,7 +518,12 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `vendor_id`, `color`,
 (11, 14, 53, '17', NULL, NULL, '1', 7000.00, '2023-02-20 15:14:00', NULL),
 (12, 15, 54, '17', NULL, NULL, '1', 6800.00, '2023-03-02 13:46:16', NULL),
 (13, 16, 64, '18', NULL, NULL, '5', 515.00, '2023-03-10 13:06:23', NULL),
-(14, 16, 63, '18', NULL, NULL, '4', 555.00, '2023-03-10 13:06:23', NULL);
+(14, 16, 63, '18', NULL, NULL, '4', 555.00, '2023-03-10 13:06:23', NULL),
+(15, 17, 20, '15', 'Black', 'M', '1', 2339.00, '2023-03-14 15:43:48', NULL),
+(16, 18, 61, '16', NULL, NULL, '1', 445.00, '2023-03-14 16:03:52', NULL),
+(17, 18, 37, '16', NULL, NULL, '1', 525000.00, '2023-03-14 16:03:52', NULL),
+(18, 18, 53, '17', NULL, NULL, '1', 7000.00, '2023-03-14 16:03:52', NULL),
+(19, 18, 54, '17', NULL, NULL, '1', 6800.00, '2023-03-14 16:03:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -573,7 +626,7 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_id`, `created_at`,
 (68, 'role_permission.permission.add', 'web', 10, '2023-03-12 11:32:05', '2023-03-12 14:01:50'),
 (69, 'role_permission.permission.edit', 'web', 10, '2023-03-12 11:32:13', '2023-03-12 14:01:59'),
 (70, 'role_permission.permission.delete', 'web', 10, '2023-03-12 11:32:50', '2023-03-12 14:02:07'),
-(71, 'blog_management.menu', 'web', 11, '2023-03-12 11:33:21', '2023-03-12 11:33:21'),
+(71, 'blog.menu', 'web', 11, '2023-03-12 11:33:21', '2023-03-14 15:03:06'),
 (72, 'blog_management.blog_category.list', 'web', 11, '2023-03-12 11:33:46', '2023-03-12 14:02:30'),
 (73, 'blog_management.blog_category.add', 'web', 11, '2023-03-12 11:33:52', '2023-03-12 14:02:39'),
 (74, 'blog_management.blog_category.edit', 'web', 11, '2023-03-12 11:34:25', '2023-03-12 14:02:49'),
@@ -610,7 +663,12 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `group_id`, `created_at`,
 (105, 'reports.menu', 'web', 14, '2023-03-12 11:46:23', '2023-03-12 11:46:23'),
 (106, 'reports.report_filter', 'web', 14, '2023-03-12 11:46:53', '2023-03-12 11:46:53'),
 (107, 'discount_setup.menu', 'web', 4, '2023-03-12 13:53:13', '2023-03-12 13:53:13'),
-(108, 'setting.menu', 'web', 13, '2023-03-12 14:04:46', '2023-03-12 14:04:46');
+(108, 'setting.menu', 'web', 13, '2023-03-12 14:04:46', '2023-03-12 14:04:46'),
+(109, 'review.menu', 'web', 12, '2023-03-14 15:01:37', '2023-03-14 15:01:37'),
+(110, 'user_management.admin.list', 'web', 9, '2023-03-14 15:19:30', '2023-03-14 15:19:30'),
+(111, 'user_management.admin.add', 'web', 9, '2023-03-14 15:19:52', '2023-03-14 15:19:52'),
+(112, 'user_management.admin.edit', 'web', 9, '2023-03-14 15:20:15', '2023-03-14 15:20:15'),
+(113, 'user_management.admin.delete', 'web', 9, '2023-03-14 15:20:41', '2023-03-14 15:20:41');
 
 -- --------------------------------------------------------
 
@@ -1008,6 +1066,159 @@ CREATE TABLE `role_has_permissions` (
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(21, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(26, 1),
+(27, 1),
+(28, 1),
+(29, 1),
+(30, 1),
+(31, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1),
+(36, 1),
+(37, 1),
+(38, 1),
+(39, 1),
+(40, 1),
+(41, 1),
+(42, 1),
+(43, 1),
+(44, 1),
+(45, 1),
+(46, 1),
+(47, 1),
+(48, 1),
+(49, 1),
+(50, 1),
+(51, 1),
+(52, 1),
+(53, 1),
+(54, 1),
+(55, 1),
+(56, 1),
+(57, 1),
+(58, 1),
+(59, 1),
+(60, 1),
+(61, 1),
+(62, 1),
+(63, 1),
+(64, 1),
+(65, 1),
+(66, 1),
+(67, 1),
+(68, 1),
+(69, 1),
+(70, 1),
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(85, 1),
+(86, 1),
+(87, 1),
+(88, 1),
+(89, 1),
+(90, 1),
+(91, 1),
+(92, 1),
+(93, 1),
+(94, 1),
+(95, 1),
+(96, 1),
+(97, 1),
+(98, 1),
+(99, 1),
+(100, 1),
+(101, 1),
+(102, 1),
+(103, 1),
+(104, 1),
+(105, 1),
+(106, 1),
+(107, 1),
+(108, 1),
+(1, 3),
+(84, 3),
+(85, 3),
+(86, 3),
+(87, 3),
+(88, 3),
+(89, 3),
+(90, 3),
+(91, 3),
+(92, 3),
+(93, 3),
+(94, 3),
+(95, 3),
+(96, 3),
+(97, 3),
+(98, 3),
+(99, 3),
+(100, 3),
+(101, 3),
+(102, 3),
+(103, 3),
+(104, 3),
+(108, 3),
+(71, 4),
+(72, 4),
+(73, 4),
+(74, 4),
+(75, 4),
+(76, 4),
+(77, 4),
+(78, 4),
+(79, 4),
+(80, 4),
+(81, 4),
+(82, 4),
+(83, 4),
+(109, 4),
+(1, 5),
+(105, 5),
+(106, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -1201,9 +1412,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `photo`, `phone`, `address`, `year_id`, `vendor_short_info`, `role`, `status`, `last_seen`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$V3PxYXxkKX/oDG.75PjXAuGotDh1zmpynvtINCMlJxHGPUPwinPCG', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-12 20:34:59', NULL, NULL, '2023-03-12 15:34:59'),
+(1, 'Afaq Ahmad', 'afaqahmad0051', 'afaqa0051@gmail.com', NULL, '$2y$10$jn68U28BLbIPHPGg.1EHiOfS5j4ykSr45blSO5SUo9jd9MkHV18ZK', '202301031814317086213_2925330197774785_7660628823762459061_n.jpg', '+92 306 9696035', 'Hostel Inn 2000, Oppo. Punjab Bar Council, Lahore', NULL, NULL, 'admin', 'active', '2023-03-14 21:35:30', NULL, NULL, '2023-03-14 16:35:30'),
 (2, 'Nest Food.,Ltd', 'vendor12', 'vendor@gmail.com', NULL, '$2y$10$vG6N.zGHOGurM01ULjIlkOUsg/yTdea.0K0ut5TF.jkdapKfN8ZxC', '202301032007vendor-16.png', '+92 324 0725122', 'Cardiff CF10 3AT, UK', 4, 'Got a smooth, buttery spread in your fridge? Chances are good that it\'s Good Chef. This brand made Lionto\'s list of the most popular grocery brands across the country.', 'vendor', 'active', NULL, NULL, '2023-01-11 06:27:18', '2023-01-12 13:46:10'),
-(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-12 14:15:06', NULL, NULL, '2023-03-12 09:15:06'),
+(3, 'Zubair', 'zubair15', 'user@gmail.com', NULL, '$2y$10$TEdzPzsjcEu8aKKb2fwyP.oZigF6Ber.8j9H.iSCqHES6uQZPz546', '202301081100WhatsApp Image 2022-11-28 at 13.17.55.jpeg', '+92 306 7654321', 'Hostel Inn 2000, Near Punjab Bar Council', NULL, NULL, 'user', 'active', '2023-03-14 21:04:49', NULL, NULL, '2023-03-14 16:04:49'),
 (12, 'Salman', 'Salman112', 'salman@gmail.com', NULL, '$2y$10$ZD8bezyH2umjaHaPMbbvwO.hFv7oQzQRLuHPGIutajfS9Erei1lHG', '202303040655202203281017503889_1_81445.png', '03069696089', 'Hostel Inn 2000, Near Punjab Bar Council, Lahore, Punjab Pakistan', NULL, NULL, 'user', 'active', '2023-03-06 15:52:13', NULL, '2022-12-31 15:19:30', '2023-03-06 10:52:13'),
 (13, 'hassan', NULL, 'hassan@gmail.com', NULL, '$2y$10$aP7D8mMfZPykO17pokgmb.keMAePuK/wMikWstmDXl.auTQ6MZKCq', NULL, NULL, NULL, NULL, NULL, 'user', 'active', '2023-03-06 20:29:28', NULL, '2023-01-07 10:26:06', '2023-03-06 15:29:28'),
 (14, 'Computer Dealers', 'Hassan UK', 'healthy_food@gmail.com', NULL, '$2y$10$OCBe6jSLUklwkWf2KrN6Aul0EmlzjeCxbQwC4fzE4ySsex/rnq0Ry', '202303040630d89f9c1e19bb01a129b1f3f67925a745.jpg', '+92 306 7823773', 'Some where from UK', 1, 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum', 'vendor', 'active', '2023-03-04 06:45:54', NULL, '2023-01-12 12:23:33', '2023-03-04 01:45:54'),
@@ -1211,7 +1422,11 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `pa
 (16, 'I & I Enterprises', 'I & I Enterprises', 'enterprises@gmail.com', NULL, '$2y$10$/Fg44.dwQM3MnnzgM6d0OeLwRlxcgwgaEsvCIr96bk9kkH0KGSBRi', NULL, '+92 306 7483281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
 (17, 'Sigma Distributors', 'Sigma Distributors', 'sigma@gmail.com', NULL, '$2y$10$HIbbohapZB241Bcd3zdBDeqkN4czxsi0ik27M/f0ZIELWQPIs2Lia', NULL, '+92 306 783367', NULL, NULL, NULL, 'vendor', 'active', '2023-03-08 19:56:58', NULL, NULL, '2023-03-08 14:56:58'),
 (18, 'Punjab Oil Mills LTD', 'Punjab Oil Mills LTD', 'punjaboil@gmail.com', NULL, '$2y$10$iIATahsDlA8bovJCKzoFbOzzN/FHHajNNMgg71J.if88n1Ya273qe', NULL, '+92 306 7673822', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
-(19, 'KK Sports', 'KK Sports', 'kksports@gmail.com', NULL, '$2y$10$9aNmHGWDW29Rz4oCnwnPmuUqfhX1HRFYjSBJpHCUzCuwnxG.q9Jlq', NULL, '+92 306 1562281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL);
+(19, 'KK Sports', 'KK Sports', 'kksports@gmail.com', NULL, '$2y$10$9aNmHGWDW29Rz4oCnwnPmuUqfhX1HRFYjSBJpHCUzCuwnxG.q9Jlq', NULL, '+92 306 1562281', NULL, NULL, NULL, 'vendor', 'active', NULL, NULL, NULL, NULL),
+(20, 'Haseeb', 'haseeb12', 'haseeb@gmail.com', NULL, '$2y$10$/lRb4WzUSe9VWPt2QFUjoeyE9TKJLM8P1EBYMe9GZ1.RXG1h0wALq', NULL, NULL, NULL, NULL, NULL, 'admin', 'active', NULL, NULL, '2023-03-14 13:59:17', '2023-03-14 13:59:17'),
+(21, 'Ibrahim', 'ib786', 'ib@gmail.com', NULL, '$2y$10$v4nopodPZ2Q7a/.aA5GZxehvHgbFQoKonrD1jAkOpaK8ZCq0yzmG2', NULL, '03097865213', 'Nowshehra Virkan', NULL, NULL, 'admin', 'active', '2023-03-14 20:42:02', NULL, '2023-03-14 14:01:44', '2023-03-14 15:42:02'),
+(24, 'Fast Food Rrestaurant', 'hussain12', 'hussain@yahoo.com', NULL, '$2y$10$ZjHLGwJs3CbYiRRp5LUG8OpgGIdKOij/TDoZu5hMmc6Y4ZWAIfobK', NULL, '03069696327', NULL, NULL, NULL, 'vendor', 'active', '2023-03-14 21:34:53', NULL, '2023-03-14 16:13:44', '2023-03-14 16:34:53'),
+(25, 'Zulqarnain', NULL, 'zulqarnain@hotmail.com', NULL, '$2y$10$q9piHnGrGE6Acit5qtt6zOeyF7dT9aKYGPwGOFDrLTOfpv62PDxRm', NULL, NULL, NULL, NULL, NULL, 'user', 'active', '2023-03-14 21:22:52', NULL, '2023-03-14 16:22:48', '2023-03-14 16:22:52');
 
 -- --------------------------------------------------------
 
@@ -1233,8 +1448,8 @@ CREATE TABLE `wishlists` (
 
 INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
 (22, 3, 23, '2023-02-11 13:21:19', NULL),
-(24, 3, 64, '2023-02-11 14:17:11', NULL),
-(25, 3, 53, '2023-02-20 15:12:56', NULL);
+(25, 3, 53, '2023-02-20 15:12:56', NULL),
+(26, 3, 54, '2023-03-14 15:59:25', NULL);
 
 -- --------------------------------------------------------
 
@@ -1355,6 +1570,13 @@ ALTER TABLE `model_has_permissions`
 ALTER TABLE `model_has_roles`
   ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`);
 
 --
 -- Indexes for table `orders`
@@ -1548,31 +1770,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `permission_groups`
 --
 ALTER TABLE `permission_groups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -1632,13 +1854,13 @@ ALTER TABLE `sub_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `years`

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Year;
+use App\Notifications\VendorApproveNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class VendorManagementController extends Controller
 {
@@ -39,6 +41,8 @@ class VendorManagementController extends Controller
             'message' => 'Vendor Activated',
             'alert-type' => 'success'
         );
+        $user = User::where('role','vendor')->where('id',$id)->first();
+        Notification::send($user, new VendorApproveNotification($request));
         return redirect()->route('vendor.inactive')->with($notification);
     }
 

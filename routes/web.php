@@ -318,6 +318,12 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::prefix('user')->name('user.')->controller(ActiveUserController::class)->group(function () {
         Route::get('customers/list','customerList')->name('customer.list');
         Route::get('vendors/list','vendorList')->name('vendor.list');
+        Route::get('admins/list','AdminList')->name('admin.list');
+        Route::get('admins/create','AdminCreate')->name('admin.create');
+        Route::post('admins/store','AdminStore')->name('admin.store');
+        Route::get('admins/edit/{id}','AdminEdit')->name('admin.edit');
+        Route::post('admins/update/{id}','AdminUpdate')->name('admin.update');
+        Route::get('admins/delete/{id}','AdminDelete')->name('admin.delete');
     });
     
     //Admin User permissions Routes
